@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Catálogo - Rei do Pod Caf</title>
+  
+  <style>
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #000000aa;
+      margin: 0;
+      padding: 20px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2em;
+      color: #080808;
+    }
+
+    header p {
+      margin: 5px 0;
+      color: #000000;
+    }
+
+   .catalogo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* responsivo */
+  gap: 20px;
+  padding: 20px;
+    }
+
+    .produto {
+  background-color: #1a1a1a;
+  border: 1px solid #00ffcc;
+  border-radius: 8px;
+  overflow: hidden;
+  text-align: center;
+  padding: 10px;
+  height: auto;
+  min-height: 320px; /* Altura fixa */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 0 15px rgba(0, 255, 204, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  color: #fff;
+}
+
+.produto:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 20px rgba(0, 255, 204, 0.6);
+}
+
+.produto img {
+  width: auto;
+  height: 150px;
+  object-fit: contain;
+  margin: 0 auto 10px;
+  display: block;
+}
+
+.produto h3 {
+  margin: 8px 0;
+  font-size: 1.1em;
+  color: #00ffcc;
+}
+
+.produto p {
+  margin: 2px 0;
+  color: #ccc;
+  font-size: 0.95em;
+}
+    .topo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #000;
+  color: white;
+  padding: 30px 20px;
+  gap: 30px;
+  border-bottom: 2px solid #00ffcc;
+  flex-wrap: wrap;
+}
+
+.logo img {
+  width: 120px;
+  height: auto;
+  border-radius: 10px;
+}
+
+.info {
+  text-align: center;
+}
+
+.info h1 {
+  margin: 0;
+  font-size: 2em;
+  color: #00ffcc;
+}
+
+.info p {
+  margin: 5px 0;
+  font-size: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  color: #ccc;
+}
+.topo {
+  min-height: 150px;
+}
+footer {
+  clear: both;
+  margin-top: 40px;
+  padding: 20px;
+  text-align: center;
+  color: #999;
+  font-size: 0.9em;
+}
+.botao-compra {
+  display: inline-block;
+  background-color: #00c897;
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.95em;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-top: 10px;
+}
+
+.botao-compra:hover {
+  background-color: #009f77;
+  transform: scale(1.05);
+}
+
+.botao-secundario {
+  display: inline-block;
+  background-color: #333;
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.95em;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-top: 10px;
+}
+
+.botao-secundario:hover {
+  background-color: #555;
+  transform: scale(1.05);
+}
+
+  </style>
+</head>
+<body>
+  
+    <header class="topo">
+  <div class="logo">
+    <img src="img/imagem-rei-do-pod.jpg" alt="Logo Rei do Pod">
+  </div>
+  <div class="info">
+    <h1>Catálogo</h1>
+    <p><strong>REI DO POD CAF</strong></p>
+    <p>
+       <a href="https://www.instagram.com/ryan_eletronicos" target="_blank" 
+     style="display: flex; align-items: center; gap: 5px; text-decoration: none; color: inherit; 
+            width: fit-content; margin: 0 auto;">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" width="18">
+    <span style="margin: 0;">ryan.eletrônico</span>
+  </a>
+    </p>
+    <p>
+      <span>📞(45) 99807-8084</span>
+    </p>
+    
+  </div>
+</header>
+
+  <div class="catalogo">
+
+    <!-- Exemplo de Produto -->
+
+    <div class="produto">
+      <a href="https://wa.me/5545998078084" target="_blank">
+        <img src="img/BLACK-SHEEP-20K.jpg" alt="BLACK SHEEP 20K" style="size: 23px;">
+      </a>
+      <h3>BLACK SHEEP 20K</h3>
+      <p>ref: 20.000</p>
+    
+      <!-- Botão de Ver Sabores -->
+  <a href="sabores-v50.html" target="_blank" class="botao-secundario"> Ver sabores</a>
+
+  <!-- Botão de Comprar -->
+  <a href="https://wa.me/5545998078084?text=Ol%C3%A1%2C%20quero%20comprar%20o%20produto%20BLACK%20SHEEP%2020K" 
+     target="_blank" 
+     class="botao-compra">
+    🛒 Comprar agora </a>
+
+    </div>
+
+    <div class="produto">
+      <a href="https://wa.me/5545998078084" target="_blank">
+        <img src="img/BLACK-SHEEP-REFIL-16.000K-CLICK.jpg" alt="BLACK SHEEP REFIL 16.000K CLICK">
+      </a>
+      <h3>BLACK SHEEP REFIL 16.000K CLICK</h3>
+      <p>ref: 16.000RF</p>
+
+       <!-- Botão de Ver Sabores -->
+  <a href="sabores-v50.html" target="_blank" class="botao-secundario"> Ver sabores</a>
+    
+      <a href="https://wa.me/5545998078084?text=Ol%C3%A1%2C%20quero%20comprar%20o%20produto%20BLACK%20SHEEP%20REFIL%2016.000K%20CLICK"  
+     target="_blank" 
+     class="botao-compra">
+    🛒 Comprar agora
+  </a>
+
+    </div>
+
+    <div class="produto">
+      <a href="https://wa.me/5545998078084" target="_blank">
+        <img src="img/CAIXINHA-LIFE-POD-ECO-II.jpg" alt="CAIXINHA LIFE POD ECO II">
+      </a>
+      <h3>CAIXINHA LIFE POD ECO II</h3>
+      <p>ref: DEVICELIFEPODII</p>
+      
+      <a href="https://wa.me/5545998078084?text=Ol%C3%A1%2C%20quero%20comprar%20o%20produto%20CAIXINHA%20LIFE%20POD%20ECO%20II"  
+     target="_blank" 
+     class="botao-compra">
+    🛒 Comprar agora
+  </a>
+
+    </div>
+
+        <div class="produto">
+      <a href="https://wa.me/5545998078084" target="_blank">
+        <img src="img/CHRIS-BROWN-15K.jpg" alt="CAIXINHA LIFE POD ECO II">
+       </a>
+   <h3>CHRIS BROWN 15k</h3>
+     <p>ref: 15.000CB</p>
+
+      <!-- Botão de Ver Sabores -->
+  <a href="sabores-v50.html" target="_blank" class="botao-secundario"> Ver sabores</a>
+  
+     <a href="https://wa.me/5545998078084?text=Ol%C3%A1%2C%20quero%20comprar%20o%20produto%20CHRIS%20BROWN%2015K" 
+     target="_blank" 
+     class="botao-compra">
+    🛒 Comprar agora
+  </a>
+
+</div>
+
+    <div class="produto">
+      <a href="https://wa.me/5545998078084" target="_blank">
+        <img src="img/ELFBAR-ICE-KING-40K.jpg" alt="BLACK SHEEP 20K" style="size: 23px;">
+      </a>
+  <h3>ELFBAR ICE KING 40K</h3>
+  <p>ref: 40.000</p>
+
+   <!-- Botão de Ver Sabores -->
+  <a href="sabores-v50.html" target="_blank" class="botao-secundario"> Ver sabores</a>
+ 
+  <a href="https://wa.me/5545998078084?text=Ol%C3%A1%2C%20quero%20comprar%20o%20produto%20ELFBAR%20ICE%20KING%2040K" 
+     target="_blank" 
+     class="botao-compra">
+    🛒 Comprar agora
+  </a>
+
+</div>
+
+    <div class="produto">
+      <a href="https://wa.me/5545998078084" target="_blank">
+        <img src="img/ELFBAR-TE-30.jpg" alt="BLACK SHEEP REFIL 16.000K CLICK">
+      </a>
+  <h3>ELFBAR TE 30K</h3>
+  <p>ref: 30.000E</p>
+
+   <!-- Botão de Ver Sabores -->
+  <a href="sabores-v50.html" target="_blank" class="botao-secundario"> Ver sabores</a>
+  
+<a href="https://wa.me/5545998078084?text=Ol%C3%A1,%20quero%20comprar%20o%20produto%20ELFBAR%20TE%2030K"
+     target="_blank" 
+     class="botao-compra">
+    🛒 Comprar agora
+  </a>
+
+</div>
+
+    <div class="produto">
+      <a href="https://wa.me/5545998078084" target="_blank">
+        <img src="img/IG-REFIL-IGNITE-10.000.jpg" alt="CAIXINHA LIFE POD ECO II">
+       </a>
+  <h3>IG REFIL IGNITE 10.000</h3>
+  <p>ref: 10.000KP100</p>
+
+  <!-- Botão de Ver Sabores -->
+  <a href="sabores-v50.html" target="_blank" class="botao-secundario"> Ver sabores</a>
+  
+  <a href="https://wa.me/5545998078084?text=Ol%C3%A1,%20quero%20comprar%20o%20produto%20IG%20REFIL%20IGNITE%2010.000" 
+     target="_blank" 
+     class="botao-compra">
+    🛒 Comprar agora
+  </a>
+
+</div>
+        <div class="produto">
+      <a href="https://wa.me/5545998078084" target="_blank">
+        <img src="img/IGNITE-P100.jpg" alt="CAIXINHA LIFE POD ECO II">
+      </a>
+  <h3>IGNITE P100</h3>
+  <p>ref: 0.0000</p>
+
+  <!-- Botão de Ver Sabores -->
+  <a href="sabores-v50.html" target="_blank" class="botao-secundario"> Ver sabores</a>
+ 
+  <a href="https://wa.me/5545998078084?text=Ol%C3%A1,%20quero%20comprar%20o%20produto%20IGNITE%20P100"
+     target="_blank" 
+     class="botao-compra">
+    🛒 Comprar agora
+  </a>
+
+</div> 
+
+<div class="produto">
+      <a href="https://wa.me/5545998078084" target="_blank">
+        <img src="img/ignite-v120-coffe.jpg" alt="BLACK SHEEP 20K" style="size: 23px;">
+      </a>
+  <h3>IGNITE V120</h3>
+  <p>ref: 12.000</p>
+
+  <!-- Botão de Ver Sabores -->
+  <a href="sabores-v50.html" target="_blank" class="botao-secundario"> Ver sabores</a>
+ 
+  <a href="https://wa.me/5545998078084?text=Ol%C3%A1,%20quero%20comprar%20o%20produto%20IGNITE%20V120" 
+     target="_blank" 
+     class="botao-compra">
+    🛒 Comprar agora
+  </a>
+
+</div>
+
+    <div class="produto">
+      <a href="https://wa.me/5545998078084" target="_blank">
+        <img src="img/IGNITE-V120-GOLD.jpg" alt="BLACK SHEEP 20K" style="size: 23px;">
+     </a>
+  <h3>IGNITE V120 GOLD</h3>
+  <p>ref: 120</p>
+
+  <!-- Botão de Ver Sabores -->
+  <a href="sabores-v50.html" target="_blank" class="botao-secundario"> Ver sabores</a>
+ 
+  <a href="https://wa.me/5545998078084?text=Ol%C3%A1,%20quero%20comprar%20o%20produto%20IGNITE%20V120%20GOLD"
+     target="_blank" 
+     class="botao-compra">
+    🛒 Comprar agora
+  </a>
+
+</div>
+
+    <div class="produto">
+      <a href="https://wa.me/5545998078084" target="_blank">
+        <img src="img/IGNITE-V150-PRO.jpg" alt="BLACK SHEEP 20K" style="size: 23px;">
+      </a>
+  <h3>IGNITE V150 PRO</h3>
+  <p>ref: 15.000</p>
+
+  <!-- Botão de Ver Sabores -->
+  <a href="sabores-v50.html" target="_blank" class="botao-secundario"> Ver sabores</a>
+ 
+  <a href="https://wa.me/5545998078084?text=Ol%C3%A1,%20quero%20comprar%20o%20produto%20IGNITE%20V150%20PRO"
+     target="_blank" 
+     class="botao-compra">
+    🛒 Comprar agora
+  </a>
+
+</div>
+
+    <div class="produto">
+      <a href="https://wa.me/5545998078084" target="_blank">
+        <img src="img/IGNITE-V250.jpg" alt="BLACK SHEEP 20K" style="size: 23px;">
+       </a>
+  <h3>IGNITE V250</h3>
+  <p>ref: 25.000IG</p>
+
+  <!-- Botão de Ver Sabores -->
+  <a href="sabores-v50.html" target="_blank" class="botao-secundario"> Ver sabores</a>
+  
+  <a href="https://wa.me/5545998078084?text=Ol%C3%A1,%20quero%20comprar%20o%20produto%20IGNITE%20V250"
+     target="_blank" 
+     class="botao-compra">
+    🛒 Comprar agora
+  </a>
+
+</div>
+
+    <div class="produto">
+      <a href="https://wa.me/5545998078084" target="_blank">
+        <img src="img/IGNITE-V300-30k.jpg" alt="BLACK SHEEP 20K" style="size: 23px;">
+      </a>
+  <h3>IGNITE V300 30k</h3>
+  <p>ref: 30.000IG</p>
+
+  <!-- Botão de Ver Sabores -->
+  <a href="sabores-v50.html" target="_blank" class="botao-secundario"> Ver sabores</a>
+ 
+  <a href="https://wa.me/5545998078084?text=Ol%C3%A1,%20quero%20comprar%20o%20produto%20IGNITE%20V300%2030k"
+     target="_blank" 
+     class="botao-compra">
+    🛒 Comprar agora
+  </a>
+
+</div>
+
+    <div class="produto">
+      <a href="https://wa.me/5545998078084" target="_blank">
+        <img src="img/IGNITE-V80-BLACK.jpg" alt="BLACK SHEEP 20K" style="size: 23px;">
+       </a>
+  <h3>IGNITE V80 BLACK</h3>
+  <p>ref: 8.000</p>
+
+  <!-- Botão de Ver Sabores -->
+  <a href="sabores-v50.html" target="_blank" class="botao-secundario"> Ver sabores</a>
+ 
+  <a href="https://wa.me/5545998078084?text=Ol%C3%A1,%20quero%20comprar%20o%20produto%20IGNITE%20V80%20BLACK"
+     target="_blank" 
+     class="botao-compra">
+    🛒 Comprar agora
+  </a>
+
+</div>
+
+    <div class="produto">
+      <a href="https://wa.me/5545998078084" target="_blank">
+        <img src="img/LOST-ANGE -20K.jpg" alt="BLACK SHEEP 20K" style="size: 23px;">
+      </a>
+  <h3>LOST ANGEL 20K</h3>
+  <p>ref: 20.000L</p>
+
+  <!-- Botão de Ver Sabores -->
+  <a href="sabores-v50.html" target="_blank" class="botao-secundario"> Ver sabores</a>
+  
+  <a href="https://wa.me/5545998078084?text=Ol%C3%A1,%20quero%20comprar%20o%20produto%20LOST%20ANGEL%2020K"
+     target="_blank" 
+     class="botao-compra">
+    🛒 Comprar agora
+  </a>
+
+</div>
+
+    <div class="produto">
+      <a href="https://wa.me/5545998078084" target="_blank">
+        <img src="img/O-REFIL-OXBAR-G32K.jpg" alt="BLACK SHEEP 20K" style="size: 23px;">
+      </a>
+  <h3>O REFIL OXBAR G32K</h3>
+  <p>ref: 32.000</p>
+
+  <!-- Botão de Ver Sabores -->
+  <a href="sabores-v50.html" target="_blank" class="botao-secundario"> Ver sabores</a>
+  
+  <a href="https://wa.me/5545998078084?text=Ol%C3%A1,%20quero%20comprar%20o%20produto%20O%20REFIL%20OXBAR%20G32K"
+     target="_blank" 
+     class="botao-compra">
+    🛒 Comprar agora
+  </a>
+
+    </div>
+
+    <div class="produto">
+      <a href="https://wa.me/5545998078084" target="_blank">
+        <img src="img/lifepod-8000-sabores.png" alt="BLACK SHEEP 20K" style="size: 23px;">
+      </a>
+  <h3>REFIL 10.000 LIFE POD</h3>
+  <p>ref: 10.000M</p>
+
+  <!-- Botão de Ver Sabores -->
+  <a href="sabores-v50.html" target="_blank" class="botao-secundario"> Ver sabores</a>
+  
+  <a href="https://wa.me/5545998078084?text=Ol%C3%A1,%20quero%20comprar%20o%20produto%20REFIL%2010.000%20LIFE%20POD"
+     target="_blank" 
+     class="botao-compra">
+    🛒 Comprar agora
+  </a>
+
+</div>
+
+    <div class="produto">
+      <a href="https://wa.me/5545998078084" target="_blank">
+        <img src="img/REFIL-LIFE-POD.jpeg" alt="BLACK SHEEP 20K" style="size: 23px;">
+       </a>
+  <h3>REFIL LIFE POD 8.000</h3>
+  <p>ref: 8.000MIL</p>
+
+  <!-- Botão de Ver Sabores -->
+  <a href="sabores-v50.html" target="_blank" class="botao-secundario"> Ver sabores</a>
+  
+  <a href="https://wa.me/5545998078084?text=Ol%C3%A1,%20quero%20comprar%20o%20produto%20REFIL%20LIFE%20POD%208.000"
+     target="_blank" 
+     class="botao-compra">
+    🛒 Comprar agora
+  </a>
+
+</div>
+
+</div> 
+
+<footer>
+  <p>© 2025 Rei do Pod CAF — Todos os direitos reservados.</p>
+</footer>
+</body>
+</html>
