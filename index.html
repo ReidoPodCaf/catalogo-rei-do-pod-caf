@@ -161,6 +161,31 @@ footer {
   background-color: #555;
   transform: scale(1.05);
 }
+.contato {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.social {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #ccc;
+  text-decoration: none;
+  font-size: 1em;
+}
+
+.social img {
+  width: 18px;
+  height: 18px;
+}
+
+.telefone {
+  font-size: 1em;
+  color: #ccc;
+}
 
   </style>
 </head>
@@ -173,17 +198,15 @@ footer {
   <div class="info">
     <h1>Catálogo</h1>
     <p><strong>REI DO POD CAF</strong></p>
-    <p>
-       <a href="https://www.instagram.com/ryan_eletronicos" target="_blank" 
-     style="display: flex; align-items: center; gap: 5px; text-decoration: none; color: inherit; 
-            width: fit-content; margin: 0 auto;">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" width="18">
-    <span style="margin: 0;">ryan.eletrônico</span>
+    <div class="contato">
+  <a href="https://www.instagram.com/ryan_eletronicos" target="_blank" class="social">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+    <span>ryan.eletrônico</span>
   </a>
-    </p>
-    <p>
-      <span>📞(45) 99807-8084</span>
-    </p>
+  <div class="telefone">
+    <span>📞 (45) 99807-8084</span>
+  </div>
+</div>
     
   </div>
 </header>
