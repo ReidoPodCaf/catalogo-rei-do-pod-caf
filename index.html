@@ -3,148 +3,120 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Catálogo - Rei do Pod Caf</title>
-  
+  <title>Catálogo - REI DO POD CAF</title>
   <style>
-
     body {
-      font-family: Arial, sans-serif;
-      background-color: #000000aa;
+      background: radial-gradient(circle at top, #0f0f0f, #000);
+      color: #00ffcc;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
-      padding: 20px;
+      padding: 0;
     }
-
-    header {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 2em;
-      color: #080808;
-    }
-
-    header p {
-      margin: 5px 0;
-      color: #000000;
-    }
-
-   .catalogo {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* responsivo */
-  gap: 20px;
-  padding: 20px;
-    }
-
-    .produto {
-  background-color: #1a1a1a;
-  border: 1px solid #00ffcc;
-  border-radius: 8px;
-  overflow: hidden;
-  text-align: center;
-  padding: 10px;
-  height: auto;
-  min-height: 320px; /* Altura fixa */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  box-shadow: 0 0 15px rgba(0, 255, 204, 0.3);
-  transition: transform 0.2s ease, box-shadow 0.3s ease;
-  color: #fff;
+.topo {
+  background-color: #000;
+  padding: 30px 20px;
+  border-bottom: 3px solid #00ffcc;
 }
 
-.produto:hover {
-  transform: scale(1.03);
-  box-shadow: 0 0 20px rgba(0, 255, 204, 0.6);
-}
-
-.produto img {
-  width: auto;
-  height: 150px;
-  object-fit: contain;
-  margin: 0 auto 10px;
-  display: block;
-}
-
-.produto h3 {
-  margin: 8px 0;
-  font-size: 1.1em;
-  color: #00ffcc;
-}
-
-.produto p {
-  margin: 2px 0;
-  color: #ccc;
-  font-size: 0.95em;
-}
-    .topo {
+.topo-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #000;
-  color: white;
-  padding: 30px 20px;
   gap: 30px;
-  border-bottom: 2px solid #00ffcc;
   flex-wrap: wrap;
 }
 
-.logo img {
-  width: 120px;
+.logo-topo {
+  width: 115px;
   height: auto;
   border-radius: 10px;
 }
 
-.info {
-  text-align: center;
+.info-topo {
+  color: #00ffcc;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
-.info h1 {
+.info-topo h1 {
   margin: 0;
-  font-size: 2em;
+  font-size: 1.8em;
   color: #00ffcc;
 }
 
-.info p {
-  margin: 5px 0;
+.info-topo p {
+  margin: 0;
   font-size: 1em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
   color: #ccc;
 }
-.topo {
-  min-height: 150px;
-}
-footer {
-  clear: both;
-  margin-top: 40px;
-  padding: 20px;
-  text-align: center;
-  color: #999;
-  font-size: 0.9em;
+
+    .conteudo {
+      text-align: center;
+      padding: 30px 20px;
+    }
+
+    .conteudo img {
+      max-width: 300px;
+      width: 90%;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 20px #00ffcc55;
+    }
+
+.botao {
+      display: inline-block;
+      padding: 15px 25px;
+      background-color: #00ffcc;
+      color: #000;
+      font-weight: bold;
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 18px;
+      box-shadow: 0 0 10px #00ffcc;
+      transition: transform 0.2s ease;
+    }
+
+  .produto-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
 }
 
-.botao-secundario {
-  display: inline-block;
-  background-color: #009f77;
-  color: #fff;
-  padding: 10px 16px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 0.95em;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  margin-top: 10px;
+.produto-container img {
+  max-width: 300px;
+  width: 100%;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0, 255, 204, 0.2);
+  margin-bottom: 20px;
 }
 
-.botao-secundario:hover {
-  background-color: #00ffcc;
-  transform: scale(1.05);
+  img {
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0,255,204,0.2);
 }
-.contato {
+
+    .rodape {
+      background-color: #001010;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.95em;
+    }
+
+    .rodape span {
+      display: block;
+      margin: 8px 0;
+    }
+
+    .emoji {
+      font-size: 1.2em;
+      margin-right: 5px;
+    }
+    .contato {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -158,321 +130,95 @@ footer {
   color: #ccc;
   text-decoration: none;
   font-size: 1em;
+  justify-content: center;
 }
 
 .social img {
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
+  margin-bottom: -2px;
 }
 
-.telefone {
-  font-size: 1em;
-  color: #ccc;
+.botao {
+  display: inline-block;
+  padding: 15px 30px;
+  background-color: #00ffcc;
+  color: #000;
+  font-weight: bold;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 18px;
+  box-shadow: 0 0 12px #00ffcc;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  margin-top: 20px;
 }
-.botao-desativado {
-  background-color: #777;
-  color: #fff;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 8px;
-  cursor: not-allowed;
-  opacity: 0.6;
+
+.botao:hover {
+  transform: scale(1.05);
+  background-color: #00e6b8;
+}
+.verde {
+  color: #00ffcc;
+  font-weight: bold;
+}
+
+.rodape {
+  background-color: #001010;
+  padding: 25px 20px;
+  color: #ccc;
+  text-align: center;
+  font-size: 1em;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-top: 2px solid #00ffcc22;
+  box-shadow: 0 -2px 10px rgba(0,255,204,0.1);
+}
+
+.rodape .linha {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
 }
 
   </style>
 </head>
 <body>
-  
-    <header class="topo">
-  <div class="logo">
-    <img src="img/imagem-rei-do-pod.jpg" alt="Logo Rei do Pod">
-  </div>
-  <div class="info">
-    <h1>Catálogo</h1>
-    <p><strong>REI DO POD CAF</strong></p>
-    <div class="contato">
-  <a href="https://www.instagram.com/ryan_eletronicos" target="_blank" class="social">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
-    <span>ryan.eletrônico</span>
-  </a>
-  <div class="telefone">
-    <span>📞 (45) 99807-8084</span>
+
+ <div class="topo">
+  <div class="topo-container">
+    <img src="img/imagem-rei-do-pod.jpg" alt="Logo Rei do Pod" class="logo-topo">
+    <div class="info-topo">
+      <h1>Catálogo</h1>
+      <p class="sub"><span class="verde">REI DO POD CAF</span></p>
+      <p>📷 @ryan.eletrônico</p>
+      <p>📞 (45) 99807-8084</p>
+    </div>
   </div>
 </div>
-    
+
+<!-- PRODUTO -->
+<div class="produto-container">
+  <img src="img/pod.ia.jpg" alt="Imagem do Produto">
+  <a href="sabores-v50.html" class="botao">Ver Produtos</a>
+</div>
+
+ <footer class="rodape">
+  <div class="linha">
+    <span>🚚 <strong>Entregas Rápidas</strong> | 📍 Cafelândia-PR</span>
   </div>
-</header>
+  <div class="linha">
+    <span>💨 Os melhores Pods e Sabores!</span>
+  </div>
+  <div class="linha">
+    <span>💰 Batemos o preço da concorrência!</span>
+  </div>
+  <div class="linha">
+    <span>📲 Chama no zap e garante o teu!</span>
+  </div>
+</footer>
 
-  <div class="catalogo">
 
-    <!-- Exemplo de Produto -->
-
-    <div class="produto">
-      <a href="https://wa.me/5545998078084" target="_blank">
-        <img src="img/BLACK-SHEEP-20K.jpg" alt="BLACK SHEEP 20K" style="size: 23px;">
-      </a>
-      <h3>BLACK SHEEP 20K</h3>
-      <p>ref: 20.000</p>
-    
-      <!-- Botão de Ver Sabores -->
-
-  <a href="sabores-v50.html" target="_blank" class="botao-secundario"> Ver sabores</a>
-
-    </div>
-
-    <div class="produto">
-       <a href="https://wa.me/5545998078084" target="_blank"> 
-        <img src="img/BLACK-SHEEP-REFIL-30K.jpeg" alt="BLACK SHEEP REFIL 16.000K CLICK"></a>
-      <h3>BLACK SHEEP REFIL 30K </h3>
-      <p>ref: 30.000</p>
-
-  <a href="sabores-v50.html" target="_blank" class="botao-secundario"> Ver sabores</a> 
-
-    </div>
-    
-    <div class="produto">
-     
-      <!-- <a href="https://wa.me/5545998078084" target="_blank"></a> -->
-       
-      <img src="img/CHRIS-BROWN-15K.jpg" alt="CAIXINHA LIFE POD ECO II">
-      </a>
-      <h3>CHRIS BROWN 15k</h3>
-      <p>ref: 15.000</p>
-      
-      <!--<a href="sabores-v50.html" target="_blank" class="botao-secundario"> Ver sabores</a> -->
-
-       <button class="botao-desativado" disabled>Indisponível</button>
-      
-    </div>
-    
-    <div class="produto">
-      <a href="https://wa.me/5545998078084" target="_blank">
-        <img src="img/ELFBAR-ICE-KING-40K.jpg" alt="BLACK SHEEP 20K" style="size: 23px;">
-      </a>
-      <h3>ELFBAR ICE KING 40K</h3>
-      <p>ref: 40.000</p>
-      
-      
-      <a href="sabores-v50.html" target="_blank" class="botao-secundario"> Ver sabores</a>
-      
-    </div>
-    
-    <div class="produto">
-      <a href="https://wa.me/5545998078084" target="_blank">
-        <img src="img/ELFBAR-TE-30.jpg" alt="BLACK SHEEP REFIL 16.000K CLICK">
-      </a>
-      <h3>ELFBAR TE 30K</h3>
-      <p>ref: 30.000</p>
-      
-      
-      <a href="sabores-v50.html" target="_blank" class="botao-secundario"> Ver sabores</a>
-      
-    </div>
-   
-    <div class="produto">
-      <a href="https://wa.me/5545998078084" target="_blank">
-        <img src="img/IGNITE-V80-BLACK.jpg" alt="BLACK SHEEP 20K" style="size: 23px;">
-      </a>
-      <h3>IGNITE V80 BLACK</h3>
-      <p>ref: 8.000</p>
-      
-      
-      <a href="sabores-v50.html" target="_blank" class="botao-secundario"> Ver sabores</a>
-      
-    </div>
-    
-    <div class="produto">
-      <a href="https://wa.me/5545998078084" target="_blank">
-        <img src="img/IGNITE-P100.jpg" alt="CAIXINHA LIFE POD ECO II">
-      </a>
-      <h3>IGNITE P100</h3>
-      <p>ref: 10.000</p>
-      
-       <a href="sabores-v50.html" target="_blank" class="botao-secundario"> Ver sabores</a>
-
-    </div>
-
-    <div class="produto">
-      <a href="https://wa.me/5545998078084" target="_blank">
-        <img src="img/ignite-v120-coffe.jpg" alt="BLACK SHEEP 20K" style="size: 23px;">
-      </a>
-      <h3>IGNITE V120</h3>
-      <p>ref: 12.000</p>
-      
-   
-      <a href="sabores-v50.html" target="_blank" class="botao-secundario"> Ver sabores</a>
-      
-    </div>
-    
-    <div class="produto">
-      <a href="https://wa.me/5545998078084" target="_blank">
-        <img src="img/IGNITE-V120-GOLD.jpg" alt="BLACK SHEEP 20K" style="size: 23px;">
-      </a>
-      <h3>IGNITE V120 GOLD</h3>
-      <p>ref: 12.000</p>
-    
-    
-    <a href="sabores-v50.html" target="_blank" class="botao-secundario"> Ver sabores</a>
-    
-    </div>
-    
-    <div class="produto">
-      <a href="https://wa.me/5545998078084" target="_blank">
-        <img src="img/IGNITE-V150-PRO.jpg" alt="BLACK SHEEP 20K" style="size: 23px;">
-      </a>
-      <h3>IGNITE V150 PRO</h3>
-      <p>ref: 15.000</p>
-      
-      
-      <a href="sabores-v50.html" target="_blank" class="botao-secundario"> Ver sabores</a>
-      
-    </div>
-    
-    <div class="produto">
-      <a href="https://wa.me/5545998078084" target="_blank">
-        <img src="img/IGNITE-V250.jpg" alt="BLACK SHEEP 20K" style="size: 23px;">
-      </a>
-      <h3>IGNITE V250</h3>
-      <p>ref: 25.000</p>
-      
-     
-      <a href="sabores-v50.html" target="_blank" class="botao-secundario"> Ver sabores</a>
-
-    </div>
-    
-    <div class="produto">
-      <a href="https://wa.me/5545998078084" target="_blank">
-        <img src="img/IGNITE-V300-30k.jpg" alt="BLACK SHEEP 20K" style="size: 23px;">
-      </a>
-      <h3>IGNITE V300 </h3>
-      <p>ref: 30.000</p>
-      
-      
-      <a href="sabores-v50.html" target="_blank" class="botao-secundario"> Ver sabores</a>
-      
-    </div>
-    
-    <div class="produto">
-      <a href="https://wa.me/5545998078084" target="_blank">
-        <img src="img/v400.jpeg" alt="BLACK SHEEP 20K" style="size: 23px;">
-      </a>
-      <h3>IGNITE V400 </h3>
-      <p>ref: 40.000</p>
-      
-      
-      <a href="sabores-v50.html" target="_blank" class="botao-secundario"> Ver sabores</a>
-      
-    </div>
-
-    <div class="produto">
-      <a href="https://wa.me/5545998078084" target="_blank">
-        <img src="img/IG-REFIL-IGNITE-10.000.jpg" alt="CAIXINHA LIFE POD ECO II">
-      </a>
-      <h3>REFIL IGNITE 10K</h3>
-      <p>ref: 10.000</p>
-      
-      
-      <a href="sabores-v50.html" target="_blank" class="botao-secundario"> Ver sabores</a>
-      
-    </div> 
-  
-    <div class="produto">
-      <a href="https://wa.me/5545998078084" target="_blank">
-        <img src="img/LOST-ANGE -20K.jpg" alt="BLACK SHEEP 20K" style="size: 23px;">
-      </a>
-      <h3>LOST ANGEL 20K</h3>
-      <p>ref: 20.000</p>
-      
-      
-      <a href="sabores-v50.html" target="_blank" class="botao-secundario"> Ver sabores</a>
-    
-    </div>
-    
-    <div class="produto">
-      <a href="https://wa.me/5545998078084" target="_blank">
-        <img src="img/O-REFIL-OXBAR-G32K.jpg" alt="BLACK SHEEP 20K" style="size: 23px;">
-      </a>
-      <h3>REFIL OXBAR </h3>
-      <p>ref: 32.000</p>
-      
-      
-      <a href="sabores-v50.html" target="_blank" class="botao-secundario"> Ver sabores</a>
-    
-    </div>
-    
-    <div class="produto">
-      <a href="https://wa.me/5545998078084" target="_blank">
-        <img src="img/lifepod-8000-sabores.png" alt="BLACK SHEEP 20K" style="size: 23px;">
-      </a>
-      <h3>REFIL LIFE POD 10.000 </h3>
-      <p>ref: 10.000</p>
-      
-      
-      <a href="sabores-v50.html" target="_blank" class="botao-secundario"> Ver sabores</a>
-      
-    </div>
-    
-    <div class="produto">
-      <a href="https://wa.me/5545998078084" target="_blank">
-        <img src="img/REFIL-LIFE-POD.jpeg" alt="BLACK SHEEP 20K" style="size: 23px;">
-      </a>
-      <h3>REFIL LIFE POD 8.000</h3>
-      <p>ref: 8.000</p>
-      
-      
-      <a href="sabores-v50.html" target="_blank" class="botao-secundario"> Ver sabores</a>
-
-    </div>
-    
-<div class="produto">
-  <a href="https://wa.me/5545998078084" target="_blank">
-    <img src="img/VOZOLL20KPOWER.jpeg" alt="VOZOLL 20K POWER">
-  </a>
-  <h3>VOZOLL 20K POWER</h3>
-  <p>ref: 20.000</p>
-  <a href="sabores-v50.html" target="_blank" class="botao-secundario">Ver sabores</a>
-
-</div>
-
-<div class="produto">
-  <a href="https://wa.me/5545998078084" target="_blank">
-    <img src="img/LOSGAL.jpg" alt="LOSGAL">
-  </a>
-  <h3>LOSGAL</h3>
-  <p>ref: </p>
-  <a href="sabores-v50.html" target="_blank" class="botao-secundario">Ver sabores</a>
-
-</div>
-
-<div class="produto">
-  <a href="https://wa.me/5545998078084" target="_blank">
-    <img src="img/ASPARK-KIT.jpeg" alt="ASPARK KIT">
-  </a>
-  <h3>ASPARK KIT</h3>
-  <p>ref: </p>
-  <a href="sabores-v50.html" target="_blank" class="botao-secundario">Ver sabores</a>
-
-</div>
-
-    <div class="produto">
-      <a href="https://wa.me/5545998078084" target="_blank">
-        <img src="img/CAIXINHA-LIFE-POD-ECO-II.jpg" alt="CAIXINHA LIFE POD ECO II">
-      </a>
-      <h3>CAIXINHA LIFE POD ECO II</h3>
-      <p>ref: DEVICELIFEPODII</p>
-      
-      <a href="https://wa.me/5545998078084?text=Ol%C3%A1%2C%20quero%20comprar%20o%20produto%20CAIXINHA%20LIFE%20POD%20ECO%20II"  
-     target="_blank" 
-     class="botao-secundario">
-    🛒 Comprar agora
-    </a>
-    
-    </div>
-
-  </div> 
-  
-  <footer>
-    <p>© 2025 Rei do Pod CAF — Todos os direitos reservados.</p>
-  </footer>
 </body>
 </html>
