@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
@@ -27,6 +26,32 @@
       padding-bottom: 10px;
       margin-top: 50px;
       text-align: center;
+    }
+
+    .menu {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 40px;
+      gap: 10px;
+    }
+
+    .menu a {
+      background-color: #111;
+      border: 2px solid #00ffcc;
+      color: #00ffcc;
+      padding: 10px 18px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 8px #00ffcc33;
+    }
+
+    .menu a:hover {
+      background-color: #00ffcc;
+      color: #000;
+      box-shadow: 0 0 12px #00ffccaa;
     }
 
     section {
@@ -69,269 +94,357 @@
     }
 
     @media (max-width: 600px) {
+      .menu a {
+        padding: 8px 14px;
+        font-size: 0.85em;
+      }
       .sabores li a {
         padding: 8px 14px;
         font-size: 0.9em;
       }
     }
 
-    .produto { text-align: center; }
+    .produto {
+  text-align: center;
+}
 
-    .indisponivel {
-      background-color: #ff0000;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      font-size: 1rem;
-      border-radius: 8px;
-      cursor: not-allowed;
-      opacity: 0.7;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
+.indisponivel {
+  background-color: #ff0000;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: not-allowed;
+  opacity: 0.7;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
 
-    .msg-erro {
-      color: #ff7a7a;
-      text-align: center;
-      font-size: 0.95em;
-      margin-top: 12px;
-    }
   </style>
 </head>
 <body>
-  <h1>Clique no seu sabor favorito e receba rapidinho!</h1>
+  
+  <h1> Clique no seu sabor favorito e receba rapidinho!</h1>
+  
 
-  <!-- Obs: o atributo data-produto DEVE combinar com a coluna "produto" na planilha -->
-  <section id="blacksheep20k" data-produto="blacksheep20k">
-    <h2>BLACK SHEEP 20K</h2>
-    <img src="img/BLACK-SHEEP-20K.jpg" alt="BLACK-SHEEP-20K" style="display: block; margin: 0 auto; max-width: 100%; width: 250px; height: auto;">
-    <ul class="sabores"></ul>
-  </section>
+  <section id="blacksheep20k">
+  <h2>BLACK SHEEP 20K</h2>
+  
+  <img src="img/BLACK-SHEEP-20K.jpg" alt="BLACK-SHEEP-20K" style="display: block; margin: 0 auto; max-width: 100%; width: 250px; height: auto;">
+  
+  <ul class="sabores">
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20BLACK%20SHEEP%2020K%20sabor%20Limonada%20/%20Uva" target="_blank">Limonada / Uva</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20BLACK%20SHEEP%2020K%20sabor%20Uva%20/%20Lemon" target="_blank">Uva / Lemon</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20BLACK%20SHEEP%2020K%20sabor%20Mentol%20/%20Fresh%20Mint" target="_blank">Mentol / Fresh Mint</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20BLACK%20SHEEP%2020K%20sabor%20Fresh%20Mint%20/%20Melancia%20e%20Morango" target="_blank">Fresh Mint / Melancia e Morango</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20BLACK%20SHEEP%2020K%20sabor%20Mentol%20/%20Manga%20Pêssego%20e%20Melancia" target="_blank">Mentol / Manga Pêssego e Melancia</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20BLACK%20SHEEP%2020K%20sabor%20Cereja%20/%20Melancia%20e%20Amora" target="_blank">Cereja / Melancia e Amora</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20BLACK%20SHEEP%2020K%20sabor%20Melancia%20e%20Maçã%20Verde%20/%20Uva" target="_blank">Melancia e Maçã Verde / Uva</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20BLACK%20SHEEP%2020K%20sabor%20Blue%20Berry%20/%20Framboesa%20e%20Limão" target="_blank">Blue Berry / Framboesa e Limão</a></li>
+  </ul>
+</section>
+  
+<section id="blacksheeprefil">
+  <h2>BLACK SHEEP REFIL 30K</h2>
+  
+  <img src="img/BLACK-SHEEP-REFIL-30K.jpeg" alt="BLACK-SHEEP-REFIL-30K" style="display: block; margin: 0 auto; max-width: 100%; width: 250px; height: auto;">
 
-  <section id="blacksheeprefil" data-produto="blacksheeprefil">
-    <h2>BLACK SHEEP REFIL 30K</h2>
-    <img src="img/BLACK-SHEEP-REFIL-30K.jpeg" alt="BLACK-SHEEP-REFIL-30K" style="display: block; margin: 0 auto; max-width: 100%; width: 250px; height: auto;">
-    <ul class="sabores"></ul>
-  </section>
+  <ul class="sabores">
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20BLACK%20SHEEP%2030K%20sabor%20Fresh%20Mint%20/%20Uva" target="_blank">Fresh Mint / Uva</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20BLACK%20SHEEP%2030K%20sabor%20Morango%20e%20Banana%20/%20Abacaxi%20e%20Coco" target="_blank">Morango e Banana / Abacaxi e Coco</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20BLACK%20SHEEP%2030K%20sabor%20Uva%20/%20Morango%20e%20Kiwi" target="_blank">Uva / Morango e Kiwi</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20BLACK%20SHEEP%2030K%20sabor%20Mentol%20/%20Melancia%20e%20Maçã%20Verde" target="_blank">Mentol / Melancia e Maçã Verde</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20BLACK%20SHEEP%2030K%20sabor%20Mentol%20/%20Manga%20Pêssego%20e%20Melancia" target="_blank">Mentol / Manga Pêssego e Melancia</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20BLACK%20SHEEP%2030K%20sabor%20Morango%20/%20Maçã%20Abacaxi" target="_blank">Morango / Maçã Abacaxi</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20BLACK%20SHEEP%2030K%20sabor%20Mentol%20/%20Fresh%20Mint" target="_blank">Mentol / Fresh Mint</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20BLACK%20SHEEP%2030K%20sabor%20Uva%20/%20Melancia%20e%20Chiclete" target="_blank">Uva / Melancia e Chiclete</a></li>
+  </ul>
+</section>
 
-  <section id="iceking" data-produto="iceking">
-    <h2>ELFBAR ICE KING 40K</h2>
-    <img src="img/ELFBAR-ICE-KING-40K.jpg" alt="ELFBAR-ICE-KING-40K" style="display: block; margin: 0 auto; max-width: 100%; width: 250px; height: auto;">
-    <ul class="sabores"></ul>
-  </section>
 
-  <section id="elfbar" data-produto="elfbar30k">
-    <h2>ELFBAR TE 30K</h2>
-    <img src="img/ELFBAR-TE-30.jpg" alt="ELFBAR-TE-30K" style="display: block; margin: 0 auto; max-width: 100%; width: 250px; height: auto;">
-    <ul class="sabores"></ul>
-  </section>
 
-  <section id="v80" data-produto="ignitev80">
-    <h2>IGNITE V80 BLACK</h2>
-    <img src="img/IGNITE-V80-BLACK.jpg" alt="IGNITE-V80-BLACK" style="display: block; margin: 0 auto; max-width: 100%; width: 250px; height: auto;">
-    <ul class="sabores"></ul>
-  </section>
+<section id="iceking">
+  <h2>ELFBAR ICE KING 40K</h2>
 
-  <section id="ignitep100" data-produto="ignitep100">
-    <h2>IGNITE P100</h2>
-    <img src="img/IGNITE-P100.jpg" alt="IGNITE-P100" style="display: block; margin: 0 auto; max-width: 100%; width: 250px; height: auto;">
-    <ul class="sabores"></ul>
-  </section>
+  <img src="img/ELFBAR-ICE-KING-40K.jpg" alt="ELFBAR-ICE-KING-40K" style="display: block; margin: 0 auto; max-width: 100%; width: 250px; height: auto;">
 
-  <section id="v120" data-produto="ignitev120">
-    <h2>IGNITE V120</h2>
-    <img src="img/ignite-v120-coffe.jpg" alt="IGNITE-V120" style="display: block; margin: 0 auto; max-width: 100%; width: 250px; height: auto;">
-    <ul class="sabores"></ul>
-  </section>
+  <ul class="sabores">
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20ELFBAR%20ICE%20KING%2040K%20sabor%20Melancia%20Ice" target="_blank">Melancia Ice</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20ELFBAR%20ICE%20KING%2040K%20sabor%20Uva" target="_blank">Uva</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20ELFBAR%20ICE%20KING%2040K%20sabor%20Morango%20e%20Melancia" target="_blank">Morango e Melancia</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20ELFBAR%20ICE%20KING%2040K%20sabor%20Maçã%20e%20Melancia" target="_blank">Maçã e Melancia</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20ELFBAR%20ICE%20KING%2040K%20sabor%20Uva%20Fruta%20e%20Menta" target="_blank">Uva Fruta e Menta</a></li>
+  </ul>
+</section>
 
-  <section id="v120gold" data-produto="ignitep120gold">
-    <h2>IGNITE P120 GOLD</h2>
-    <img src="img/IGNITE-V120-GOLD.jpg" alt="IGNITE-P120-GOLD" style="display: block; margin: 0 auto; max-width: 100%; width: 250px; height: auto;">
-    <ul class="sabores"></ul>
-  </section>
+  <section id="elfbar">
+  <h2>ELFBAR TE 30K</h2>
 
-  <section id="v150" data-produto="ignitev150pro">
-    <h2>IGNITE V150 PRO</h2>
-    <img src="img/IGNITE-V150-PRO.jpg" alt="IGNITE-V150-PRO" style="display: block; margin: 0 auto; max-width: 100%; width: 250px; height: auto;">
-    <ul class="sabores"></ul>
-  </section>
+  <img src="img/ELFBAR-TE-30.jpg" alt="ELFBAR-TE-30K" style="display: block; margin: 0 auto; max-width: 100%; width: 250px; height: auto;">
 
-  <section id="v250" data-produto="ignitev250">
-    <h2>IGNITE V250</h2>
-    <img src="img/IGNITE-V250.jpg" alt="IGNITE-V250" style="display: block; margin: 0 auto; max-width: 100%; width: 250px; height: auto;">
-    <ul class="sabores"></ul>
-  </section>
+  <ul class="sabores">
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20ELFBAR%20TE%2030K%20sabor%20Babalu%20e%20Tuti%20Frutti" target="_blank">Babalu e Tuti Frutti</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20ELFBAR%20TE%2030K%20sabor%20Goiaba%20e%20Abacaxi" target="_blank">Goiaba e Abacaxi</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20ELFBAR%20TE%2030K%20sabor%20Açaí%20e%20Banana%20Ice" target="_blank">Açaí e Banana Ice</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20ELFBAR%20TE%2030K%20sabor%20Maçã%20Verde%20Ice" target="_blank">Maçã Verde Ice</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20ELFBAR%20TE%2030K%20sabor%20Spermint" target="_blank">Spermint</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20ELFBAR%20TE%2030K%20sabor%20Banana%20e%20Coco" target="_blank">Banana e Coco</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20ELFBAR%20TE%2030K%20sabor%20Mentol" target="_blank">Mentol</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20ELFBAR%20TE%2030K%20sabor%20Morango%20e%20Pêssego" target="_blank">Morango e Pêssego</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20ELFBAR%20TE%2030K%20sabor%20Morango%20e%20Melancia%20Ice" target="_blank">Morango e Melancia Ice</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20ELFBAR%20TE%2030K%20sabor%20Morango%20e%20Banana" target="_blank">Morango e Banana</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20ELFBAR%20TE%2030K%20sabor%20Morango%20Ice" target="_blank">Morango Ice</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20ELFBAR%20TE%2030K%20sabor%20Melancia%20Ice" target="_blank">Melancia Ice</a></li>
+  </ul>
+</section>
 
-  <section id="v300" data-produto="ignitev300">
-    <h2>IGNITE V300</h2>
-    <img src="img/IGNITE-V300-30k.jpg" alt="IGNITE-V300-30k" style="display: block; margin: 0 auto; max-width: 100%; width: 250px; height: auto;">
-    <ul class="sabores"></ul>
-  </section>
+<section id="v80">
+  <h2>IGNITE V80 BLACK</h2>
 
-  <section id="v400" data-produto="ignitev400">
-    <h2>IGNITE V400</h2>
-    <img src="img/v400.jpeg" alt="IGNITE-V400" style="display: block; margin: 0 auto; max-width: 100%; width: 250px; height: auto;">
-    <ul class="sabores"></ul>
-  </section>
+  <img src="img/IGNITE-V80-BLACK.jpg" alt="IGNITE-V300-30k" style="display: block; margin: 0 auto; max-width: 100%; width: 250px; height: auto;">
 
-  <section id="losty" data-produto="lostyangel20k">
-    <h2>LOSTY ANGEL 20K</h2>
-    <img src="img/LOST-ANGE%20-20K.jpg" alt="LOSTY-ANGEL-20K" style="display: block; margin: 0 auto; max-width: 100%; width: 250px; height: auto;">
-    <ul class="sabores"></ul>
-  </section>
+  <ul class="sabores">
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20IGNITE%20V80%20sabor%20Açaí%20Berry" target="_blank">Açaí Berry</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20IGNITE%20V80%20sabor%20Maçã%20Verde" target="_blank">Maçã Verde</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20IGNITE%20V80%20sabor%20Bergamota" target="_blank">Bergamota</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20IGNITE%20V80%20sabor%20Melancia%20Ice" target="_blank">Melancia Ice</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20IGNITE%20V80%20sabor%20Morango%20Ice" target="_blank">Morango Ice</a></li>
+  </ul>
+</section>
 
-  <section id="refiloxbar" data-produto="refiloxbar">
-    <h2>REFIL OXBAR</h2>
-    <img src="img/O-REFIL-OXBAR-G32K.jpg" alt="O-REFIL-OXBAR-G32K" style="display: block; margin: 0 auto; max-width: 100%; width: 250px; height: auto;">
-    <ul class="sabores"></ul>
-  </section>
+<section id="ignitep100">
+  <h2>IGNITE P100</h2>
 
-  <section id="liferef10k" data-produto="liferef10k">
-    <h2>REFIL LIFE 10K</h2>
-    <img src="img/REFIL-LIFE-POD.jpeg" alt="REFIL-LIFE-10K" style="display: block; margin: 0 auto; max-width: 100%; width: 250px; height: auto;">
-    <ul class="sabores"></ul>
-  </section>
+  <img src="img/IGNITE-P100.jpg" alt="IGNITE-P100" style="display: block; margin: 0 auto; max-width: 100%; width: 250px; height: auto;">
 
-  <section id="liferef8k" data-produto="liferef8k">
-    <h2>REFIL LIFE 8K</h2>
-    <img src="img/REFIL-LIFE-POD.jpeg" alt="REFIL-LIFE-8K" style="display: block; margin: 0 auto; max-width: 100%; width: 250px; height: auto;">
-    <ul class="sabores"></ul>
-  </section>
+  <ul class="sabores">
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20IGNITE%20P100%20sabor%20Kit" target="_blank">Kit</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20IGNITE%20P100%20sabor%20Morango%20Ice" target="_blank">Morango Ice</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20IGNITE%20P100%20sabor%20Uva%20Ice" target="_blank">Uva Ice</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20IGNITE%20P100%20sabor%20Maçã%20Verde" target="_blank">Maçã Verde</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20IGNITE%20P100%20sabor%20Mentol" target="_blank">Mentol</a></li>
+  </ul>
+</section>
 
-  <section id="vozoll" data-produto="vozoll20kpower">
-    <h2>VOZOLL 20K POWER</h2>
-    <img src="img/VOZOLL20KPOWER.jpeg" alt="VOZOLL-20K-POWER" style="display: block; margin: 0 auto; max-width: 100%; width: 250px; height: auto;">
-    <ul class="sabores"></ul>
-  </section>
+<section id="v120">
+  <h2>IGNITE V120</h2>
 
-  <section id="losgal" data-produto="losgal25k">
-    <h2>LOSGAL 25K</h2>
-    <img src="img/LOSGAL.jpg" alt="LOSGAL-25K" style="display: block; margin: 0 auto; max-width: 100%; width: 250px; height: auto;">
-    <ul class="sabores"></ul>
-  </section>
+  <img src="img/ignite-v120-coffe.jpg" alt="IGNITE-V120" style="display: block; margin: 0 auto; max-width: 100%; width: 250px; height: auto;">
 
-  <section id="asparkkit" data-produto="asparkemag20k">
-    <h2>ASPARK EMAG 20K</h2>
-    <img src="img/ASPARK-KIT.jpeg" alt="ASPARK-EMAG-20K" style="display: block; margin: 0 auto; max-width: 100%; width: 250px; height: auto;">
-    <ul class="sabores"></ul>
-  </section>
+  <ul class="sabores">
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20IGNITE%20V120%20sabor%20Morango%20e%20Banana" target="_blank">Morango e Banana</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20IGNITE%20V120%20sabor%20Morango" target="_blank">Morango</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20IGNITE%20V120%20sabor%20Uva" target="_blank">Uva</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20IGNITE%20V120%20sabor%20Abacaxi%20Ice" target="_blank">Abacaxi Ice</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20IGNITE%20V120%20sabor%20Maçã%20Verde" target="_blank">Maçã Verde</a></li>
+  </ul>
+</section>
 
-  <script>
-    // >>> Substitua abaixo pela URL CSV publicada da sua planilha <<<
-    const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQestH5Bew_6ivl5vs3AxAFmHi23SPcBiPt9nEEi3SKZCK67wsfUrM7qNtQUvCuk7MVbQD_5bXfFYtf/pub?output=csv";
+<section id="v120gold">
+  <h2>IGNITE P120 GOLD</h2>
 
-    function parseCSV(text) {
-      // Parser simples com suporte a valores entre aspas contendo vírgulas
-      const rows = [];
-      let row = [];
-      let cur = '';
-      let insideQuotes = false;
+  <img src="img/IGNITE-V120-GOLD.jpg" alt="IGNITE-V300-30k" style="display: block; margin: 0 auto; max-width 100%; width: 250px; height: auto;">
 
-      for (let i = 0; i < text.length; i++) {
-        const ch = text[i];
-        const next = text[i + 1];
+  <ul class="sabores">
+    <li><a href="https://wa.me/5545998078084?text=Ol%C3%A1,%20gostaria%20do%20IGNITE%20P100%20sabor%20Kit" target="_blank">Kit</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Ol%C3%A1,%20gostaria%20do%20IGNITE%20P100%20sabor%20Morango%20Ice" target="_blank">Morango Ice</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Ol%C3%A1,%20gostaria%20do%20IGNITE%20P100%20sabor%20Uva%20Ice" target="_blank">Uva Ice</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Ol%C3%A1,%20gostaria%20do%20IGNITE%20P100%20sabor%20Ma%C3%A7%C3%A3%20Verde" target="_blank">Maçã Verde</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Ol%C3%A1,%20gostaria%20do%20IGNITE%20P100%20sabor%20Mentol" target="_blank">Mentol</a></li>
+  </ul>
+</section>
 
-        if (ch === '"') {
-          if (insideQuotes && next === '"') {
-            // aspas escapadas
-            cur += '"';
-            i++;
-          } else {
-            insideQuotes = !insideQuotes;
-          }
-        } else if (ch === ',' && !insideQuotes) {
-          row.push(cur);
-          cur = '';
-        } else if ((ch === '\\n' || ch === '\\r') && !insideQuotes) {
-          // nada (vamos tratar por split depois)
-          cur += ch;
-        } else {
-          cur += ch;
-        }
-      }
-      // Fallback: usar split por linhas e depois separar por vírgula respeitando aspas
-      return text.trim().split(/\\r?\\n/).map(line => {
-        const out = [];
-        let val = '';
-        let q = false;
-        for (let j = 0; j < line.length; j++) {
-          const c = line[j];
-          const n = line[j+1];
-          if (c === '"' ) {
-            if (q && n === '"') { val += '"'; j++; }
-            else { q = !q; }
-          } else if (c === ',' && !q) {
-            out.push(val); val = '';
-          } else {
-            val += c;
-          }
-        }
-        out.push(val);
-        return out;
-      });
-    }
+<section id="v150">
+  <h2>IGNITE V150 PRO</h2>
 
-    async function carregarSabores() {
-      const sections = document.querySelectorAll('section[data-produto]');
-      if (!sections.length) return;
+  <img src="img/IGNITE-V150-PRO.jpg" alt="IGNITE-V150-PRO" style="display: block; margin: 0 auto; max-width: 100%; width: 250px; height: auto;">
 
-      if (!SHEET_CSV_URL || SHEET_CSV_URL.includes('COLE_AQUI_A_URL_DO_CSV')) {
-        sections.forEach(sec => {
-          const ul = sec.querySelector('.sabores');
-          if (ul) ul.innerHTML = '<li><div class="msg-erro">Configure a URL da planilha (CSV) no script.</div></li>';
-        });
-        return;
-      }
+  <ul class="sabores">
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20IGNITE%20V150%20PRO%20sabor%20Mentol" target="_blank">Mentol</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20IGNITE%20V150%20PRO%20sabor%20Maçã%20Verde" target="_blank">Maçã Verde</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20IGNITE%20V150%20PRO%20sabor%20Abacaxi%20Ice" target="_blank">Abacaxi Ice</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20IGNITE%20V150%20PRO%20sabor%20Uva" target="_blank">Uva</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20IGNITE%20V150%20PRO%20sabor%20Morango%20e%20Kiwi" target="_blank">Morango e Kiwi</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20IGNITE%20V150%20PRO%20sabor%20Maracujá%20e%20Lemon" target="_blank">Maracujá e Lemon</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20IGNITE%20V150%20PRO%20sabor%20Pitaya%20e%20Lemon" target="_blank">Pitaya e Lemon</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20IGNITE%20V150%20PRO%20sabor%20Melancia%20Ice" target="_blank">Melancia Ice</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20IGNITE%20V150%20PRO%20sabor%20Cereja%20e%20Melancia%20Ice" target="_blank">Cereja e Melancia Ice</a></li>
+  </ul>
+</section>
+  
+<section id="v250">
+  <h2>IGNITE V250</h2>
+  
+  <img src="img/IGNITE-V250.jpg" alt="IGNITE-V250" style="display: block; margin: 0 auto; max-width: 100%; width: 250px; height: auto;">
 
-      try {
-        const res = await fetch(SHEET_CSV_URL + (SHEET_CSV_URL.includes('?') ? '&' : '?') + '_=' + Date.now());
-        if (!res.ok) throw new Error('Falha ao baixar CSV');
-        const csvText = await res.text();
+  <ul class="sabores">
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20IGNITE%20V250%20sabor%20Abacaxi%20Ice" target="_blank">Abacaxi Ice</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20IGNITE%20V250%20sabor%20Abacaxi%20Kiwi%20Pitaya" target="_blank">Abacaxi Kiwi Pitaya</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20IGNITE%20V250%20sabor%20Morango%20e%20Kiwi" target="_blank">Morango e Kiwi</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20IGNITE%20V250%20sabor%20Morango%20e%20Banana" target="_blank">Morango e Banana</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20IGNITE%20V250%20sabor%20Maçã%20Verde" target="_blank">Maçã Verde</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20IGNITE%20V250%20sabor%20Mirtilho%20Ice" target="_blank">Mirtilho Ice</a></li>
+  </ul>
+</section>
 
-        const rows = parseCSV(csvText);
-        const header = rows.shift().map(h => h.trim().toLowerCase());
-        const idx = {
-          produto: header.indexOf('produto'),
-          sabor: header.indexOf('sabor'),
-          disponivel: header.indexOf('disponivel'),
-          link: header.indexOf('link'),
-        };
-        if (Object.values(idx).some(v => v === -1)) {
-          throw new Error('Cabeçalho da planilha deve conter: produto, sabor, disponivel, link');
-        }
+<section id="v300">
+  <h2>IGNITE V300</h2>
 
-        const porProduto = {};
-        rows.forEach(cols => {
-          const produto = (cols[idx.produto] || '').trim();
-          const sabor = (cols[idx.sabor] || '').trim();
-          const dispRaw = (cols[idx.disponivel] || '').trim().toLowerCase();
-          const link = (cols[idx.link] || '').trim();
+  <img src="img/IGNITE-V300-30k.jpg" alt="IGNITE-V300-30k" style="display: block; margin: 0 auto; max-width: 100%; width: 250px; height: auto;">
 
-          const disponivel = ['true', '1', 'sim', 'yes'].includes(dispRaw);
-          if (produto && sabor && link && disponivel) {
-            (porProduto[produto] ||= []).push({ sabor, link });
-          }
-        });
+  <ul class="sabores">
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20IGNITE%20V300%20sabor%20Morango%20e%20Banana" target="_blank">Morango e Banana</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20IGNITE%20V300%20sabor%20Uva%20Ice" target="_blank">Uva Ice</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20IGNITE%20V300%20sabor%20Abacaxi%20Ice" target="_blank">Abacaxi Ice</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20IGNITE%20V300%20sabor%20Banana%20e%20Coco" target="_blank">Banana e Coco</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20IGNITE%20V300%20sabor%20Abacaxi%20Kiwi%20e%20Pitaya" target="_blank">Abacaxi Kiwi e Pitaya</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20IGNITE%20V300%20sabor%20Pêssego%20e%20Mangá" target="_blank">Pêssego e Mangá</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20IGNITE%20V300%20sabor%20Menta%20e%20Melão" target="_blank">Menta e Melão</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20IGNITE%20V300%20sabor%20Mentol" target="_blank">Mentol</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20IGNITE%20V300%20sabor%20Icy%20Mint" target="_blank">Icy Mint</a></li>
+  </ul>
+</section>
 
-        sections.forEach(sec => {
-          const slug = sec.dataset.produto;
-          const ul = sec.querySelector('.sabores');
-          const lista = porProduto[slug] || [];
-          ul.innerHTML = lista.length
-            ? lista.map(item => `<li><a href="${item.link}" target="_blank" rel="noopener noreferrer">${item.sabor}</a></li>`).join('')
-            : `<li><button class="indisponivel" disabled>Sem estoque</button></li>`;
-        });
-      } catch (err) {
-        console.error(err);
-        sections.forEach(sec => {
-          const ul = sec.querySelector('.sabores');
-          if (ul) ul.innerHTML = '<li><div class="msg-erro">Não foi possível carregar os sabores agora. Tente novamente.</div></li>';
-        });
-      }
-    }
+<section id="v400">
+  <h2>IGNITE V400</h2>
 
-    document.addEventListener('DOMContentLoaded', carregarSabores);
-  </script>
+  <img src="img/v400.jpeg" alt="IGNITE-V400" style="display: block; margin: 0 auto; max-width: 100%; width: 250px; height: auto;">
+
+  <ul class="sabores">
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20IGNITE%20V400%20sabor%20Pêssego%20Ice" target="_blank">Pêssego Ice</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20IGNITE%20V400%20sabor%20Morango%20Ice" target="_blank">Morango Ice</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20IGNITE%20V400%20sabor%20Morango%20e%20Melancia%20Ice" target="_blank">Morango e Melancia Ice</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20IGNITE%20V400%20sabor%20Uva%20Ice" target="_blank">Uva Ice</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20IGNITE%20V400%20sabor%20Lemon%20Ice" target="_blank">Lemon Ice</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20IGNITE%20V400%20sabor%20Morango%20e%20Kiwi%20Ice" target="_blank">Morango e Kiwi Ice</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20IGNITE%20V400%20sabor%20Framboesa%20Ice" target="_blank">Framboesa Ice</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20IGNITE%20V400%20sabor%20Mentol" target="_blank">Mentol</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20IGNITE%20V400%20sabor%20Ice%20Mint" target="_blank">Ice Mint</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20IGNITE%20V400%20sabor%20Manga%20Ice" target="_blank">Manga Ice</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20IGNITE%20V400%20sabor%20Uva%20Pêssego" target="_blank">Uva Pêssego</a></li>
+  </ul>
+</section>
+
+<section id="losty">
+  <h2>LOSTY ANGEL 20K</h2>
+
+  <img src="img/LOST-ANGE%20-20K.jpg" alt="LOSTY-ANGEL-20K" style="display: block; margin: 0 auto; max-width: 100%; width: 250px; height: auto;">
+
+  <ul class="sabores">
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20LOSTY%20ANGEL%2020K%20sabor%20Mirtilho%20e%20Algodão%20Doce" target="_blank">Mirtilho e Algodão Doce</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20LOSTY%20ANGEL%2020K%20sabor%20Morango%20e%20Kiwi" target="_blank">Morango e Kiwi</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20LOSTY%20ANGEL%2020K%20sabor%20Coco%20com%20Açaí" target="_blank">Coco com Açaí</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20LOSTY%20ANGEL%2020K%20sabor%20Pêssego" target="_blank">Pêssego</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20LOSTY%20ANGEL%2020K%20sabor%20Frutas%20Vermelhas" target="_blank">Frutas Vermelhas</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20LOSTY%20ANGEL%2020K%20sabor%20Maçã%20Verde" target="_blank">Maçã Verde</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20LOSTY%20ANGEL%2020K%20sabor%20Abacaxi%20Coco%20Ice" target="_blank">Abacaxi Coco Ice</a></li>
+  </ul>
+</section>
+
+<section id="refiloxbar">
+  <h2>REFIL OXBAR</h2>
+
+   <img src="img/O-REFIL-OXBAR-G32K.jpg" alt="IGNITE-V300-30k" style="display: block; margin: 0 auto; max-width 100%; width: 250px; height: auto;">
+
+  <ul class="sabores">
+    <li><a href="https://wa.me/5545998078084?text=Ol%C3%A1,%20gostaria%20do%20LOSTY%20ANGEL%2020K%20sabor%20Mirtilho%20e%20Algod%C3%A3o%20Doce" target="_blank">Mirtilho e Algodão Doce</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Ol%C3%A1,%20gostaria%20do%20LOSTY%20ANGEL%2020K%20sabor%20Framboesa" target="_blank">Framboesa</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Ol%C3%A1,%20gostaria%20do%20LOSTY%20ANGEL%2020K%20sabor%20Morango%20e%20Kiwi" target="_blank">Morango e Kiwi</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Ol%C3%A1,%20gostaria%20do%20LOSTY%20ANGEL%2020K%20sabor%20Coco%20com%20A%C3%A7a%C3%AD" target="_blank">Coco com Açaí</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Ol%C3%A1,%20gostaria%20do%20LOSTY%20ANGEL%2020K%20sabor%20P%C3%C3%AAssego" target="_blank">Pêssego</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Ol%C3%A1,%20gostaria%20do%20LOSTY%20ANGEL%2020K%20sabor%20Frutas%20Vermelhas" target="_blank">Frutas Vermelhas</a></li>
+  </ul>
+</section>
+
+<section id="liferef10k">
+  <h2>REFIL LIFE 10K</h2>
+
+  <img src="img/REFIL-LIFE-POD.jpeg" alt="REFIL-LIFE-10K" style="display: block; margin: 0 auto; max-width: 100%; width: 250px; height: auto;">
+
+  <ul class="sabores">
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20REFIL%20LIFE%2010K%20sabor%20Maçã%20Verde%20Ice" target="_blank">Maçã Verde Ice</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20REFIL%20LIFE%2010K%20sabor%20Melancia%20e%20Chiclete" target="_blank">Melancia e Chiclete</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20REFIL%20LIFE%2010K%20sabor%20Cereja%20e%20Chiclete" target="_blank">Cereja e Chiclete</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20REFIL%20LIFE%2010K%20sabor%20Morango%20e%20Kiwi" target="_blank">Morango e Kiwi</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20REFIL%20LIFE%2010K%20sabor%20Morango%20e%20Melancia" target="_blank">Morango e Melancia</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20REFIL%20LIFE%2010K%20sabor%20Gomas%20Ice" target="_blank">Gomas Ice</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20REFIL%20LIFE%2010K%20sabor%20Maracujá%20Ice" target="_blank">Maracujá Ice</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20REFIL%20LIFE%2010K%20sabor%20Maracujá%20e%20Menta" target="_blank">Maracujá e Menta</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20REFIL%20LIFE%2010K%20sabor%20Banana%20Ice" target="_blank">Banana Ice</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20REFIL%20LIFE%2010K%20sabor%20Pêssego%20e%20Mangá" target="_blank">Pêssego e Mangá</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20REFIL%20LIFE%2010K%20sabor%20Coco%20Ice" target="_blank">Coco Ice</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20REFIL%20LIFE%2010K%20sabor%20Melancia%20e%20Pêssego%20Ice" target="_blank">Melancia e Pêssego Ice</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20REFIL%20LIFE%2010K%20sabor%20Banana%20Caramelizada" target="_blank">Banana Caramelizada</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20REFIL%20LIFE%2010K%20sabor%20Sumer%20Love" target="_blank">Sumer Love</a></li>
+  </ul>
+</section>
+
+
+<section id="liferef8k">
+  <h2>REFIL LIFE 8K</h2>
+
+  <img src="img/REFIL-LIFE-POD.jpeg" alt="REFIL-LIFE-8K" style="display: block; margin: 0 auto; max-width: 100%; width: 250px; height: auto;">
+
+  <ul class="sabores">
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20REFIL%20LIFE%208K%20sabor%20Melancia%20Ice" target="_blank">Melancia Ice</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20REFIL%20LIFE%208K%20sabor%20Coco" target="_blank">Coco</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20REFIL%20LIFE%208K%20sabor%20Framboesa" target="_blank">Framboesa</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20REFIL%20LIFE%208K%20sabor%20Maçã%20e%20Melon%20Ice" target="_blank">Maçã e Melon Ice</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20REFIL%20LIFE%208K%20sabor%20Cactos" target="_blank">Cactos</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20REFIL%20LIFE%208K%20sabor%20Lemon" target="_blank">Lemon</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20REFIL%20LIFE%208K%20sabor%20Maçã%20e%20Uva%20Ice" target="_blank">Maçã e Uva Ice</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20REFIL%20LIFE%208K%20sabor%20Cereja" target="_blank">Cereja</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20REFIL%20LIFE%208K%20sabor%20Melancia%20e%20Chiclete" target="_blank">Melancia e Chiclete</a></li>
+  </ul>
+</section>
+
+<section id="vozoll">
+  <h2>VOZOLL 20K POWER</h2>
+
+  <img src="img/VOZOLL20KPOWER.jpeg" alt="VOZOLL-20K-POWER" style="display: block; margin: 0 auto; max-width: 100%; width: 250px; height: auto;">
+
+  <ul class="sabores">
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20VOZOLL%2020K%20POWER%20sabor%20Blueberry" target="_blank">Blueberry</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20VOZOLL%2020K%20POWER%20sabor%20Morango%20e%20Manga" target="_blank">Morango e Manga</a></li>
+  </ul>
+</section>
+
+<section id="losgal">
+  <h2>LOSGAL 25K</h2>
+
+  <img src="img/LOSGAL.jpg" alt="LOSGAL-25K" style="display: block; margin: 0 auto; max-width: 100%; width: 250px; height: auto;">
+
+  <ul class="sabores">
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20LOSGAL%2025K%20sabor%20Miami%20Mint" target="_blank">Miami Mint</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20LOSGAL%2025K%20sabor%20Morango%20Laranja%20e%20Abacaxi" target="_blank">Morango Laranja e Abacaxi</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20LOSGAL%2025K%20sabor%20Maçã%20Verde%20Uva%20e%20Kiwi" target="_blank">Maçã Verde Uva e Kiwi</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20LOSGAL%2025K%20sabor%20Melancia%20Ice" target="_blank">Melancia Ice</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20LOSGAL%2025K%20sabor%20Mirtilho" target="_blank">Mirtilho</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20LOSGAL%2025K%20sabor%20Cereja%20e%20Pêssego" target="_blank">Cereja e Pêssego</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20LOSGAL%2025K%20sabor%20Sorvete" target="_blank">Sorvete</a></li>
+  </ul>
+</section>
+
+<section id="asparkkit">
+  <h2>ASPARK EMAG 20K</h2>
+
+  <img src="img/ASPARK-KIT.jpeg" alt="ASPARK-EMAG-20K" style="display: block; margin: 0 auto; max-width: 100%; width: 250px; height: auto;">
+
+  <ul class="sabores">
+    <!-- KIT POD -->
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20ASPARK%20EMAG%2020K%20sabor%20Uva%20Ice" target="_blank">Uva Ice</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20ASPARK%20EMAG%2020K%20sabor%20Blueberry" target="_blank">Blueberry</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20ASPARK%20EMAG%2020K%20sabor%20Morango%20e%20Kiwi" target="_blank">Morango e Kiwi</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20ASPARK%20EMAG%2020K%20sabor%20Frutas%20Vermelhas" target="_blank">Frutas Vermelhas</a></li>
+
+    <!-- REFIL ASPARK -->
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20REFIL%20ASPARK%20sabor%20Kiwi%20Abacaxi%20e%20Goiaba" target="_blank">Kiwi Abacaxi e Goiaba</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20REFIL%20ASPARK%20sabor%20Morango%20e%20Kiwi%20e%20Melancia" target="_blank">Morango e Kiwi e Melancia</a></li>
+    <li><a href="https://wa.me/5545998078084?text=Olá,%20gostaria%20do%20REFIL%20ASPARK%20sabor%20Melancia%20Ice" target="_blank">Melancia Ice</a></li>
+  </ul>
+</section>
+
 </body>
 </html>
