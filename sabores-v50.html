@@ -1,379 +1,180 @@
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Sabores - Catálogo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-     body {
-      background: radial-gradient(circle at top, #0f0f0f, #000);
-      color: #00ffcc;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      padding: 30px 20px;
-      margin: 0;
-    }
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    h1 {
-      text-align: center;
-      font-size: 2.2em;
-      margin-bottom: 40px;
-      color: #00ffcc;
-      text-shadow: 0 0 15px #00ffccaa;
-    }
-
-    h2 {
-      color: #00ffff;
-      border-bottom: 2px solid #00ffcc44;
-      padding-bottom: 10px;
-      margin-top: 50px;
-      text-align: center;
-    }
-
-    .menu {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-bottom: 40px;
-      gap: 10px;
-    }
-
-    .menu a {
-      background-color: #111;
-      border: 2px solid #00ffcc;
-      color: #00ffcc;
-      padding: 10px 18px;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: all 0.3s ease;
-      box-shadow: 0 0 8px #00ffcc33;
-    }
-
-    .menu a:hover {
-      background-color: #00ffcc;
-      color: #000;
-      box-shadow: 0 0 12px #00ffccaa;
-    }
-
-    section {
-      max-width: 800px;
-      margin: 0 auto 50px auto;
-      background-color: #111;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 0 15px #00ffcc33;
-    }
-
-    .sabores {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      list-style: none;
-      padding: 0;
-      gap: 12px;
-      margin-top: 20px;
-    }
-
-    .sabores li a {
-      display: inline-block;
-      background: #000;
-      border: 1px solid #00ffcc;
-      border-radius: 20px;
-      padding: 10px 20px;
-      font-size: 0.95em;
-      color: #fff;
-      text-decoration: none;
-      box-shadow: 0 0 6px #00ffcc22;
-      transition: all 0.3s ease;
-    }
-
-    .sabores li a:hover {
-      background: #00ffcc;
-      color: #000;
-      transform: scale(1.05);
-      box-shadow: 0 0 15px #00ffccaa;
-    }
-
-    @media (max-width: 600px) {
-      .menu a {
-        padding: 8px 14px;
-        font-size: 0.85em;
-      }
-      .sabores li a {
-        padding: 8px 14px;
-        font-size: 0.9em;
-      }
-    }
-
-    .produto {
-  text-align: center;
-}
-
-.indisponivel {
-  background-color: #ff0000;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  font-size: 1rem;
-  border-radius: 8px;
-  cursor: not-allowed;
-  opacity: 0.7;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-}
-
-  </style>
+  <title>Sabores Disponíveis - REI DO POD CAF</title>
+  
+  <meta name="description" content="Catálogo completo e atualizado em tempo real de todos os nossos sabores de Pods. Clique no seu favorito e peça já!">
+  <meta property="og:title" content="Sabores Disponíveis - REI DO POD CAF">
+  <meta property="og:description" content="Catálogo completo e atualizado em tempo real. Veja o que temos em estoque agora mesmo!">
+  <meta property="og:image" content="https://reidopodcaf.github.io/catalogo-rei-do-pod-caf/img/pod.ia.jpg">
+  <meta property="og:url" content="https://reidopodcaf.github.io/catalogo-rei-do-pod-caf/sabores-v50.html">
+  <meta property="og:type" content="website">
+  
+  <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
   
-  <h1> Clique no seu sabor favorito e receba rapidinho!</h1>
-  
+  <a href="index.html" class="voltar-btn">↩️ Voltar</a>
 
-  <section id="blacksheep20k">
-  <h2>BLACK SHEEP 20K</h2>
-  
-  <img src="img/BLACK-SHEEP-20K.jpg" alt="BLACK-SHEEP-20K" style="display: block; margin: 0 auto; max-width: 100%; width: 250px; height: auto;">
-  
-  <ul class="sabores" id="sabores-blacksheep20k">
+  <h1 class="titulo-sabores">Clique no seu sabor favorito e receba rapidinho!</h1>
+
+  <main>
+    <section id="blacksheep20k">
+      <h2>BLACK SHEEP 20K</h2>
+      <img class="produto-imagem" src="img/BLACK-SHEEP-20K.jpg" alt="Imagem do Pod descartável Black Sheep 20k puffs">
+      <ul class="sabores" id="sabores-blacksheep20k">
+        <li class="loading-msg">Carregando sabores...</li>
       </ul>
-</section>
-  
-<section id="blacksheeprefil">
-  <h2>BLACK SHEEP REFIL 30K</h2>
-  
-  <img src="img/BLACK-SHEEP-REFIL-30K.jpeg" alt="BLACK-SHEEP-REFIL-30K" style="display: block; margin: 0 auto; max-width: 100%; width: 250px; height: auto;">
-
-  <ul class="sabores" id="sabores-blacksheeprefil">
+    </section>
+    
+    <section id="blacksheeprefil">
+      <h2>BLACK SHEEP REFIL 30K</h2>
+      <img class="produto-imagem" src="img/BLACK-SHEEP-REFIL-30K.jpeg" alt="Imagem do Pod com refil Black Sheep 30k puffs">
+      <ul class="sabores" id="sabores-blacksheeprefil">
+        <li class="loading-msg">Carregando sabores...</li>
       </ul>
-</section>
+    </section>
 
-<section id="iceking">
-  <h2>ELFBAR ICE KING 40K</h2>
-
-  <img src="img/ELFBAR-ICE-KING-40K.jpg" alt="ELFBAR-ICE-KING-40K" style="display: block; margin: 0 auto; max-width: 100%; width: 250px; height: auto;">
-
-  <ul class="sabores" id="sabores-iceking">
+    <section id="iceking">
+      <h2>ELFBAR ICE KING 40K</h2>
+      <img class="produto-imagem" src="img/ELFBAR-ICE-KING-40K.jpg" alt="Imagem do Pod descartável Elfbar Ice King 40k puffs">
+      <ul class="sabores" id="sabores-iceking">
+        <li class="loading-msg">Carregando sabores...</li>
       </ul>
-</section>
+    </section>
 
-  <section id="elfbar">
-  <h2>ELFBAR TE 30K</h2>
-
-  <img src="img/ELFBAR-TE-30.jpg" alt="ELFBAR-TE-30K" style="display: block; margin: 0 auto; max-width: 100%; width: 250px; height: auto;">
-
-  <ul class="sabores" id="sabores-elfbar">
+    <section id="elfbar">
+      <h2>ELFBAR TE 30K</h2>
+      <img class="produto-imagem" src="img/ELFBAR-TE-30.jpg" alt="Imagem do Pod descartável Elfbar TE 30k puffs">
+      <ul class="sabores" id="sabores-elfbar">
+        <li class="loading-msg">Carregando sabores...</li>
       </ul>
-</section>
+    </section>
 
-<section id="v80">
-  <h2>IGNITE V80 BLACK</h2>
-
-  <img src="img/IGNITE-V80-BLACK.jpg" alt="IGNITE-V80-BLACK" style="display: block; margin: 0 auto; max-width: 100%; width: 250px; height: auto;">
-
-  <ul class="sabores" id="sabores-v80">
+    <section id="v80">
+      <h2>IGNITE V80 BLACK</h2>
+      <img class="produto-imagem" src="img/IGNITE-V80-BLACK.jpg" alt="Imagem do Pod descartável Ignite V80 Black">
+      <ul class="sabores" id="sabores-v80">
+        <li class="loading-msg">Carregando sabores...</li>
       </ul>
-</section>
+    </section>
 
-<section id="ignitep100">
-  <h2>IGNITE P100</h2>
-
-  <img src="img/IGNITE-P100.jpg" alt="IGNITE-P100" style="display: block; margin: 0 auto; max-width: 100%; width: 250px; height: auto;">
-
-  <ul class="sabores" id="sabores-ignitep100">
+    <section id="ignitep100">
+      <h2>IGNITE P100</h2>
+      <img class="produto-imagem" src="img/IGNITE-P100.jpg" alt="Imagem do Pod com refil Ignite P100">
+      <ul class="sabores" id="sabores-ignitep100">
+        <li class="loading-msg">Carregando sabores...</li>
       </ul>
-</section>
+    </section>
 
-<section id="v120">
-  <h2>IGNITE V120</h2>
-
-  <img src="img/ignite-v120-coffe.jpg" alt="IGNITE-V120" style="display: block; margin: 0 auto; max-width: 100%; width: 250px; height: auto;">
-
-  <ul class="sabores" id="sabores-v120">
+    <section id="v120">
+      <h2>IGNITE V120</h2>
+      <img class="produto-imagem" src="img/ignite-v120-coffe.jpg" alt="Imagem do Pod descartável Ignite V120">
+      <ul class="sabores" id="sabores-v120">
+        <li class="loading-msg">Carregando sabores...</li>
       </ul>
-</section>
+    </section>
 
-<section id="v120gold">
-  <h2>IGNITE P120 GOLD</h2>
-
-  <img src="img/IGNITE-V120-GOLD.jpg" alt="IGNITE-P120-GOLD" style="display: block; margin: 0 auto; max-width: 100%; width: 250px; height: auto;">
-
-  <ul class="sabores" id="sabores-v120gold">
+    <section id="v120gold">
+      <h2>IGNITE P120 GOLD</h2>
+      <img class="produto-imagem" src="img/IGNITE-V120-GOLD.jpg" alt="Imagem do Pod com refil Ignite P120 Gold">
+      <ul class="sabores" id="sabores-v120gold">
+        <li class="loading-msg">Carregando sabores...</li>
       </ul>
-</section>
+    </section>
 
-<section id="v150">
-  <h2>IGNITE V150 PRO</h2>
-
-  <img src="img/IGNITE-V150-PRO.jpg" alt="IGNITE-V150-PRO" style="display: block; margin: 0 auto; max-width: 100%; width: 250px; height: auto;">
-
-  <ul class="sabores" id="sabores-v150">
+    <section id="v150">
+      <h2>IGNITE V150 PRO</h2>
+      <img class="produto-imagem" src="img/IGNITE-V150-PRO.jpg" alt="Imagem do Pod descartável Ignite V150 Pro">
+      <ul class="sabores" id="sabores-v150">
+        <li class="loading-msg">Carregando sabores...</li>
       </ul>
-</section>
-  
-<section id="v250">
-  <h2>IGNITE V250</h2>
-  
-  <img src="img/IGNITE-V250.jpg" alt="IGNITE-V250" style="display: block; margin: 0 auto; max-width: 100%; width: 250px; height: auto;">
-
-  <ul class="sabores" id="sabores-v250">
+    </section>
+    
+    <section id="v250">
+      <h2>IGNITE V250</h2>
+      <img class="produto-imagem" src="img/IGNITE-V250.jpg" alt="Imagem do Pod descartável Ignite V250">
+      <ul class="sabores" id="sabores-v250">
+        <li class="loading-msg">Carregando sabores...</li>
       </ul>
-</section>
+    </section>
 
-<section id="v300">
-  <h2>IGNITE V300</h2>
-
-  <img src="img/IGNITE-V300-30k.jpg" alt="IGNITE-V300-30k" style="display: block; margin: 0 auto; max-width: 100%; width: 250px; height: auto;">
-
-  <ul class="sabores" id="sabores-v300">
+    <section id="v300">
+      <h2>IGNITE V300</h2>
+      <img class="produto-imagem" src="img/IGNITE-V300-30k.jpg" alt="Imagem do Pod descartável Ignite V300 30k puffs">
+      <ul class="sabores" id="sabores-v300">
+        <li class="loading-msg">Carregando sabores...</li>
       </ul>
-</section>
+    </section>
 
-<section id="v400">
-  <h2>IGNITE V400</h2>
-
-  <img src="img/v400.jpeg" alt="IGNITE-V400" style="display: block; margin: 0 auto; max-width: 100%; width: 250px; height: auto;">
-
-  <ul class="sabores" id="sabores-v400">
+    <section id="v400">
+      <h2>IGNITE V400</h2>
+      <img class="produto-imagem" src="img/v400.jpeg" alt="Imagem do Pod descartável Ignite V400">
+      <ul class="sabores" id="sabores-v400">
+        <li class="loading-msg">Carregando sabores...</li>
       </ul>
-</section>
+    </section>
 
-<section id="losty">
-  <h2>LOSTY ANGEL 20K</h2>
-
-  <img src="img/LOST-ANGE%20-20K.jpg" alt="LOSTY-ANGEL-20K" style="display: block; margin: 0 auto; max-width: 100%; width: 250px; height: auto;">
-
-  <ul class="sabores" id="sabores-losty">
+    <section id="losty">
+      <h2>LOSTY ANGEL 20K</h2>
+      <img class="produto-imagem" src="img/LOST-ANGE%20-20K.jpg" alt="Imagem do Pod descartável Losty Angel 20k puffs">
+      <ul class="sabores" id="sabores-losty">
+        <li class="loading-msg">Carregando sabores...</li>
       </ul>
-</section>
+    </section>
 
-<section id="refiloxbar">
-  <h2>REFIL OXBAR</h2>
-
-  <img src="img/O-REFIL-OXBAR-G32K.jpg" alt="REFIL-OXBAR" style="display: block; margin: 0 auto; max-width: 100%; width: 250px; height: auto;">
-
-  <ul class="sabores" id="sabores-refiloxbar">
+    <section id="refiloxbar">
+      <h2>REFIL OXBAR</h2>
+      <img class="produto-imagem" src="img/O-REFIL-OXBAR-G32K.jpg" alt="Imagem do Refil para Pod da marca Oxbar">
+      <ul class="sabores" id="sabores-refiloxbar">
+        <li class="loading-msg">Carregando sabores...</li>
       </ul>
-</section>
+    </section>
 
-<section id="liferef10k">
-  <h2>REFIL LIFE 10K</h2>
-
-  <img src="img/REFIL-LIFE-POD.jpeg" alt="REFIL-LIFE-10K" style="display: block; margin: 0 auto; max-width: 100%; width: 250px; height: auto;">
-
-  <ul class="sabores" id="sabores-liferef10k">
+    <section id="liferef10k">
+      <h2>REFIL LIFE 10K</h2>
+      <img class="produto-imagem" src="img/REFIL-LIFE-POD.jpeg" alt="Imagem do Refil para Pod da marca Life 10k puffs">
+      <ul class="sabores" id="sabores-liferef10k">
+        <li class="loading-msg">Carregando sabores...</li>
       </ul>
-</section>
+    </section>
 
-<section id="liferef8k">
-  <h2>REFIL LIFE 8K</h2>
-
-  <img src="img/REFIL-LIFE-POD.jpeg" alt="REFIL-LIFE-8K" style="display: block; margin: 0 auto; max-width: 100%; width: 250px; height: auto;">
-
-  <ul class="sabores" id="sabores-liferef8k">
+    <section id="liferef8k">
+      <h2>REFIL LIFE 8K</h2>
+      <img class="produto-imagem" src="img/REFIL-LIFE-POD.jpeg" alt="Imagem do Refil para Pod da marca Life 8k puffs">
+      <ul class="sabores" id="sabores-liferef8k">
+        <li class="loading-msg">Carregando sabores...</li>
       </ul>
-</section>
+    </section>
 
-<section id="vozoll">
-  <h2>VOZOLL 20K POWER</h2>
-
-  <img src="img/VOZOLL20KPOWER.jpeg" alt="VOZOLL-20K-POWER" style="display: block; margin: 0 auto; max-width: 100%; width: 250px; height: auto;">
-
-  <ul class="sabores" id="sabores-vozoll">
+    <section id="vozoll">
+      <h2>VOZOLL 20K POWER</h2>
+      <img class="produto-imagem" src="img/VOZOLL20KPOWER.jpeg" alt="Imagem do Pod descartável Vozoll 20k puffs Power">
+      <ul class="sabores" id="sabores-vozoll">
+        <li class="loading-msg">Carregando sabores...</li>
       </ul>
-</section>
+    </section>
 
-<section id="losgal">
-  <h2>LOSGAL 25K</h2>
-
-  <img src="img/LOSGAL.jpg" alt="LOSGAL-25K" style="display: block; margin: 0 auto; max-width: 100%; width: 250px; height: auto;">
-
-  <ul class="sabores" id="sabores-losgal">
+    <section id="losgal">
+      <h2>LOSGAL 25K</h2>
+      <img class="produto-imagem" src="img/LOSGAL.jpg" alt="Imagem do Pod descartável Losgal 25k puffs">
+      <ul class="sabores" id="sabores-losgal">
+        <li class="loading-msg">Carregando sabores...</li>
       </ul>
-</section>
+    </section>
 
-<section id="asparkkit">
-  <h2>ASPARK EMAG 20K</h2>
-
-  <img src="img/ASPARK-KIT.jpeg" alt="ASPARK-EMAG-20K" style="display: block; margin: 0 auto; max-width: 100%; width: 250px; height: auto;">
-
-  <ul class="sabores" id="sabores-asparkkit">
+    <section id="asparkkit">
+      <h2>ASPARK EMAG 20K</h2>
+      <img class="produto-imagem" src="img/ASPARK-KIT.jpeg" alt="Imagem do Pod com refil da marca Aspark Emag 20k puffs">
+      <ul class="sabores" id="sabores-asparkkit">
+        <li class="loading-msg">Carregando sabores...</li>
       </ul>
-</section>
+    </section>
+  </main>
 
-<script>
-  // URL da sua planilha publicada como CSV
-  const googleSheetURL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQestH5Bew_6ivl5vs3AxAFmHi23SPcBiPt9nEEi3SKZCK67wsfUrM7qNtQUvCuk7MVbQD_5bXfFYtf/pub?output=csv';
-
-  // Função para gerar o link do WhatsApp
-  function criarLinkWhatsApp(produto, sabor) {
-    const mensagem = `Olá, gostaria do ${produto} sabor ${sabor}`;
-    return `https://wa.me/5545998078084?text=${encodeURIComponent(mensagem)}`;
-  }
-
-  // Quando a página carregar, busca os dados da planilha
-  window.addEventListener('DOMContentLoaded', () => {
-    fetch(googleSheetURL)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Erro ao carregar os dados da planilha.');
-        }
-        return response.text();
-      })
-      .then(csvText => {
-        // 1. Separa o texto em linhas e remove o cabeçalho
-        const linhas = csvText.trim().split('\n').slice(1);
-        
-        // 2. Passa por cada linha da planilha
-        linhas.forEach(linha => {
-          // Separa a linha em colunas: ID, Sabor, Status
-          const [idProduto, nomeSabor, status] = linha.split(',');
-
-          // Pula linhas vazias que possam existir no final da planilha
-          if (!idProduto) return;
-          
-          // 3. Encontra a lista <ul> correspondente na página
-          const listaSabores = document.getElementById(`sabores-${idProduto.trim()}`);
-          
-          if (listaSabores) {
-            // Pega o nome completo do produto do título <h2>
-            const produtoNome = listaSabores.parentElement.querySelector('h2').textContent;
-            const li = document.createElement('li');
-            
-            // 4. Verifica o status e cria o botão correto
-            // Usamos trim() para remover espaços e \r que podem vir do CSV
-            if (status && status.trim().toLowerCase() === 'disponível') {
-              // Se estiver disponível, cria um link de compra
-              const link = document.createElement('a');
-              link.href = criarLinkWhatsApp(produtoNome, nomeSabor.trim());
-              link.target = '_blank';
-              link.textContent = nomeSabor.trim();
-              li.appendChild(link);
-            } else {
-              // Se estiver esgotado, cria um botão desabilitado
-              const botao = document.createElement('button');
-              botao.className = 'indisponivel'; // Usa a classe CSS que você já tinha
-              botao.disabled = true;
-              // Ajusta o estilo para combinar melhor com o layout
-              botao.style.fontSize = '0.95em';
-              botao.style.borderRadius = '20px';
-              botao.style.backgroundColor = '#444';
-              botao.style.color = '#888';
-              botao.style.border = '1px solid #555';
-
-              botao.innerHTML = `${nomeSabor.trim()} <span style="font-size: 0.8em; opacity: 0.8;">(Esgotado)</span>`;
-              li.appendChild(botao);
-            }
-            
-            // 5. Adiciona o item (<li>) na lista (<ul>)
-            listaSabores.appendChild(li);
-          }
-        });
-      })
-      .catch(error => {
-        console.error('Falha na operação:', error);
-        // Opcional: Adicionar uma mensagem de erro visível para o usuário
-      });
-  });
-</script>
+  <script src="script.js"></script>
 </body>
 </html>

@@ -2,230 +2,61 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Catálogo - REI DO POD CAF</title>
-  
-  <style>
+  <title>REI DO POD CAF - Catálogo e Entregas</title>
 
-    body {
-  background: radial-gradient(circle at top, #0f0f0f, #000); /* fundo com gradiente radial escuro */
-  color: #00ffcc; /* cor padrão do texto */
-  margin: 0;
-  padding: 0;
-}
-    /* cor do topo */
+  <meta name="description" content="Confira nosso catálogo completo de Pods e sabores. As melhores marcas com entrega rápida para Cafelândia-PR e região.">
+  <meta property="og:title" content="REI DO POD CAF - Catálogo de Sabores">
+  <meta property="og:description" content="O sabor que você procura, na velocidade que você precisa.">
+  <meta property="og:image" content="https://reidopodcaf.github.io/catalogo-rei-do-pod-caf/img/pod.ia.jpg">
+  <meta property="og:url" content="https://reidopodcaf.github.io/catalogo-rei-do-pod-caf/index.html">
+  <meta property="og:type" content="website">
 
-   .topo {
-  background-color: #000000; /* fundo preto no topo */
-  padding: 40px 20px; /* espaçamento interno */
-  border-bottom: 3px solid #00ffcc; /* linha neon embaixo do topo */
-}
-
- /* faz a foto dar uma espaco da letra */ 
-
-.topo-container {
-  display: flex; /* coloca logo e infos lado a lado */
-  align-items: center;
-  justify-content: center;
-  gap: 30px; /* espaço entre a logo e os textos */
-  flex-wrap: wrap; /* permite quebra em telas pequenas */
-}
-
-/* tamanho da foto da logo */ 
-
-.logo-topo {
-  width: 115px; /* tamanho da logo */
-  height: auto;
-  border-radius: 10px; /* bordas arredondadas */
-}
-
-.info-topo {
-  color: #00ffcc; /* cor dos textos */
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.info-topo h1 {
-  margin: 0;
-  font-size: 1.8em;
-  color: #00ffcc;
-}
-
-.info-topo p {
-  margin: 0;
-  font-size: 1em;
-  color: #cccccc; /* tom mais neutro para contatos */
-}
-
-    .conteudo {
-      text-align: center;
-      padding: 30px 20px;
-    }
-
-    .conteudo img {
-  max-width: 300px;
-  width: 90%;
-  border-radius: 12px;
-  margin-bottom: 20px;
-  box-shadow: 0 0 20px #00ffcc55; /* sombra leve neon */
-}
-
-.botao {
-      display: inline-block;
-      padding: 15px 25px;
-      background-color: #00ffcc;
-      color: #000000;
-      font-weight: bold;
-      border-radius: 10px;
-      text-decoration: none;
-      font-size: 18px;
-      box-shadow: 0 0 10px #00ffcc;
-      transition: transform 0.2s ease;
-     margin-bottom: 40px; /* afasta o botão do rodapé */
-    }
-
-  .produto-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 30px;
-}
-   
-    /* imagem pod */
-
-.produto-container img {
-  max-width: 300px;
-  width: 100%;
-  border-radius: 20px;
-  box-shadow: 0 0 20px rgba(0, 255, 204, 0.2);
-  margin-bottom: 20px;
-}
-
-    .emoji {
-      font-size: 1.2em;
-      margin-right: 5px;
-    }
-
-    .contato {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-}
-
-.social {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  color: #cccccc;
-  text-decoration: none;
-  font-size: 1em;
-  justify-content: center;
-}
-
-.social img {
-  width: 20px;
-  height: 20px;
-  margin-bottom: -2px; /* alinha verticalmente com o texto */
-}
-
-.botao:hover {
-  transform: scale(1.05);
-}
-
-  /*Rei do Pod */
-
-.verde {
-  color: #00ffcc;
-  font-weight: bold;
-}
-
-.rodape {
-  background-color: #001010;
-  padding: 25px 20px;
-  color: #cccccc;
-  text-align: center;
-  font-size: 1em;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  border-top: 2px solid #00ffcc22; /* linha neon discreta em cima */
-  box-shadow: 0 -2px 10px rgba(0,255,204,0.1); /* sombra pra cima */
-}
-
-.rodape .linha {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-}
-
-body {
-      background: radial-gradient(circle at top, #0f0f0f, #000);
-      color: #00ffcc;
-      margin: 0;
-      padding: 0;
-    }
-    .topo {
-      background-color: #000;
-      padding: 40px 20px;
-      border-bottom: 3px solid #00ffcc;
-      text-align: center;
-    }
-    .link-dinamico {
-      display: inline-block;
-      margin-top: 12px;
-      padding: 10px 18px;
-      border: 1px solid #00ffcc;
-      border-radius: 12px;
-      text-decoration: none;
-      color: #00ffcc;
-    }
-    .link-dinamico:hover {
-      background: #00ffcc;
-      color: #000;
-    }
-  </style>
+  <link rel="stylesheet" href="estilos.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
 
- <div class="topo">
-  <div class="topo-container">
-    <img src="img/imagem-rei-do-pod.jpg" alt="Logo Rei do Pod" class="logo-topo">
-    <div class="info-topo">
-      <h1>Catálogo</h1>
-      <p class="sub"><span class="verde">REI DO POD CAF</span></p>
-      <p>📷 @ryan.eletrônico</p>
-      <p>📞 (45) 99807-8084</p>
+  <header class="topo">
+    <div class="topo-container">
+      <img src="img/imagem-rei-do-pod.jpg" alt="Logo da Rei do Pod Caf, com a cabeça de um leão dourado usando uma coroa" class="logo-topo">
+      <div class="info-topo">
+        <h1>Catálogo de Produtos</h1>
+        <p><span class="verde">REI DO POD CAF</span></p>
+        <p class="social-links">
+          <a href="https://www.instagram.com/ryan_eletronicos/" target="_blank" aria-label="Instagram">
+            <i class="fab fa-instagram"></i> @ryan.eletronico
+          </a>
+        </p>
+        <p class="social-links">
+          <a href="https://wa.me/5545998078084?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20sobre%20os%20produtos%20do%20cat%C3%A1logo." target="_blank" aria-label="WhatsApp">
+            <i class="fab fa-whatsapp"></i> (45) 99807-8084
+          </a>
+        </p>
+      </div>
     </div>
-  </div>
-</div>
+  </header>
 
-      <!-- PRODUTO -->
+  <main class="produto-container">
+    <img src="img/pod.ia.jpg" alt="Foto de vários pods descartáveis modernos e coloridos em um fundo escuro">
+    <a href="sabores-v50.html" class="botao-principal">💨 Ver Sabores Disponíveis</a>
+  </main>
 
-<div class="produto-container">
-  <img src="img/pod.ia.jpg" alt="Imagem do Produto">
-  <a href="sabores-v50.html" class="botao">Ver Produtos</a>
-</div>
-
- <footer class="rodape">
-  <div class="linha">
-    <span>🚚 <strong>Entregas Rápidas</strong> | 📍 Cafelândia-PR</span>
-  </div>
-  <div class="linha">
-    <span>💨 Os melhores Pods e Sabores!</span>
-  </div>
-  <div class="linha">
-    <span>💰 Batemos o preço da concorrência!</span>
-  </div>
-  <div class="linha">
-    <span>📲 Chama no zap e garante o teu!</span>
-  </div>
-</footer>
-
+  <footer class="rodape">
+    <div class="linha">
+      <span>🚚 <strong>Entregas Rápidas</strong> | 📍 Cafelândia-PR</span>
+    </div>
+    <div class="linha">
+      <span>💨 Os melhores Pods e Sabores!</span>
+    </div>
+    <div class="linha">
+      <span>💰 Batemos o preço da concorrência!</span>
+    </div>
+    <div class="linha">
+      <span>📲 Chama no zap e garante o teu!</span>
+    </div>
+  </footer>
 
 </body>
 </html>
