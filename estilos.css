@@ -281,3 +281,83 @@ section h2 {
     text-align: center; /* Garante que as informações do topo fiquem centralizadas em telas menores */
   }
 }
+/* Novo estilo para o botão em promoção */
+.sabores a.em-promocao, .sabores button.em-promocao {
+  /* A classe será 'em-promocao' e será aplicada diretamente ao link ou botão */
+  border-color: #ff4d4d; /* Cor base da borda para a promoção */
+  animation: brilho-promocao 1.5s infinite alternate; /* Aplica a animação de brilho */
+}
+
+/* Animação do brilho pulsante */
+@keyframes brilho-promocao {
+  from {
+    box-shadow: 0 0 8px #ff4d4d, 0 0 10px #ff4d4d, 0 0 12px #ff4d4d inset;
+  }
+  to {
+    box-shadow: 0 0 18px #ff9999, 0 0 22px #ff4d4d, 0 0 25px #ff4d4d inset;
+  }
+}
+
+/* Cor diferente para a tag "Novo" */
+.tag-destaque.novo {
+  background-color: #007bff; /* Azul para novidades */
+}
+.sabores li {
+  position: relative;
+  display: inline-block;
+  /* Garante que o item da lista não tenha overflow escondido, para o selo ficar visível */
+  overflow: visible; 
+}
+
+.sabores a.status-promocao {
+  background-color: #9b59b6; /* Cor roxa sugerida */
+  border-color: #8e44ad; /* Borda roxa um pouco mais escura */
+  color: white; /* Texto branco para bom contraste */
+  font-weight: bold;
+  box-shadow: 0 0 10px #9b59b6, 0 0 15px rgba(155, 89, 182, 0.5);
+  transition: all 0.3s ease;
+}
+
+.sabores a.status-promocao:hover {
+  background-color: #8e44ad; /* Escurece um pouco no hover */
+  transform: scale(1.05);
+  box-shadow: 0 0 15px #9b59b6, 0 0 25px rgba(155, 89, 182, 0.7);
+}
+
+.imagem-promocao {
+  animation: brilho-imagem-promo 1.5s infinite alternate ease-in-out;
+}
+
+@keyframes brilho-imagem-promo {
+  from {
+    box-shadow: 0 0 10px #e74c3c, 0 0 15px #e74c3c;
+  }
+  to {
+    box-shadow: 0 0 25px #ff7979, 0 0 35px #e74c3c;
+  }
+}
+
+/* Estilo para o subtítulo "EM PROMOÇÃO" */
+.subtitulo-promocao {
+  display: block; /* Garante que ocupe sua própria linha */
+  color: #e74c3c; /* Vermelho da promoção */
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: -8px;  /* Puxa para mais perto do título principal */
+  margin-bottom: 20px; /* Afasta da imagem */
+  font-size: 0.9em;
+  text-align: center;
+  animation: pulso-texto-promo 1.5s infinite alternate ease-in-out;
+}
+
+@keyframes pulso-texto-promo {
+  from {
+    opacity: 0.8;
+    text-shadow: 0 0 5px #ff7979;
+  }
+  to {
+    opacity: 1;
+    text-shadow: 0 0 10px #e74c3c;
+  }
+}
