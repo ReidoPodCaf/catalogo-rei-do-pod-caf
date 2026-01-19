@@ -3,223 +3,777 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Sabores Disponíveis - REI DO POD CAF</title>
-  
-  <meta name="description" content="Catálogo completo e atualizado em tempo real de todos os nossos sabores de Pods. Clique no seu favorito e peça já!">
-  <meta property="og:title" content="Sabores Disponíveis - REI DO POD CAF">
-  <meta property="og:description" content="Catálogo completo e atualizado em tempo real. Veja o que temos em estoque agora mesmo!">
-  <meta property="og:image" content="https://reidopodcaf.github.io/catalogo-rei-do-pod-caf/img/pod.ia.jpg">
-  <meta property="og:url" content="https://reidopodcaf.github.io/catalogo-rei-do-pod-caf/sabores-v50.html">
-  <meta property="og:type" content="website">
-  
-  <link rel="stylesheet" href="estilos.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #0f172a; /* Fundo azul escuro moderno */
+      color: white;
+    }
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: transform 0.2s ease;
+    }
+
+    .glass-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .sabor-item {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .sabor-item:hover {
+      background: #3b82f6; /* Azul destaque ao clicar/passar o mouse */
+      transform: scale(1.02);
+    }
+
+    .loading-msg {
+      color: #94a3b8;
+      font-style: italic;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+  </style>
 </head>
-<body>
+<body class="p-4 md:p-8">
+
+  <a href="index.html" class="inline-flex items-center mb-6 text-blue-400 hover:text-blue-300 transition-colors">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+    </svg>
+    Voltar para o início
+  </a>
+
+  <header class="text-center mb-10">
+    <h1 class="text-3xl md:text-4xl font-extrabold mb-2 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+      Catálogo de Sabores
+    </h1>
+    <p class="text-slate-400">Clique no seu sabor favorito e faça seu pedido!</p>
+  </header>
+
+  <style>
+  /* Efeito de Vidro e Brilho */
+  .product-card {
+    background: linear-gradient(145deg, rgba(30, 41, 59, 0.7), rgba(15, 23, 42, 0.8));
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
   
-  <a href="index.html" class="voltar-btn">↩️ Voltar</a>
+  .product-card:hover {
+    transform: translateY(-8px);
+    border-color: #3b82f6;
+    box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.5);
+  }
 
-  <h1 class="titulo-sabores">Clique no seu sabor favorito e receba rapidinho!</h1>
+  /* Estilização dos Sabores (Pílulas) */
+  .sabor-badge {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 6px 12px;
+    border-radius: 99px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: inline-block;
+    margin: 2px;
+  }
+
+  .sabor-badge:hover {
+    background: #3b82f6;
+    color: white;
+    transform: scale(1.05);
+  }
+
+  .loading-animation {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255,255,255,.3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 1s ease-in-out infinite;
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+</style>
+
+<main class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 px-4 max-w-7xl mx-auto">
   
-  <main>
+<section id="v55" class="product-card rounded-3xl p-6 flex flex-col items-center">
+  <div class="w-full flex justify-between items-start mb-4">
+    <span class="text-[10px] bg-yellow-500/20 text-yellow-400 px-2 py-1 rounded font-black tracking-tighter uppercase">5.500 Puffs</span>
+    <span class="text-[10px] bg-white/10 text-white px-2 py-1 rounded font-bold tracking-tight uppercase flex items-center gap-1">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+      </svg>
+      IGNITE V55
+    </span>
+  </div>
 
-    
-    <section id="v55">
-      <h2>IGNITE V55</h2>
-      <img class="produto-imagem" src="img/IGNITE V55.jpg" alt="Imagem do Pod Ignite V55">
-      <ul class="sabores" id="sabores-v55">
-        <li class="loading-msg">Carregando sabores...</li>
-      </ul>
-    </section>
-    
-    <section id="v80">
-      <h2>IGNITE V80</h2>
-      <img class="produto-imagem" src="img/IGNITE-V80-BLACK.jpg" alt="Imagem do Pod descartável Ignite V80 Black">
-      <ul class="sabores" id="sabores-v80">
-        <li class="loading-msg">Carregando sabores...</li>
-      </ul>
-    </section>
-    
-    <section id="v155">
-      <h2>IGNITE V155</h2>
-      <img class="produto-imagem" src="img/IGNITE V155.jpg" alt="Imagem do Pod ignite v155">
-      <ul class="sabores" id="sabores-v155">
-        <li class="loading-msg">Carregando sabores...</li>
-      </ul>
-    </section>
-    
-    <section id="v150">
-      <h2>IGNITE V150 PRO</h2>
-      <img class="produto-imagem" src="img/IGNITE V150 PRO.jpg" alt="Imagem do Pod descartável Ignite V150 Pro">
-      <ul class="sabores" id="sabores-v150">
-        <li class="loading-msg">Carregando sabores...</li>
-      </ul>
-    </section>
-    
-    <section id="v120">
-      <h2>IGNITE V120</h2>
-      <img class="produto-imagem" src="img/IGNITE V120.jpg" alt="Imagem do Pod descartável Ignite V120">
-      <ul class="sabores" id="sabores-v120">
-        <li class="loading-msg">Carregando sabores...</li>
-      </ul>
-    </section>
-    
-    <section id="v250">
-      <h2>IGNITE V250</h2>
-      <img class="produto-imagem" src="img/IGNITE V250.jpg" alt="Imagem do Pod descartável Ignite V250">
-      <ul class="sabores" id="sabores-v250">
-        <li class="loading-msg">Carregando sabores...</li>
-      </ul>
-    </section>
-    
-    <section id="v300">
-      <h2>IGNITE V300</h2>
-      <img class="produto-imagem" src="img/IGNITE V300.jpg" alt="Imagem do Pod descartável Ignite V300 30k puffs">
-      <ul class="sabores" id="sabores-v300">
-        <li class="loading-msg">Carregando sabores...</li>
-      </ul>
-    </section>
-    
-    <section id="v400">
-      <h2>IGNITE V400</h2>
-      <img class="produto-imagem" src="img/IGNITE V400.jpg" alt="Imagem do Pod descartável Ignite V400">
-      <ul class="sabores" id="sabores-v400">
-        <li class="loading-msg">Carregando sabores...</li>
-      </ul>
-    </section>
-    
-    <section id="v400mix">
-      <h2>IGNITE V400 MIX</h2>
-      <img class="produto-imagem" src="img/IGNITE V400 MIX.jpg" alt="Imagem do Pod descartável Ignite V400">
-      <ul class="sabores" id="sabores-v400mix">
-        <li class="loading-msg">Carregando sabores...</li>
-      </ul>
-    </section>
-    
-    <section id="v400sweet">
-      <h2>IGNITE V400 SWEET</h2>
-      <img class="produto-imagem" src="img/IGNITE V400 SWEET.jpg" alt="Imagem do Pod ignite v400 SWEET ">
-      <ul class="sabores" id="sabores-v400sweet">
-        <li class="loading-msg">Carregando sabores...</li>
-      </ul>
-    </section>
-    
-    
-    <section id="v100refil">
-      <h2>REFIL P100</h2>
-      <img class="produto-imagem" src="img/REFIL IGNITE P100.jpg" alt="Imagem do Pod com refil Ignite P100">
-      <ul class="sabores" id="sabores-v100refil">
-        <li class="loading-msg">Carregando sabores...</li>
-      </ul>
-    </section>
-    
-    <section id="liferef8k">
-      <h2>REFIL LIFE 8K</h2>
-      <img class="produto-imagem" src="img/REFIL-LIFE-POD.jpeg" alt="Imagem do Refil para Pod da marca Life 8k puffs">
-      <ul class="sabores" id="sabores-liferef8k">
-        <li class="loading-msg">Carregando sabores...</li>
-      </ul>
-    </section>
-    
-    <section id="liferef10k">
-      <h2>REFIL LIFE 10K</h2>
-      <img class="produto-imagem" src="img/REFIL LIFE 10K.jpg" alt="Imagem do Refil para Pod da marca Life 10k puffs">
-      <ul class="sabores" id="sabores-liferef10k">
-        <li class="loading-msg">Carregando sabores...</li>
-      </ul>
-    </section>
-    
-    <section id="v400life">
-      <h2>LIFE POD 40.000 DESCARTÁVEL</h2>
-      <img class="produto-imagem" src="img/LIFE POD 40.000 DESCARTÁVEL .jpg" alt="Imagem do refil para pod da marca life 40k puffs">
-      <ul class="sabores" id="sabores-v400life">
-        <li class="loading-msg">Carregando sabores...</li>
-      </ul>
-    </section>
-    
-    
-    <section id="elfbar">
-      <h2>ELFBAR TE 30K</h2>
-      <img class="produto-imagem" src="img/ELFBAR TE 30K.jpg" alt="Imagem do Pod descartável Elfbar TE 30k puffs">
-      <ul class="sabores" id="sabores-elfbar">
-        <li class="loading-msg">Carregando sabores...</li>
-      </ul>
-    </section>
-    
-    <section id="iceking">
-      <h2>ELFBAR ICE KING 40K</h2>
-      <img class="produto-imagem" src="img/ELFBAR ICE KING 40K.jpg" alt="Imagem do Pod descartável Elfbar Ice King 40k puffs">
-      <ul class="sabores" id="sabores-iceking">
-        <li class="loading-msg">Carregando sabores...</li>
-      </ul>
-    </section>
-    
-    <section id="blacksheep40K">
-      <h2>BLACK SHEEP 40K</h2>
-      <img class="produto-imagem" src="img/BLACK SHEEP 40K.jpg" alt="Imagem do Pod descartável Black Sheep 40k puffs">
-      <ul class="sabores" id="sabores-blacksheep40K">
-        <li class="loading-msg">Carregando sabores...</li>
-      </ul>
-    </section>
+  <div class="relative group w-full mb-6 text-center">
+    <img src="img/IGNITE_V55.png.png" alt="Imagem do Pod ignite v55" class="w-full h-48 object-contain transition-transform duration-500 group-hover:scale-110">
+    <div class="absolute inset-0 bg-purple-600/15 blur-3xl -z-10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+  </div>
 
-  <section id="equator">
-    <h2>EQUATOR 30K</h2>
-    <img class="produto-imagem" src="img/EQUATOR 30K.jpg" alt="Imagem do Pod equator">
-    <ul class="sabores" id="sabores-equator">
-      <li class="loading-msg">Carregando sabores...</li>
-    </ul>
-  </section>
+  <h2 class="text-xl font-black mb-4 tracking-tight text-white group-hover:text-purple-400 transition-colors uppercase">Ignite V55</h2>
   
-  <section id="instabar">
-    <h2>INSTA BAR 15K</h2>
-    <img class="produto-imagem" src="img/INSTA BAR 15K.jpg" alt="Imagem do produto">
-    <ul class="sabores" id="sabores-instabar">
-      <li class="loading-msg">Carregando sabores...</li>
-    </ul>
-  </section>
+  <div class="w-full">
+    <p class="text-[10px] text-slate-500 mb-3 font-bold uppercase tracking-widest border-b border-white/5 pb-1 text-center font-mono">Disponível em Estoque:</p>
+    
+    <div class="flex flex-wrap gap-2 justify-center" id="sabores-v55">
+      <div class="flex flex-col items-center py-2">
+        <div class="loading-animation border-purple-500/30"></div>
+        <span class="text-[10px] text-slate-600 mt-2 animate-pulse font-medium">Buscando sabores...</span>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <section id="flonq20k">
-    <h2>FLONQ 20K</h2>
-    <img class="produto-imagem" src="img/FLONQ 20K.jpeg" alt="Imagem do produto">
-    <ul class="sabores" id="sabores-flonq20k">
-      <li class="loading-msg">Carregando sabores...</li>
-    </ul>
-  </section>
+<section id="v80" class="product-card rounded-3xl p-6 flex flex-col items-center">
+  <div class="w-full flex justify-between items-start mb-4">
+    <span class="text-[10px] bg-blue-500/20 text-blue-400 px-2 py-1 rounded font-black tracking-tighter uppercase">8.000 Puffs</span>
+    <span class="text-[10px] bg-white/10 text-white px-2 py-1 rounded font-bold tracking-tight uppercase flex items-center gap-1">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+      </svg>
+      Black Series
+    </span>
+  </div>
 
-  <section id="airmez40k">
-    <h2>AIRMEZ 40K</h2>
-    <img class="produto-imagem" src="img/AIRMEZ 40K.jpeg" alt="Imagem do produto">
-    <ul class="sabores" id="sabores-airmez40k">
-      <li class="loading-msg">Carregando sabores...</li>
-    </ul>
-  </section>
+  <div class="relative group w-full mb-6 text-center">
+    <img src="img/IGNITE-V80-BLACK.png.png" alt="Imagem do Pod descartável Ignite V80 Black" class="w-full h-48 object-contain transition-transform duration-500 group-hover:scale-110">
+    <div class="absolute inset-0 bg-blue-600/10 blur-3xl -z-10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+  </div>
 
-  <section id="oxbar50k">
-    <h2>OXBAR 50K</h2>
-    <img class="produto-imagem" src="img/OXBAR 50K.jpeg" alt="Imagem do produto">
-    <ul class="sabores" id="sabores-oxbar50k">
-      <li class="loading-msg">Carregando sabores...</li>
-    </ul>
-  </section>
+  <h2 class="text-xl font-black mb-4 tracking-tight text-white group-hover:text-blue-400 transition-colors uppercase">Ignite V80</h2>
+  
+  <div class="w-full">
+    <p class="text-[10px] text-slate-500 mb-3 font-bold uppercase tracking-widest border-b border-white/5 pb-1 text-center">Menu de Sabores:</p>
+    
+    <div class="flex flex-wrap gap-2 justify-center" id="sabores-v80">
+      <div class="flex flex-col items-center py-2">
+        <div class="loading-animation border-blue-500/30"></div>
+        <span class="text-[10px] text-slate-600 mt-2 animate-pulse">Sincronizando sabores...</span>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <section id="frosty10k">
-    <h2>FROSTY 10K</h2>
-    <img class="produto-imagem" src="img/Frosty_10k.jpeg" alt="Imagem do produto">
-    <ul class="sabores" id="sabores-frosty10k">
-      <li class="loading-msg">Carregando sabores...</li>
-    </ul>
-  </section>
+<section id="v155" class="product-card rounded-3xl p-6 flex flex-col items-center">
+  <div class="w-full flex justify-between items-start mb-4">
+    <span class="text-[10px] bg-purple-500/20 text-purple-400 px-2 py-1 rounded font-black tracking-tighter uppercase">15.500 Puffs</span>
+    <span class="text-[10px] bg-white/10 text-white px-2 py-1 rounded font-bold tracking-tight uppercase flex items-center gap-1">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+      </svg>
+      V155 Series
+    </span>
+  </div>
 
- <section id="icity12k">
-    <h2>ICITY 12K</h2>
-    <img class="produto-imagem" src="img/ICITY 12K.jpeg" alt="Imagem do produto">
-    <ul class="sabores" id="sabores-icity12k">
-      <li class="loading-msg">Carregando sabores...</li>
-    </ul>
-  </section>
+  <div class="relative group w-full mb-6 text-center">
+    <img src="img/IGNITE_V155.png.png" alt="Imagem do Pod ignite v155" class="w-full h-48 object-contain transition-transform duration-500 group-hover:scale-110">
+    <div class="absolute inset-0 bg-purple-600/15 blur-3xl -z-10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+  </div>
 
-</main>
+  <h2 class="text-xl font-black mb-4 tracking-tight text-white group-hover:text-purple-400 transition-colors uppercase">Ignite V155</h2>
+  
+  <div class="w-full">
+    <p class="text-[10px] text-slate-500 mb-3 font-bold uppercase tracking-widest border-b border-white/5 pb-1 text-center font-mono">Disponível em Estoque:</p>
+    
+    <div class="flex flex-wrap gap-2 justify-center" id="sabores-v155">
+      <div class="flex flex-col items-center py-2">
+        <div class="loading-animation border-purple-500/30"></div>
+        <span class="text-[10px] text-slate-600 mt-2 animate-pulse font-medium">Buscando sabores...</span>
+      </div>
+    </div>
+  </div>
+</section>
 
-<script src="script.js"></script>
+<section id="v150" class="product-card rounded-3xl p-6 flex flex-col items-center">
+  <div class="w-full flex justify-between items-start mb-4">
+    <span class="text-[10px] bg-amber-500/20 text-amber-500 px-2 py-1 rounded font-black tracking-tighter uppercase">15.000 Puffs</span>
+    <span class="text-[10px] bg-white/10 text-white px-2 py-1 rounded font-bold tracking-widest uppercase">PRO EDITION</span>
+  </div>
+
+  <div class="relative group w-full mb-6">
+    <img src="img/IGNITE_V150_PRO.png.png" alt="Ignite V150 Pro" class="w-full h-48 object-contain transition-transform duration-500 group-hover:scale-110">
+    <div class="absolute inset-0 bg-amber-600/5 blur-3xl -z-10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+  </div>
+
+  <h2 class="text-xl font-black mb-4 tracking-tight text-white group-hover:text-amber-500 transition-colors">IGNITE V150 PRO</h2>
+  
+  <div class="w-full">
+    <p class="text-[10px] text-slate-500 mb-3 font-bold uppercase tracking-widest border-b border-white/5 pb-1 text-center">Menu de Sabores:</p>
+    
+    <div class="flex flex-wrap gap-2 justify-center" id="sabores-v150">
+      <div class="flex flex-col items-center py-2">
+        <div class="loading-animation border-amber-500/30"></div>
+        <span class="text-[10px] text-slate-600 mt-2">Sincronizando estoque...</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="v120" class="product-card rounded-3xl p-6 flex flex-col items-center">
+  <div class="w-full flex justify-between items-start mb-4">
+    <span class="text-[10px] bg-emerald-500/20 text-emerald-400 px-2 py-1 rounded font-black tracking-tighter uppercase">12.000 Puffs</span>
+    <span class="text-[10px] bg-white/10 text-white px-2 py-1 rounded font-bold tracking-tight uppercase">Airflow Control</span>
+  </div>
+
+  <div class="relative group w-full mb-6">
+    <img src="img/IGNITE_V120.png.png" alt="Ignite V120" class="w-full h-48 object-contain transition-transform duration-500 group-hover:scale-110">
+    <div class="absolute inset-0 bg-emerald-600/10 blur-3xl -z-10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+  </div>
+
+  <h2 class="text-xl font-black mb-4 tracking-tight text-white group-hover:text-emerald-400 transition-colors">IGNITE V120</h2>
+  
+  <div class="w-full">
+    <p class="text-[10px] text-slate-500 mb-3 font-bold uppercase tracking-widest border-b border-white/5 pb-1 text-center">Explorar Sabores:</p>
+    
+    <div class="flex flex-wrap gap-2 justify-center" id="sabores-v120">
+      <div class="flex flex-col items-center py-2">
+        <div class="loading-animation border-emerald-500/30"></div>
+        <span class="text-[10px] text-slate-600 mt-2 animate-pulse">Buscando estoque...</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="v250" class="product-card rounded-3xl p-6 flex flex-col items-center">
+  <div class="w-full flex justify-between items-start mb-4">
+    <span class="text-[10px] bg-red-500/20 text-red-500 px-2 py-1 rounded font-black tracking-tighter uppercase">25.000 Puffs</span>
+    <span class="text-[10px] bg-white/10 text-white px-2 py-1 rounded font-bold tracking-tight uppercase">Long Lasting</span>
+  </div>
+
+  <div class="relative group w-full mb-6 text-center">
+    <img src="img/IGNITE_V250.png.png" alt="Ignite V250" class="w-full h-48 object-contain transition-transform duration-500 group-hover:scale-110">
+    <div class="absolute inset-0 bg-red-600/10 blur-3xl -z-10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+  </div>
+
+  <h2 class="text-xl font-black mb-4 tracking-tight text-white group-hover:text-red-500 transition-colors">IGNITE V250</h2>
+  
+  <div class="w-full">
+    <p class="text-[10px] text-slate-500 mb-3 font-bold uppercase tracking-widest border-b border-white/5 pb-1 text-center">Sabores em Estoque:</p>
+    
+    <div class="flex flex-wrap gap-2 justify-center" id="sabores-v250">
+      <div class="flex flex-col items-center py-2">
+        <div class="loading-animation border-red-500/30"></div>
+        <span class="text-[10px] text-slate-600 mt-2 animate-pulse">Verificando sabores...</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="v300" class="product-card rounded-3xl p-6 flex flex-col items-center">
+  <div class="w-full flex justify-between items-start mb-4">
+    <span class="text-[10px] bg-indigo-500/20 text-indigo-400 px-2 py-1 rounded font-black tracking-tighter uppercase">30.000 Puffs</span>
+    <span class="text-[10px] bg-white/10 text-white px-2 py-1 rounded font-bold tracking-tight uppercase">Double Tank</span>
+  </div>
+
+  <div class="relative group w-full mb-6">
+    <img src="img/IGNITE_V300.png.png" alt="Ignite V300 30k puffs" class="w-full h-48 object-contain transition-transform duration-500 group-hover:scale-110">
+    <div class="absolute inset-0 bg-indigo-600/15 blur-3xl -z-10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+  </div>
+
+  <h2 class="text-xl font-black mb-4 tracking-tight text-white group-hover:text-indigo-400 transition-colors uppercase">Ignite V300</h2>
+  
+  <div class="w-full">
+    <p class="text-[10px] text-slate-500 mb-3 font-bold uppercase tracking-widest border-b border-white/5 pb-1 text-center">Sabores Disponíveis:</p>
+    
+    <div class="flex flex-wrap gap-2 justify-center" id="sabores-v300">
+      <div class="flex flex-col items-center py-2">
+        <div class="loading-animation border-indigo-500/30"></div>
+        <span class="text-[10px] text-slate-600 mt-2 animate-pulse">Consultando estoque...</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="v400" class="product-card rounded-3xl p-6 flex flex-col items-center">
+  <div class="w-full flex justify-between items-start mb-4">
+    <span class="text-[10px] bg-pink-500/20 text-pink-400 px-2 py-1 rounded font-black tracking-tighter uppercase">40.000 Puffs</span>
+    <span class="text-[10px] bg-white/10 text-white px-2 py-1 rounded font-bold tracking-tight uppercase">Turbo Mode</span>
+  </div>
+
+  <div class="relative group w-full mb-6">
+    <img src="img/IGNITE_V400.png.png" alt="Imagem do Pod descartável Ignite V400" class="w-full h-48 object-contain transition-transform duration-500 group-hover:scale-110">
+    <div class="absolute inset-0 bg-pink-600/15 blur-3xl -z-10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+  </div>
+
+  <h2 class="text-xl font-black mb-4 tracking-tight text-white group-hover:text-pink-400 transition-colors">IGNITE V400</h2>
+  
+  <div class="w-full">
+    <p class="text-[10px] text-slate-500 mb-3 font-bold uppercase tracking-widest border-b border-white/5 pb-1 text-center">Menu de Sabores:</p>
+    
+    <div class="flex flex-wrap gap-2 justify-center" id="sabores-v400">
+      <div class="flex flex-col items-center py-2">
+        <div class="loading-animation border-pink-500/30"></div>
+        <span class="text-[10px] text-slate-600 mt-2 animate-pulse">Sincronizando estoque...</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="v400mix" class="product-card rounded-3xl p-6 flex flex-col items-center">
+  <div class="w-full flex justify-between items-start mb-4">
+    <span class="text-[10px] bg-orange-500/20 text-orange-400 px-2 py-1 rounded font-black tracking-tighter uppercase">40.000 Puffs</span>
+    <span class="text-[10px] bg-white/10 text-white px-2 py-1 rounded font-bold tracking-tight uppercase">Mixed Edition</span>
+  </div>
+
+  <div class="relative group w-full mb-6">
+    <img src="img/IGNITE_V400ICE.png.png" alt="Imagem do Pod descartável Ignite V400 Mix" class="w-full h-48 object-contain transition-transform duration-500 group-hover:scale-110">
+    <div class="absolute inset-0 bg-orange-600/15 blur-3xl -z-10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+  </div>
+
+  <h2 class="text-xl font-black mb-4 tracking-tight text-white group-hover:text-orange-400 transition-colors">IGNITE V400 MIX</h2>
+  
+  <div class="w-full">
+    <p class="text-[10px] text-slate-500 mb-3 font-bold uppercase tracking-widest border-b border-white/5 pb-1 text-center">Sabores Mix Disponíveis:</p>
+    
+    <div class="flex flex-wrap gap-2 justify-center" id="sabores-v400mix">
+      <div class="flex flex-col items-center py-2">
+        <div class="loading-animation border-orange-500/30"></div>
+        <span class="text-[10px] text-slate-600 mt-2 animate-pulse">Carregando combinações...</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="v400sweet" class="product-card rounded-3xl p-6 flex flex-col items-center">
+  <div class="w-full flex justify-between items-start mb-4">
+    <span class="text-[10px] bg-cyan-500/20 text-cyan-400 px-2 py-1 rounded font-black tracking-tighter uppercase">40.000 Puffs</span>
+    <span class="text-[10px] bg-white/10 text-white px-2 py-1 rounded font-bold tracking-tight uppercase">Sweet Series</span>
+  </div>
+
+  <div class="relative group w-full mb-6">
+    <img src="img/IGNITE_V400_SWEET.png.png" alt="Imagem do Pod ignite v400 SWEET" class="w-full h-48 object-contain transition-transform duration-500 group-hover:scale-110">
+    <div class="absolute inset-0 bg-cyan-600/15 blur-3xl -z-10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+  </div>
+
+  <h2 class="text-xl font-black mb-4 tracking-tight text-white group-hover:text-cyan-400 transition-colors uppercase">Ignite V400 Sweet</h2>
+  
+  <div class="w-full">
+    <p class="text-[10px] text-slate-500 mb-3 font-bold uppercase tracking-widest border-b border-white/5 pb-1 text-center">Sabores Adocicados:</p>
+    
+    <div class="flex flex-wrap gap-2 justify-center" id="sabores-v400sweet">
+      <div class="flex flex-col items-center py-2">
+        <div class="loading-animation border-cyan-500/30"></div>
+        <span class="text-[10px] text-slate-600 mt-2 animate-pulse">Consultando cardápio...</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="v100refil" class="product-card rounded-3xl p-6 flex flex-col items-center">
+  <div class="w-full flex justify-between items-start mb-4">
+    <span class="text-[10px] bg-slate-500/20 text-slate-300 px-2 py-1 rounded font-black tracking-tighter uppercase">10.000 Puffs</span>
+    <span class="text-[10px] bg-indigo-500/20 text-indigo-400 px-2 py-1 rounded font-bold tracking-tight uppercase">Refill System</span>
+  </div>
+
+  <div class="relative group w-full mb-6">
+    <img src="img/REFIL_IGNITE_P100.png.png" alt="Imagem do Pod com refil Ignite P100" class="w-full h-48 object-contain transition-transform duration-500 group-hover:scale-110">
+    <div class="absolute inset-0 bg-white/5 blur-3xl -z-10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+  </div>
+
+  <h2 class="text-xl font-black mb-4 tracking-tight text-white group-hover:text-slate-300 transition-colors uppercase">Refil Ignite P100</h2>
+  
+  <div class="w-full">
+    <p class="text-[10px] text-slate-500 mb-3 font-bold uppercase tracking-widest border-b border-white/5 pb-1 text-center">Sabores de Reposição:</p>
+    
+    <div class="flex flex-wrap gap-2 justify-center" id="sabores-v100refil">
+      <div class="flex flex-col items-center py-2">
+        <div class="loading-animation border-slate-500/30"></div>
+        <span class="text-[10px] text-slate-600 mt-2 animate-pulse">Atualizando estoque...</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <section id="liferef8k" class="product-card rounded-3xl p-6 flex flex-col items-center">
+  <div class="w-full flex justify-between items-start mb-4">
+    <span class="text-[10px] bg-lime-500/20 text-lime-400 px-2 py-1 rounded font-black tracking-tighter uppercase">8.000 Puffs</span>
+    <span class="text-[10px] bg-white/10 text-white px-2 py-1 rounded font-bold tracking-tight uppercase">Life Pod Refill</span>
+  </div>
+
+  <div class="relative group w-full mb-6">
+    <img src="img/REFIL-LIFE-POD.png.png" alt="Imagem do Refil para Pod da marca Life 8k puffs" class="w-full h-48 object-contain transition-transform duration-500 group-hover:scale-110">
+    <div class="absolute inset-0 bg-lime-600/15 blur-3xl -z-10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+  </div>
+
+  <h2 class="text-xl font-black mb-4 tracking-tight text-white group-hover:text-lime-400 transition-colors uppercase text-center">Refil Life 8K</h2>
+  
+  <div class="w-full">
+    <p class="text-[10px] text-slate-500 mb-3 font-bold uppercase tracking-widest border-b border-white/5 pb-1 text-center">Sabores Life Pod:</p>
+    
+    <div class="flex flex-wrap gap-2 justify-center" id="sabores-liferef8k">
+      <div class="flex flex-col items-center py-2">
+        <div class="loading-animation border-lime-500/30"></div>
+        <span class="text-[10px] text-slate-600 mt-2 animate-pulse">Sincronizando sabores...</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="liferef10k" class="product-card rounded-3xl p-6 flex flex-col items-center">
+  <div class="w-full flex justify-between items-start mb-4">
+    <span class="text-[10px] bg-emerald-500/20 text-emerald-400 px-2 py-1 rounded font-black tracking-tighter uppercase">10.000 Puffs</span>
+    <span class="text-[10px] bg-white/10 text-white px-2 py-1 rounded font-bold tracking-tight uppercase">Life Pod 10K</span>
+  </div>
+
+  <div class="relative group w-full mb-6">
+    <img src="img/REFIL_LIFE_10K.png.png" alt="Imagem do Refil para Pod da marca Life 10k puffs" class="w-full h-48 object-contain transition-transform duration-500 group-hover:scale-110">
+    <div class="absolute inset-0 bg-emerald-600/20 blur-3xl -z-10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+  </div>
+
+  <h2 class="text-xl font-black mb-4 tracking-tight text-white group-hover:text-emerald-400 transition-colors uppercase text-center">Refil Life 10K</h2>
+  
+  <div class="w-full">
+    <p class="text-[10px] text-slate-500 mb-3 font-bold uppercase tracking-widest border-b border-white/5 pb-1 text-center">Sabores em Estoque:</p>
+    
+    <div class="flex flex-wrap gap-2 justify-center" id="sabores-liferef10k">
+      <div class="flex flex-col items-center py-2">
+        <div class="loading-animation border-emerald-500/30"></div>
+        <span class="text-[10px] text-slate-600 mt-2 animate-pulse">Verificando sabores...</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="v400life" class="product-card rounded-3xl p-6 flex flex-col items-center">
+  <div class="w-full flex justify-between items-start mb-4">
+    <span class="text-[10px] bg-teal-500/20 text-teal-400 px-2 py-1 rounded font-black tracking-tighter uppercase">40.000 Puffs</span>
+    <span class="text-[10px] bg-white/10 text-white px-2 py-1 rounded font-bold tracking-tight uppercase">Extreme Life</span>
+  </div>
+
+  <div class="relative group w-full mb-6">
+    <img src="img/REFIL-LIFE-POD.png.png" alt="Imagem do Life Pod 40k puffs" class="w-full h-48 object-contain transition-transform duration-500 group-hover:scale-110">
+    <div class="absolute inset-0 bg-teal-600/15 blur-3xl -z-10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+  </div>
+
+  <h2 class="text-xl font-black mb-4 tracking-tight text-white group-hover:text-teal-400 transition-colors uppercase text-center">Life Pod 40K</h2>
+  
+  <div class="w-full">
+    <p class="text-[10px] text-slate-500 mb-3 font-bold uppercase tracking-widest border-b border-white/5 pb-1 text-center">Sabores Disponíveis:</p>
+    
+    <div class="flex flex-wrap gap-2 justify-center" id="sabores-v400life">
+      <div class="flex flex-col items-center py-2">
+        <div class="loading-animation border-teal-500/30"></div>
+        <span class="text-[10px] text-slate-600 mt-2 animate-pulse">Consultando estoque...</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="elfbar" class="product-card rounded-3xl p-6 flex flex-col items-center">
+  <div class="w-full flex justify-between items-start mb-4">
+    <span class="text-[10px] bg-blue-600/20 text-blue-400 px-2 py-1 rounded font-black tracking-tighter uppercase">30.000 Puffs</span>
+    <span class="text-[10px] bg-white/10 text-white px-2 py-1 rounded font-bold tracking-tight uppercase">Elfbar Official</span>
+  </div>
+
+  <div class="relative group w-full mb-6">
+    <img src="img/ELFBAR_TE_30K.png.png" alt="Imagem do Pod descartável Elfbar TE 30k puffs" class="w-full h-48 object-contain transition-transform duration-500 group-hover:scale-110">
+    <div class="absolute inset-0 bg-blue-700/15 blur-3xl -z-10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+  </div>
+
+  <h2 class="text-xl font-black mb-4 tracking-tight text-white group-hover:text-blue-400 transition-colors uppercase text-center">Elfbar TE 30K</h2>
+  
+  <div class="w-full">
+    <p class="text-[10px] text-slate-500 mb-3 font-bold uppercase tracking-widest border-b border-white/5 pb-1 text-center">Menu de Sabores:</p>
+    
+    <div class="flex flex-wrap gap-2 justify-center" id="sabores-elfbar">
+      <div class="flex flex-col items-center py-2">
+        <div class="loading-animation border-blue-500/30"></div>
+        <span class="text-[10px] text-slate-600 mt-2 animate-pulse">Sincronizando sabores...</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="iceking" class="product-card rounded-3xl p-6 flex flex-col items-center">
+  <div class="w-full flex justify-between items-start mb-4">
+    <span class="text-[10px] bg-sky-400/20 text-sky-400 px-2 py-1 rounded font-black tracking-tighter uppercase">40.000 Puffs</span>
+    <span class="text-[10px] bg-white/10 text-white px-2 py-1 rounded font-bold tracking-tight uppercase flex items-center gap-1">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+      </svg>
+      Ice King
+    </span>
+  </div>
+
+  <div class="relative group w-full mb-6">
+    <img src="img/ELFBAR_ICE_KING_40K.png.png" alt="Imagem do Pod descartável Elfbar Ice King 40k puffs" class="w-full h-48 object-contain transition-transform duration-500 group-hover:scale-110">
+    <div class="absolute inset-0 bg-sky-300/10 blur-3xl -z-10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+  </div>
+
+  <h2 class="text-xl font-black mb-4 tracking-tight text-white group-hover:text-sky-400 transition-colors uppercase text-center">Elfbar Ice King 40K</h2>
+  
+  <div class="w-full">
+    <p class="text-[10px] text-slate-500 mb-3 font-bold uppercase tracking-widest border-b border-white/5 pb-1 text-center italic">Experiência Ultra-Gelada:</p>
+    
+    <div class="flex flex-wrap gap-2 justify-center" id="sabores-iceking">
+      <div class="flex flex-col items-center py-2">
+        <div class="loading-animation border-sky-400/30"></div>
+        <span class="text-[10px] text-slate-600 mt-2 animate-pulse">Congelando estoque...</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="blacksheep40K" class="product-card rounded-3xl p-6 flex flex-col items-center">
+  <div class="w-full flex justify-between items-start mb-4">
+    <span class="text-[10px] bg-white/10 text-white px-2 py-1 rounded font-black tracking-tighter uppercase border border-white/5">40.000 Puffs</span>
+    <span class="text-[10px] bg-red-600/20 text-red-500 px-2 py-1 rounded font-bold tracking-tight uppercase">Black Edition</span>
+  </div>
+
+  <div class="relative group w-full mb-6">
+    <img src="img/BLACK_SHEEP_40K.png.png" alt="Imagem do Pod descartável Black Sheep 40k puffs" class="w-full h-48 object-contain transition-transform duration-500 group-hover:scale-110">
+    <div class="absolute inset-0 bg-white/5 blur-3xl -z-10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+  </div>
+
+  <h2 class="text-xl font-black mb-4 tracking-tight text-white group-hover:text-slate-400 transition-colors uppercase text-center">Black Sheep 40K</h2>
+  
+  <div class="w-full">
+    <p class="text-[10px] text-slate-500 mb-3 font-bold uppercase tracking-widest border-b border-white/5 pb-1 text-center">Linha de Sabores:</p>
+    
+    <div class="flex flex-wrap gap-2 justify-center" id="sabores-blacksheep40k">
+      <div class="flex flex-col items-center py-2">
+        <div class="loading-animation border-white/30"></div>
+        <span class="text-[10px] text-slate-600 mt-2 animate-pulse">Sincronizando Black Sheep...</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="equator" class="product-card rounded-3xl p-6 flex flex-col items-center">
+  <div class="w-full flex justify-between items-start mb-4">
+    <span class="text-[10px] bg-yellow-500/20 text-yellow-500 px-2 py-1 rounded font-black tracking-tighter uppercase">30.000 Puffs</span>
+    <span class="text-[10px] bg-white/10 text-white px-2 py-1 rounded font-bold tracking-tight uppercase">Equator Series</span>
+  </div>
+
+  <div class="relative group w-full mb-6 text-center">
+    <img src="img/EQUATOR_30K.png.png" alt="Imagem do Pod equator" class="w-full h-48 object-contain transition-transform duration-500 group-hover:scale-110">
+    <div class="absolute inset-0 bg-yellow-600/10 blur-3xl -z-10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+  </div>
+
+  <h2 class="text-xl font-black mb-4 tracking-tight text-white group-hover:text-yellow-500 transition-colors uppercase text-center">Equator 30K</h2>
+  
+  <div class="w-full">
+    <p class="text-[10px] text-slate-500 mb-3 font-bold uppercase tracking-widest border-b border-white/5 pb-1 text-center">Sabores Selecionados:</p>
+    
+    <div class="flex flex-wrap gap-2 justify-center" id="sabores-equator">
+      <div class="flex flex-col items-center py-2">
+        <div class="loading-animation border-yellow-500/30"></div>
+        <span class="text-[10px] text-slate-600 mt-2 animate-pulse">Carregando estoque...</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="instabar" class="product-card rounded-3xl p-6 flex flex-col items-center">
+  <div class="w-full flex justify-between items-start mb-4">
+    <span class="text-[10px] bg-purple-600/20 text-purple-400 px-2 py-1 rounded font-black tracking-tighter uppercase">15.000 Puffs</span>
+    <span class="text-[10px] bg-white/10 text-white px-2 py-1 rounded font-bold tracking-tight uppercase flex items-center gap-1">
+      <span class="relative flex h-2 w-2">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
+        <span class="relative inline-flex rounded-full h-2 w-2 bg-purple-500"></span>
+      </span>
+      Trending
+    </span>
+  </div>
+
+  <div class="relative group w-full mb-6 text-center">
+    <img src="img/INSTA_BAR_15K.png.png" alt="Imagem do Insta Bar 15k" class="w-full h-48 object-contain transition-transform duration-500 group-hover:scale-110">
+    <div class="absolute inset-0 bg-purple-600/15 blur-3xl -z-10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+  </div>
+
+  <h2 class="text-xl font-black mb-4 tracking-tight text-white group-hover:text-purple-400 transition-colors uppercase text-center">Insta Bar 15K</h2>
+  
+  <div class="w-full">
+    <p class="text-[10px] text-slate-500 mb-3 font-bold uppercase tracking-widest border-b border-white/5 pb-1 text-center">Sabores do Momento:</p>
+    
+    <div class="flex flex-wrap gap-2 justify-center" id="sabores-instabar">
+      <div class="flex flex-col items-center py-2">
+        <div class="loading-animation border-purple-500/30"></div>
+        <span class="text-[10px] text-slate-600 mt-2 animate-pulse">Carregando feed...</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="flonq20k" class="product-card rounded-3xl p-6 flex flex-col items-center">
+  <div class="w-full flex justify-between items-start mb-4">
+    <span class="text-[10px] bg-blue-500/20 text-blue-400 px-2 py-1 rounded font-black tracking-tighter uppercase">20.000 Puffs</span>
+    <span class="text-[10px] bg-white/10 text-white px-2 py-1 rounded font-bold tracking-tight uppercase flex items-center gap-1">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+      </svg>
+      Smart Design
+    </span>
+  </div>
+
+  <div class="relative group w-full mb-6 text-center">
+    <img src="img/FLONQ_20K.png.png" alt="Imagem do Flonq 20k" class="w-full h-48 object-contain transition-transform duration-500 group-hover:scale-110">
+    <div class="absolute inset-0 bg-blue-400/10 blur-3xl -z-10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+  </div>
+
+  <h2 class="text-xl font-black mb-4 tracking-tight text-white group-hover:text-blue-400 transition-colors uppercase text-center">Flonq 20K</h2>
+  
+  <div class="w-full">
+    <p class="text-[10px] text-slate-500 mb-3 font-bold uppercase tracking-widest border-b border-white/5 pb-1 text-center">Sabores Tecnológicos:</p>
+    
+    <div class="flex flex-wrap gap-2 justify-center" id="sabores-flonq20k">
+      <div class="flex flex-col items-center py-2">
+        <div class="loading-animation border-blue-400/30"></div>
+        <span class="text-[10px] text-slate-600 mt-2 animate-pulse">Iniciando sistema...</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="airmez40k" class="product-card rounded-3xl p-6 flex flex-col items-center">
+  <div class="w-full flex justify-between items-start mb-4">
+    <span class="text-[10px] bg-cyan-500/20 text-cyan-400 px-2 py-1 rounded font-black tracking-tighter uppercase">40.000 Puffs</span>
+    <span class="text-[10px] bg-white/10 text-white px-2 py-1 rounded font-bold tracking-tight uppercase flex items-center gap-1">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+      </svg>
+      Aero Flow
+    </span>
+  </div>
+
+  <div class="relative group w-full mb-6 text-center">
+    <img src="img/AIRMEZ_40K.png.png" alt="Imagem do Airmez 40k" class="w-full h-48 object-contain transition-transform duration-500 group-hover:scale-110">
+    <div class="absolute inset-0 bg-cyan-600/10 blur-3xl -z-10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+  </div>
+
+  <h2 class="text-xl font-black mb-4 tracking-tight text-white group-hover:text-cyan-400 transition-colors uppercase text-center">Airmez 40K</h2>
+  
+  <div class="w-full">
+    <p class="text-[10px] text-slate-500 mb-3 font-bold uppercase tracking-widest border-b border-white/5 pb-1 text-center">Seleção de Sabores:</p>
+    
+    <div class="flex flex-wrap gap-2 justify-center" id="sabores-airmez40k">
+      <div class="flex flex-col items-center py-2">
+        <div class="loading-animation border-cyan-500/30"></div>
+        <span class="text-[10px] text-slate-600 mt-2 animate-pulse">Sincronizando ar...</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="oxbar50k" class="product-card rounded-3xl p-6 flex flex-col items-center">
+  <div class="w-full flex justify-between items-start mb-4">
+    <span class="text-[10px] bg-yellow-500/20 text-yellow-500 px-2 py-1 rounded font-black tracking-tighter uppercase border border-yellow-500/20">50.000 Puffs</span>
+    <span class="text-[10px] bg-white/10 text-white px-2 py-1 rounded font-bold tracking-tight uppercase flex items-center gap-1">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 text-yellow-500" viewBox="0 0 20 20" fill="currentColor">
+        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+      </svg>
+      Top de Linha
+    </span>
+  </div>
+
+  <div class="relative group w-full mb-6 text-center">
+    <img src="img/OXBAR_50K.png.png" alt="Imagem do Oxbar 50k" class="w-full h-48 object-contain transition-transform duration-500 group-hover:scale-110">
+    <div class="absolute inset-0 bg-yellow-600/20 blur-3xl -z-10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+  </div>
+
+  <h2 class="text-xl font-black mb-4 tracking-tight text-white group-hover:text-yellow-500 transition-colors uppercase text-center">Oxbar 50K</h2>
+  
+  <div class="w-full">
+    <p class="text-[10px] text-slate-500 mb-3 font-bold uppercase tracking-widest border-b border-white/5 pb-1 text-center">Sabores Premium:</p>
+    
+    <div class="flex flex-wrap gap-2 justify-center" id="sabores-oxbar50k">
+      <div class="flex flex-col items-center py-2">
+        <div class="loading-animation border-yellow-500/30"></div>
+        <span class="text-[10px] text-slate-600 mt-2 animate-pulse">Carregando estoque elite...</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="frosty10k" class="product-card rounded-3xl p-6 flex flex-col items-center">
+  <div class="w-full flex justify-between items-start mb-4">
+    <span class="text-[10px] bg-blue-400/20 text-blue-300 px-2 py-1 rounded font-black tracking-tighter uppercase">10.000 Puffs</span>
+    <span class="text-[10px] bg-white/10 text-white px-2 py-1 rounded font-bold tracking-tight uppercase flex items-center gap-1">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+      </svg>
+      Sub-Zero
+    </span>
+  </div>
+
+  <div class="relative group w-full mb-6 text-center">
+    <img src="img/Frosty_10k.png.png" alt="Imagem do Frosty 10k" class="w-full h-48 object-contain transition-transform duration-500 group-hover:scale-110">
+    <div class="absolute inset-0 bg-blue-300/10 blur-3xl -z-10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+  </div>
+
+  <h2 class="text-xl font-black mb-4 tracking-tight text-white group-hover:text-blue-300 transition-colors uppercase text-center">Frosty 10K</h2>
+  
+  <div class="w-full">
+    <p class="text-[10px] text-slate-500 mb-3 font-bold uppercase tracking-widest border-b border-white/5 pb-1 text-center">Sabores Gelados:</p>
+    
+    <div class="flex flex-wrap gap-2 justify-center" id="sabores-frosty10k">
+      <div class="flex flex-col items-center py-2">
+        <div class="loading-animation border-blue-300/30"></div>
+        <span class="text-[10px] text-slate-600 mt-2 animate-pulse">Congelando sabores...</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="icity12k" class="product-card rounded-3xl p-6 flex flex-col items-center">
+  <div class="w-full flex justify-between items-start mb-4">
+    <span class="text-[10px] bg-indigo-500/20 text-indigo-400 px-2 py-1 rounded font-black tracking-tighter uppercase">12.000 Puffs</span>
+    <span class="text-[10px] bg-white/10 text-white px-2 py-1 rounded font-bold tracking-tight uppercase flex items-center gap-1">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+      </svg>
+      Urban Style
+    </span>
+  </div>
+
+  <div class="relative group w-full mb-6 text-center">
+    <img src="img/ICITY_12K.png.png" alt="Imagem do Icity 12k" class="w-full h-48 object-contain transition-transform duration-500 group-hover:scale-110">
+    <div class="absolute inset-0 bg-indigo-600/15 blur-3xl -z-10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+  </div>
+
+  <h2 class="text-xl font-black mb-4 tracking-tight text-white group-hover:text-indigo-400 transition-colors uppercase text-center">Icity 12K</h2>
+  
+  <div class="w-full">
+    <p class="text-[10px] text-slate-500 mb-3 font-bold uppercase tracking-widest border-b border-white/5 pb-1 text-center font-mono">City Flavors Menu:</p>
+    
+    <div class="flex flex-wrap gap-2 justify-center" id="sabores-icity12k">
+      <div class="flex flex-col items-center py-2">
+        <div class="loading-animation border-indigo-500/30"></div>
+        <span class="text-[10px] text-slate-600 mt-2 animate-pulse">Mapeando estoque...</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+  </main>
+
+  <footer class="mt-16 text-center text-slate-500 text-sm">
+    <p>&copy; 2024 REI DO POD CAF - Todos os direitos reservados.</p>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
