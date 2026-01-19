@@ -11,16 +11,17 @@ async function carregarEstoqueReal() {
         const response = await fetch(`${LINK_CSV}&t=${new Date().getTime()}`);
         const csvText = await response.text();
         
-        // Remove mensagens de carregamento para limpar a tela
+        // Remove mensagens de "Buscando sabores..."
         document.querySelectorAll('.loading-msg').forEach(msg => msg.remove());
 
         const linhas = csvText.split(/\r?\n/);
         const estoque = {};
 
+        // Processa a planilha
         linhas.forEach((linha, index) => {
             if (index === 0 || !linha.trim()) return; 
             
-            // Suporte para vírgula ou ponto e vírgula (comum no Sheets Brasil)
+            // Suporte para vírgula ou ponto e vírgula (Google Sheets Brasil)
             const colunas = linha.split(/[,;](?=(?:(?:[^"]*"){2})*[^"]*$)/);
 
             if (colunas.length >= 3) {
@@ -28,7 +29,7 @@ async function carregarEstoqueReal() {
                 const sabor = colunas[1].trim();
                 const status = colunas[2].trim().toLowerCase();
                 
-                // Filtro flexível para "disponível"
+                // Filtra apenas o que está disponível (com ou sem acento)
                 if (status.includes("disponív") || status.includes("disponiv")) {
                     if (!estoque[id]) estoque[id] = [];
                     estoque[id].push(sabor);
@@ -36,20 +37,23 @@ async function carregarEstoqueReal() {
             }
         });
 
-        Object.keys(estoque).forEach(id => {
-            const container = document.getElementById(`sabores-${id}`);
-            if (container) {
-                // Seleção segura do título do produto para evitar erro de 'null'
+        // Pega todos os containers de sabores que existem no seu HTML
+        const todosContainers = document.querySelectorAll('[id^="sabores-"]');
+
+        todosContainers.forEach(container => {
+            const id = container.id.replace('sabores-', '').toLowerCase();
+            container.innerHTML = ""; // Limpa o container antes de renderizar
+
+            if (estoque[id] && estoque[id].length > 0) {
+                // SE TEM SABORES: Cria os botões Neon
                 const card = container.closest('section') || container.parentElement;
                 const h2 = card ? card.querySelector('h2') : null;
                 const nomeProduto = h2 ? h2.textContent.trim() : id.toUpperCase();
-                
-                container.innerHTML = ""; 
 
                 estoque[id].forEach(sabor => {
                     const link = document.createElement("a");
                     link.href = criarLinkWhatsApp(nomeProduto, sabor);
-                    link.target = "_blank"; 
+                    link.target = "_blank";
                     link.className = "group relative p-[1px] m-1.5 inline-block rounded-lg overflow-hidden transition-all duration-300 hover:scale-105 active:scale-95 no-underline";
                     
                     link.innerHTML = `
@@ -62,11 +66,19 @@ async function carregarEstoqueReal() {
                     `;
                     container.appendChild(link);
                 });
+            } else {
+                // SE NÃO TEM NO ESTOQUE: Mostra o aviso
+                const spanErro = document.createElement("span");
+                spanErro.className = "text-red-500/70 text-[10px] font-bold uppercase tracking-widest italic py-2 block";
+                spanErro.textContent = "❌ Falta no estoque";
+                container.appendChild(spanErro);
             }
         });
+
     } catch (e) { 
-        console.error("Falha na operação:", e); 
+        console.error("Erro ao carregar catálogo:", e); 
     }
 }
 
+// Inicia a carga quando o HTML estiver pronto
 document.addEventListener("DOMContentLoaded", carregarEstoqueReal);
