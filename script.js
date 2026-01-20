@@ -67,7 +67,7 @@ async function carregarEstoqueReal() {
                         <div class="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#3b82f6_0%,#10b981_50%,#3b82f6_100%)] opacity-80 group-hover:opacity-100 transition-opacity duration-500"></div>
                         
                         <div class="relative flex items-center justify-center px-6 py-3 bg-slate-900 rounded-[10px] text-white border border-white/10">
-                            <span class="text-[12px] font-black uppercase tracking-[0.12em] group-hover:text-blue-300 transition-colors drop-shadow-[0_0_8px_rgba(255,255,255,0.4)]">
+                            <span class="text-[11px] font-black uppercase tracking-[0.12em] group-hover:text-blue-300 transition-colors drop-shadow-[0_0_8px_rgba(255,255,255,0.4)]">
                                 ${sabor}
                             </span>
                         </div>
