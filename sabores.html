@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sabores Disponíveis — REI DO POD CAF</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href="style.css">
+  
+</head>
+<body class="relative">
+ 
+  <!-- ── Header ─────────────────────────────────────────── -->
+  <a href="index.html"
+     class="inline-flex items-center gap-2 m-6 text-blue-400 hover:text-blue-300 transition-colors text-sm font-medium">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+    </svg>
+    Voltar
+  </a>
+ 
+  <header class="text-center px-4 mb-10 relative z-10">
+    <p class="text-xs font-bold tracking-[.25em] uppercase text-blue-400 mb-3">Catálogo Atualizado</p>
+    <h1 class="text-4xl md:text-5xl font-black tracking-tight mb-3"
+        style="font-family:'Barlow Condensed',sans-serif;">
+      ESCOLHA SEU <span style="color:var(--accent)">SABOR</span>
+    </h1>
+    <p class="text-slate-400 text-sm max-w-md mx-auto">
+      Clique no sabor e seu pedido vai direto pro WhatsApp 💬
+    </p>
+  </header>
+ 
+  <!-- ── Busca ───────────────────────────────────────────── -->
+  <div class="relative z-10 px-4 max-w-7xl mx-auto">
+    <div class="search-wrap">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0"/>
+      </svg>
+      <input id="busca-sabor" type="search" placeholder="Buscar produto ou sabor…" autocomplete="off">
+    </div>
+  </div>
+ 
+  <!-- ── Grid de produtos ────────────────────────────────── -->
+  <main class="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 px-4 max-w-7xl mx-auto pb-20">
+ 
+    <!-- Ignite V55 -->
+    <section id="v55" class="product-card">
+      <div class="w-full flex justify-between items-start mb-4">
+        <span class="badge-puffs">5.500 Puffs</span>
+        <span class="badge-serie">Ignite V55</span>
+      </div>
+      <div class="img-wrap">
+        <img src="img/IGNITE_V55.png.png" alt="Ignite V55" loading="lazy">
+      </div>
+      <h2>Ignite V55</h2>
+      <p class="sabores-label">Disponível em Estoque</p>
+      <div id="sabores-v55" class="sabores-container">
+        <div class="loading-wrap">
+          <div class="loading-animation"></div>
+          <span class="loading-txt">Buscando sabores…</span>
+        </div>
+      </div>
+    </section>
+ 
+    <!-- Ignite V80 -->
+    <section id="v80" class="product-card">
+      <div class="w-full flex justify-between items-start mb-4">
+        <span class="badge-puffs" style="background:rgba(59,130,246,.15);color:#93c5fd;">8.000 Puffs</span>
+        <span class="badge-serie">Black Series</span>
+      </div>
+      <div class="img-wrap">
+        <img src="img/IGNITE-V80-BLACK.png.png" alt="Ignite V80 Black" loading="lazy">
+      </div>
+      <h2>Ignite V80</h2>
+      <p class="sabores-label">Menu de Sabores</p>
+      <div id="sabores-v80" class="sabores-container">
+        <div class="loading-wrap">
+          <div class="loading-animation"></div>
+          <span class="loading-txt">Sincronizando…</span>
+        </div>
+      </div>
+    </section>
+ 
+    <!-- Ignite V155 -->
+    <section id="v155" class="product-card">
+      <div class="w-full flex justify-between items-start mb-4">
+        <span class="badge-puffs" style="background:rgba(168,85,247,.15);color:#c4b5fd;">15.500 Puffs</span>
+        <span class="badge-serie">V155 Series</span>
+      </div>
+      <div class="img-wrap">
+        <img src="img/IGNITE_V155.png.png" alt="Ignite V155" loading="lazy">
+      </div>
+      <h2>Ignite V155</h2>
+      <p class="sabores-label">Disponível em Estoque</p>
+      <div id="sabores-v155" class="sabores-container">
+        <div class="loading-wrap">
+          <div class="loading-animation"></div>
+          <span class="loading-txt">Buscando sabores…</span>
+        </div>
+      </div>
+    </section>
+ 
+    <!-- Ignite V150 Pro -->
+    <section id="v150" class="product-card">
+      <div class="w-full flex justify-between items-start mb-4">
+        <span class="badge-puffs" style="background:rgba(245,158,11,.15);color:#fcd34d;">15.000 Puffs</span>
+        <span class="badge-serie">Pro Edition</span>
+      </div>
+      <div class="img-wrap">
+        <img src="img/IGNITE_V150_PRO.png.png" alt="Ignite V150 Pro" loading="lazy">
+      </div>
+      <h2>Ignite V150 Pro</h2>
+      <p class="sabores-label">Menu de Sabores</p>
+      <div id="sabores-v150" class="sabores-container">
+        <div class="loading-wrap">
+          <div class="loading-animation"></div>
+          <span class="loading-txt">Sincronizando estoque…</span>
+        </div>
+      </div>
+    </section>
+ 
+    <!-- Ignite V120 -->
+    <section id="v120" class="product-card">
+      <div class="w-full flex justify-between items-start mb-4">
+        <span class="badge-puffs" style="background:rgba(16,185,129,.15);color:#6ee7b7;">12.000 Puffs</span>
+        <span class="badge-serie">Airflow Control</span>
+      </div>
+      <div class="img-wrap">
+        <img src="img/IGNITE_V120.png.png" alt="Ignite V120" loading="lazy">
+      </div>
+      <h2>Ignite V120</h2>
+      <p class="sabores-label">Explorar Sabores</p>
+      <div id="sabores-v120" class="sabores-container">
+        <div class="loading-wrap">
+          <div class="loading-animation"></div>
+          <span class="loading-txt">Buscando estoque…</span>
+        </div>
+      </div>
+    </section>
+ 
+    <!-- Ignite V250 -->
+    <section id="v250" class="product-card">
+      <div class="w-full flex justify-between items-start mb-4">
+        <span class="badge-puffs" style="background:rgba(239,68,68,.15);color:#fca5a5;">25.000 Puffs</span>
+        <span class="badge-serie">Long Lasting</span>
+      </div>
+      <div class="img-wrap">
+        <img src="img/IGNITE_V250.png.png" alt="Ignite V250" loading="lazy">
+      </div>
+      <h2>Ignite V250</h2>
+      <p class="sabores-label">Sabores em Estoque</p>
+      <div id="sabores-v250" class="sabores-container">
+        <div class="loading-wrap">
+          <div class="loading-animation"></div>
+          <span class="loading-txt">Verificando sabores…</span>
+        </div>
+      </div>
+    </section>
+ 
+    <!-- Ignite V300 -->
+    <section id="v300" class="product-card">
+      <div class="w-full flex justify-between items-start mb-4">
+        <span class="badge-puffs" style="background:rgba(99,102,241,.15);color:#a5b4fc;">30.000 Puffs</span>
+        <span class="badge-serie">Double Tank</span>
+      </div>
+      <div class="img-wrap">
+        <img src="img/IGNITE_V300.png.png" alt="Ignite V300" loading="lazy">
+      </div>
+      <h2>Ignite V300</h2>
+      <p class="sabores-label">Sabores Disponíveis</p>
+      <div id="sabores-v300" class="sabores-container">
+        <div class="loading-wrap">
+          <div class="loading-animation"></div>
+          <span class="loading-txt">Consultando estoque…</span>
+        </div>
+      </div>
+    </section>
+ 
+    <!-- Ignite V400 -->
+    <section id="v400" class="product-card">
+      <div class="w-full flex justify-between items-start mb-4">
+        <span class="badge-puffs" style="background:rgba(236,72,153,.15);color:#f9a8d4;">40.000 Puffs</span>
+        <span class="badge-serie">Turbo Mode</span>
+      </div>
+      <div class="img-wrap">
+        <img src="img/IGNITE_V400ICE.png.png" alt="Ignite V400" loading="lazy">
+      </div>
+      <h2>Ignite V400</h2>
+      <p class="sabores-label">Menu de Sabores</p>
+      <div id="sabores-v400" class="sabores-container">
+        <div class="loading-wrap">
+          <div class="loading-animation"></div>
+          <span class="loading-txt">Sincronizando estoque…</span>
+        </div>
+      </div>
+    </section>
+ 
+    <!-- Ignite V400 Mix -->
+    <section id="v400mix" class="product-card">
+      <div class="w-full flex justify-between items-start mb-4">
+        <span class="badge-puffs" style="background:rgba(249,115,22,.15);color:#fdba74;">40.000 Puffs</span>
+        <span class="badge-serie">Mixed Edition</span>
+      </div>
+      <div class="img-wrap">
+        <img src="img/IGNITE_V400.png.png" alt="Ignite V400 Mix" loading="lazy">
+      </div>
+      <h2>Ignite V400 Mix</h2>
+      <p class="sabores-label">Sabores Mix Disponíveis</p>
+      <div id="sabores-v400mix" class="sabores-container">
+        <div class="loading-wrap">
+          <div class="loading-animation"></div>
+          <span class="loading-txt">Carregando combinações…</span>
+        </div>
+      </div>
+    </section>
+ 
+    <!-- Ignite V400 Sweet -->
+    <section id="v400sweet" class="product-card">
+      <div class="w-full flex justify-between items-start mb-4">
+        <span class="badge-puffs" style="background:rgba(6,182,212,.15);color:#67e8f9;">40.000 Puffs</span>
+        <span class="badge-serie">Sweet Series</span>
+      </div>
+      <div class="img-wrap">
+        <img src="img/IGNITE_V400_SWEET.png.png" alt="Ignite V400 Sweet" loading="lazy">
+      </div>
+      <h2>Ignite V400 Sweet</h2>
+      <p class="sabores-label">Sabores Adocicados</p>
+      <div id="sabores-v400sweet" class="sabores-container">
+        <div class="loading-wrap">
+          <div class="loading-animation"></div>
+          <span class="loading-txt">Consultando cardápio…</span>
+        </div>
+      </div>
+    </section>
+ 
+    <!-- Refil Ignite P100 -->
+    <section id="v100refil" class="product-card">
+      <div class="w-full flex justify-between items-start mb-4">
+        <span class="badge-puffs" style="background:rgba(148,163,184,.1);color:#cbd5e1;">10.000 Puffs</span>
+        <span class="badge-serie">Refill System</span>
+      </div>
+      <div class="img-wrap">
+        <img src="img/REFIL_IGNITE_P100.png.png" alt="Refil Ignite P100" loading="lazy">
+      </div>
+      <h2>Refil Ignite P100</h2>
+      <p class="sabores-label">Sabores de Reposição</p>
+      <div id="sabores-v100refil" class="sabores-container">
+        <div class="loading-wrap">
+          <div class="loading-animation"></div>
+          <span class="loading-txt">Atualizando estoque…</span>
+        </div>
+      </div>
+    </section>
+ 
+    <!-- Refil Life 8K -->
+    <section id="liferef8k" class="product-card">
+      <div class="w-full flex justify-between items-start mb-4">
+        <span class="badge-puffs" style="background:rgba(132,204,22,.15);color:#bef264;">8.000 Puffs</span>
+        <span class="badge-serie">Life Pod Refill</span>
+      </div>
+      <div class="img-wrap">
+        <img src="img/REFIL-LIFE-POD.png.png" alt="Refil Life 8K" loading="lazy">
+      </div>
+      <h2>Refil Life 8K</h2>
+      <p class="sabores-label">Sabores Life Pod</p>
+      <div id="sabores-liferef8k" class="sabores-container">
+        <div class="loading-wrap">
+          <div class="loading-animation"></div>
+          <span class="loading-txt">Sincronizando sabores…</span>
+        </div>
+      </div>
+    </section>
+ 
+    <!-- Refil Life 10K -->
+    <section id="liferef10k" class="product-card">
+      <div class="w-full flex justify-between items-start mb-4">
+        <span class="badge-puffs" style="background:rgba(16,185,129,.15);color:#6ee7b7;">10.000 Puffs</span>
+        <span class="badge-serie">Life Pod 10K</span>
+      </div>
+      <div class="img-wrap">
+        <img src="img/REFIL_LIFE_10K.png.png" alt="Refil Life 10K" loading="lazy">
+      </div>
+      <h2>Refil Life 10K</h2>
+      <p class="sabores-label">Sabores em Estoque</p>
+      <div id="sabores-liferef10k" class="sabores-container">
+        <div class="loading-wrap">
+          <div class="loading-animation"></div>
+          <span class="loading-txt">Verificando sabores…</span>
+        </div>
+      </div>
+    </section>
+ 
+    <!-- Life Pod 40K -->
+    <section id="v400life" class="product-card">
+      <div class="w-full flex justify-between items-start mb-4">
+        <span class="badge-puffs" style="background:rgba(20,184,166,.15);color:#5eead4;">40.000 Puffs</span>
+        <span class="badge-serie">Extreme Life</span>
+      </div>
+      <div class="img-wrap">
+        <img src="img/LIFE_POD_40.000_DESCARTÁVEL.png.png" alt="Life Pod 40K" loading="lazy">
+      </div>
+      <h2>Life Pod 40K</h2>
+      <p class="sabores-label">Sabores Disponíveis</p>
+      <div id="sabores-v400life" class="sabores-container">
+        <div class="loading-wrap">
+          <div class="loading-animation"></div>
+          <span class="loading-txt">Consultando estoque…</span>
+        </div>
+      </div>
+    </section>
+ 
+    <!-- Elfbar TE 30K -->
+    <section id="elfbar" class="product-card">
+      <div class="w-full flex justify-between items-start mb-4">
+        <span class="badge-puffs" style="background:rgba(59,130,246,.15);color:#93c5fd;">30.000 Puffs</span>
+        <span class="badge-serie">Elfbar Official</span>
+      </div>
+      <div class="img-wrap">
+        <img src="img/ELFBAR_TE_30K.png.png" alt="Elfbar TE 30K" loading="lazy">
+      </div>
+      <h2>Elfbar TE 30K</h2>
+      <p class="sabores-label">Menu de Sabores</p>
+      <div id="sabores-elfbar" class="sabores-container">
+        <div class="loading-wrap">
+          <div class="loading-animation"></div>
+          <span class="loading-txt">Sincronizando sabores…</span>
+        </div>
+      </div>
+    </section>
+ 
+    <!-- Elfbar Ice King 40K -->
+    <section id="iceking" class="product-card">
+      <div class="w-full flex justify-between items-start mb-4">
+        <span class="badge-puffs" style="background:rgba(56,189,248,.15);color:#7dd3fc;">40.000 Puffs</span>
+        <span class="badge-serie">Ice King</span>
+      </div>
+      <div class="img-wrap">
+        <img src="img/ELFBAR_ICE_KING_40K.png.png" alt="Elfbar Ice King 40K" loading="lazy">
+      </div>
+      <h2>Elfbar Ice King 40K</h2>
+      <p class="sabores-label">Experiência Ultra-Gelada</p>
+      <div id="sabores-iceking" class="sabores-container">
+        <div class="loading-wrap">
+          <div class="loading-animation"></div>
+          <span class="loading-txt">Congelando estoque…</span>
+        </div>
+      </div>
+    </section>
+ 
+    <!-- Black Sheep 40K -->
+    <section id="blacksheep40k" class="product-card">
+      <div class="w-full flex justify-between items-start mb-4">
+        <span class="badge-puffs" style="background:rgba(255,255,255,.07);color:#e2e8f0;border:1px solid rgba(255,255,255,.1);">40.000 Puffs</span>
+        <span class="badge-serie" style="background:rgba(239,68,68,.15);color:#fca5a5;">Black Edition</span>
+      </div>
+      <div class="img-wrap">
+        <img src="img/BLACK_SHEEP_40K.png.png" alt="Black Sheep 40K" loading="lazy">
+      </div>
+      <h2>Black Sheep 40K</h2>
+      <p class="sabores-label">Linha de Sabores</p>
+      <div id="sabores-blacksheep40k" class="sabores-container">
+        <div class="loading-wrap">
+          <div class="loading-animation"></div>
+          <span class="loading-txt">Sincronizando Black Sheep…</span>
+        </div>
+      </div>
+    </section>
+ 
+    <!-- Equator 30K -->
+    <section id="equator" class="product-card">
+      <div class="w-full flex justify-between items-start mb-4">
+        <span class="badge-puffs" style="background:rgba(234,179,8,.15);color:#fde047;">30.000 Puffs</span>
+        <span class="badge-serie">Equator Series</span>
+      </div>
+      <div class="img-wrap">
+        <img src="img/EQUATOR_30K.png.png" alt="Equator 30K" loading="lazy">
+      </div>
+      <h2>Equator 30K</h2>
+      <p class="sabores-label">Sabores Selecionados</p>
+      <div id="sabores-equator" class="sabores-container">
+        <div class="loading-wrap">
+          <div class="loading-animation"></div>
+          <span class="loading-txt">Carregando estoque…</span>
+        </div>
+      </div>
+    </section>
+ 
+    <!-- Insta Bar 15K -->
+    <section id="instabar" class="product-card">
+      <div class="w-full flex justify-between items-start mb-4">
+        <span class="badge-puffs" style="background:rgba(168,85,247,.15);color:#d8b4fe;">15.000 Puffs</span>
+        <span class="badge-serie" style="display:flex;align-items:center;gap:.3rem;">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-purple-500"></span>
+          </span>
+          Trending
+        </span>
+      </div>
+      <div class="img-wrap">
+        <img src="img/INSTA_BAR_15K.png.png" alt="Insta Bar 15K" loading="lazy">
+      </div>
+      <h2>Insta Bar 15K</h2>
+      <p class="sabores-label">Sabores do Momento</p>
+      <div id="sabores-instabar" class="sabores-container">
+        <div class="loading-wrap">
+          <div class="loading-animation"></div>
+          <span class="loading-txt">Carregando feed…</span>
+        </div>
+      </div>
+    </section>
+ 
+    <!-- Flonq 20K -->
+    <section id="flonq20k" class="product-card">
+      <div class="w-full flex justify-between items-start mb-4">
+        <span class="badge-puffs" style="background:rgba(59,130,246,.15);color:#93c5fd;">20.000 Puffs</span>
+        <span class="badge-serie">Smart Design</span>
+      </div>
+      <div class="img-wrap">
+        <img src="img/FLONQ_20K.png.png" alt="Flonq 20K" loading="lazy">
+      </div>
+      <h2>Flonq 20K</h2>
+      <p class="sabores-label">Sabores Tecnológicos</p>
+      <div id="sabores-flonq20k" class="sabores-container">
+        <div class="loading-wrap">
+          <div class="loading-animation"></div>
+          <span class="loading-txt">Iniciando sistema…</span>
+        </div>
+      </div>
+    </section>
+ 
+    <!-- Airmez 40K -->
+    <section id="airmez40k" class="product-card">
+      <div class="w-full flex justify-between items-start mb-4">
+        <span class="badge-puffs" style="background:rgba(6,182,212,.15);color:#67e8f9;">40.000 Puffs</span>
+        <span class="badge-serie">Aero Flow</span>
+      </div>
+      <div class="img-wrap">
+        <img src="img/AIRMEZ_40K.png.png" alt="Airmez 40K" loading="lazy">
+      </div>
+      <h2>Airmez 40K</h2>
+      <p class="sabores-label">Seleção de Sabores</p>
+      <div id="sabores-airmez40k" class="sabores-container">
+        <div class="loading-wrap">
+          <div class="loading-animation"></div>
+          <span class="loading-txt">Sincronizando ar…</span>
+        </div>
+      </div>
+    </section>
+ 
+    <!-- Oxbar 50K -->
+    <section id="oxbar50k" class="product-card">
+      <div class="w-full flex justify-between items-start mb-4">
+        <span class="badge-puffs" style="background:rgba(234,179,8,.15);color:#fde047;border:1px solid rgba(234,179,8,.2);">50.000 Puffs</span>
+        <span class="badge-serie">Top de Linha ⭐</span>
+      </div>
+      <div class="img-wrap">
+        <img src="img/OXBAR_50K.png.png" alt="Oxbar 50K" loading="lazy">
+      </div>
+      <h2>Oxbar 50K</h2>
+      <p class="sabores-label">Sabores Premium</p>
+      <div id="sabores-oxbar50k" class="sabores-container">
+        <div class="loading-wrap">
+          <div class="loading-animation"></div>
+          <span class="loading-txt">Carregando estoque elite…</span>
+        </div>
+      </div>
+    </section>
+ 
+    <!-- Frosty 10K -->
+    <section id="frosty10k" class="product-card">
+      <div class="w-full flex justify-between items-start mb-4">
+        <span class="badge-puffs" style="background:rgba(147,197,253,.15);color:#bfdbfe;">10.000 Puffs</span>
+        <span class="badge-serie">Sub-Zero</span>
+      </div>
+      <div class="img-wrap">
+        <img src="img/Frosty_10k.png.png" alt="Frosty 10K" loading="lazy">
+      </div>
+      <h2>Frosty 10K</h2>
+      <p class="sabores-label">Sabores Gelados</p>
+      <div id="sabores-frosty10k" class="sabores-container">
+        <div class="loading-wrap">
+          <div class="loading-animation"></div>
+          <span class="loading-txt">Congelando sabores…</span>
+        </div>
+      </div>
+    </section>
+ 
+    <!-- Icity 12K -->
+    <section id="icity12k" class="product-card">
+      <div class="w-full flex justify-between items-start mb-4">
+        <span class="badge-puffs" style="background:rgba(99,102,241,.15);color:#a5b4fc;">12.000 Puffs</span>
+        <span class="badge-serie">Urban Style</span>
+      </div>
+      <div class="img-wrap">
+        <img src="img/ICITY_12K.png.png" alt="Icity 12K" loading="lazy">
+      </div>
+      <h2>Icity 12K</h2>
+      <p class="sabores-label">City Flavors Menu</p>
+      <div id="sabores-icity12k" class="sabores-container">
+        <div class="loading-wrap">
+          <div class="loading-animation"></div>
+          <span class="loading-txt">Mapeando estoque…</span>
+        </div>
+      </div>
+    </section>
+ 
+    <!-- Adalya 50K -->
+    <section id="adalya50k" class="product-card">
+      <div class="w-full flex justify-between items-start mb-4">
+        <span class="badge-puffs" style="background:rgba(147,197,253,.15);color:#bfdbfe;">50.000 Puffs</span>
+        <span class="badge-serie">Sub-Zero</span>
+      </div>
+      <div class="img-wrap">
+        <img src="img/ADALYA50K-removebg-preview.png" alt="Adalya 50K" loading="lazy">
+      </div>
+      <h2>Adalya 50K</h2>
+      <p class="sabores-label">Sabores Gelados</p>
+      <div id="sabores-adalya50k" class="sabores-container">
+        <div class="loading-wrap">
+          <div class="loading-animation"></div>
+          <span class="loading-txt">Congelando sabores…</span>
+        </div>
+      </div>
+    </section>
+ 
+    <!-- Vozol 20K -->
+    <section id="vozol20k" class="product-card">
+      <div class="w-full flex justify-between items-start mb-4">
+        <span class="badge-puffs" style="background:rgba(234,179,8,.15);color:#fde047;border:1px solid rgba(234,179,8,.2);">20.000 Puffs</span>
+        <span class="badge-serie">Top de Linha ⭐</span>
+      </div>
+      <div class="img-wrap">
+        <img src="img/VOZOL20K-removebg-preview.png" alt="Vozol 20K" loading="lazy">
+      </div>
+      <h2>Vozol 20K</h2>
+      <p class="sabores-label">Sabores Premium</p>
+      <div id="sabores-vozol20k" class="sabores-container">
+        <div class="loading-wrap">
+          <div class="loading-animation"></div>
+          <span class="loading-txt">Carregando estoque elite…</span>
+        </div>
+      </div>
+    </section>
+ 
+  </main>
+ 
+  <footer class="text-center text-slate-600 text-xs pb-8">
+    &copy; 2024 REI DO POD CAF — Todos os direitos reservados.
+  </footer>
+ 
+  <script src="script.js"></script>
+</body>
+</html>
+ 
