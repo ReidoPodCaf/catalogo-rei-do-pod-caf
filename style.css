@@ -240,6 +240,34 @@
     }
     .badge-puffs { background: rgba(59,130,246,.15); color: #93c5fd; }
     .badge-serie { background: rgba(255,255,255,.07); color: #e2e8f0; }
+
+    /* Variações de cor (aplicadas via atributo data-color) */
+    .badge-puffs[data-color="purple"], .badge-serie[data-color="purple"] { background: rgba(168,85,247,.15); color: #c4b5fd; }
+    .badge-puffs[data-color="purple-light"], .badge-serie[data-color="purple-light"] { background: rgba(168,85,247,.15); color: #d8b4fe; }
+    .badge-puffs[data-color="amber"], .badge-serie[data-color="amber"] { background: rgba(245,158,11,.15); color: #fcd34d; }
+    .badge-puffs[data-color="emerald"], .badge-serie[data-color="emerald"] { background: rgba(16,185,129,.15); color: #6ee7b7; }
+    .badge-puffs[data-color="red"], .badge-serie[data-color="red"] { background: rgba(239,68,68,.15); color: #fca5a5; }
+    .badge-puffs[data-color="indigo"], .badge-serie[data-color="indigo"] { background: rgba(99,102,241,.15); color: #a5b4fc; }
+    .badge-puffs[data-color="pink"], .badge-serie[data-color="pink"] { background: rgba(236,72,153,.15); color: #f9a8d4; }
+    .badge-puffs[data-color="orange"], .badge-serie[data-color="orange"] { background: rgba(249,115,22,.15); color: #fdba74; }
+    .badge-puffs[data-color="cyan"], .badge-serie[data-color="cyan"] { background: rgba(6,182,212,.15); color: #67e8f9; }
+    .badge-puffs[data-color="slate"], .badge-serie[data-color="slate"] { background: rgba(148,163,184,.1); color: #cbd5e1; }
+    .badge-puffs[data-color="lime"], .badge-serie[data-color="lime"] { background: rgba(132,204,22,.15); color: #bef264; }
+    .badge-puffs[data-color="teal"], .badge-serie[data-color="teal"] { background: rgba(20,184,166,.15); color: #5eead4; }
+    .badge-puffs[data-color="sky"], .badge-serie[data-color="sky"] { background: rgba(56,189,248,.15); color: #7dd3fc; }
+    .badge-puffs[data-color="lightblue"], .badge-serie[data-color="lightblue"] { background: rgba(147,197,253,.15); color: #bfdbfe; }
+    .badge-puffs[data-color="yellow"], .badge-serie[data-color="yellow"] { background: rgba(234,179,8,.15); color: #fde047; border: 1px solid rgba(234,179,8,.2); }
+    .badge-puffs[data-color="white"], .badge-serie[data-color="white"] { background: rgba(255,255,255,.07); color: #e2e8f0; border: 1px solid rgba(255,255,255,.1); }
+
+    /* ── Linha de badges do card ────────────────────────── */
+    .card-badges {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+    }
+    .card-badges.single { justify-content: flex-end; }
  
     /* ── Oculto (busca) ────────────────────────────────── */
     section[hidden] { display: none !important; }
