@@ -190,20 +190,30 @@
     /* ── Estado: sem estoque ───────────────────────────── */
     .sem-estoque {
       width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .4rem;
       text-align: center;
-      font-size: .7rem;
+      font-size: .65rem;
+      font-weight: 500;
+      letter-spacing: .04em;
+      color: #fca5a5;
+      padding: .65rem;
+      border: 1px dashed rgba(239,68,68,.25);
+      border-radius: .75rem;
+      background: rgba(239,68,68,.03);
+    }
+    .sem-estoque svg { width: 13px; height: 13px; flex-shrink: 0; opacity: .7; }
+
+    .sem-estoque--erro {
+      color: #f97316;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: .12em;
-      color: #ef4444;
-      padding: .75rem;
-      border: 1px solid rgba(239,68,68,.15);
-      border-radius: .75rem;
-      background: rgba(239,68,68,.04);
-      font-style: italic;
-      opacity: .8;
+      border: 1px solid rgba(249,115,22,.15);
+      background: rgba(249,115,22,.04);
     }
-    .sem-estoque--erro { color: #f97316; border-color: rgba(249,115,22,.15); background: rgba(249,115,22,.04); }
  
     /* ── Loading ───────────────────────────────────────── */
     .loading-wrap {

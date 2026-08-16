@@ -13,135 +13,137 @@ const CONFIG = {
 // (ver parseCsv) — não altere sem atualizar a planilha também.
 // `color` referencia as variações de badge definidas em style.css
 // (data-color); omitido = azul padrão.
+// `ativo: false` tira o produto do catálogo sem apagar os dados —
+// pra reativar, é só remover essa propriedade (ou trocar para true).
 
 const PRODUTOS = [
   // ── Ignite (linha V, por número crescente) ──────────────
   { id: "v55", title: "Ignite V55", alt: "Ignite V55", img: "IGNITE_V55.png",
     puffs: "5.500 Puffs", serie: "Ignite V55",
-    label: "Disponível em Estoque", loadingText: "Buscando sabores…" },
+    label: "Disponível em Estoque", loadingText: "Buscando sabores…", ativo: true },
 
   { id: "v80", title: "Ignite V80", alt: "Ignite V80 Black", img: "IGNITE_V80_BLACK.png",
     puffs: "8.000 Puffs", serie: "Black Series",
-    label: "Menu de Sabores", loadingText: "Sincronizando…" },
+    label: "Menu de Sabores", loadingText: "Sincronizando…", ativo: true },
 
   { id: "v150", title: "Ignite V150 Pro", alt: "Ignite V150 Pro", img: "IGNITE_V150_PRO.png",
     puffs: "15.000 Puffs", color: "amber", serie: "Pro Edition",
-    label: "Menu de Sabores", loadingText: "Sincronizando estoque…" },
+    label: "Menu de Sabores", loadingText: "Sincronizando estoque…", ativo: true },
 
   { id: "v155", title: "Ignite V155", alt: "Ignite V155", img: "IGNITE_V155.png",
     puffs: "15.500 Puffs", color: "purple", serie: "V155 Series",
-    label: "Disponível em Estoque", loadingText: "Buscando sabores…" },
+    label: "Disponível em Estoque", loadingText: "Buscando sabores…", ativo: true },
 
   { id: "v200", title: "Ignite V200", alt: "Ignite V200", img: "IGNITE_200.png",
     puffs: "12.000 Puffs", color: "emerald", serie: "Airflow Control",
-    label: "Explorar Sabores", loadingText: "Buscando estoque…" },
+    label: "Explorar Sabores", loadingText: "Buscando estoque…", ativo: true },
 
   { id: "v250", title: "Ignite V250", alt: "Ignite V250", img: "IGNITE_V250.png",
     puffs: "25.000 Puffs", color: "red", serie: "Long Lasting",
-    label: "Sabores em Estoque", loadingText: "Verificando sabores…" },
+    label: "Sabores em Estoque", loadingText: "Verificando sabores…", ativo: true },
 
   { id: "v300", title: "Ignite V300", alt: "Ignite V300", img: "IGNITE_V300.png",
     puffs: "30.000 Puffs", color: "indigo", serie: "Double Tank",
-    label: "Sabores Disponíveis", loadingText: "Consultando estoque…" },
+    label: "Sabores Disponíveis", loadingText: "Consultando estoque…", ativo: true },
 
   { id: "v400", title: "Ignite V400", alt: "Ignite V400", img: "IGNITE_V400_ICE.png",
     puffs: "40.000 Puffs", color: "pink", serie: "Turbo Mode",
-    label: "Menu de Sabores", loadingText: "Sincronizando estoque…" },
+    label: "Menu de Sabores", loadingText: "Sincronizando estoque…", ativo: true },
 
   { id: "v400slim", title: "Ignite V400 Ice Slim", alt: "Ignite V400 Ice Slim", img: "IGNITE_V400_ICE_SLIM.png",
     puffs: "40.000 Puffs", color: "indigo", serie: "Slim Design",
-    label: "Sabores Ice Slim", loadingText: "Resfriando estoque…" },
+    label: "Sabores Ice Slim", loadingText: "Resfriando estoque…", ativo: true },
 
   { id: "v400mix", title: "Ignite V400 Mix", alt: "Ignite V400 Mix", img: "IGNITE_V400.png",
     puffs: "40.000 Puffs", color: "orange", serie: "Mixed Edition",
-    label: "Sabores Mix Disponíveis", loadingText: "Carregando combinações…" },
+    label: "Sabores Mix Disponíveis", loadingText: "Carregando combinações…", ativo: true },
 
   { id: "v400sweet", title: "Ignite V400 Sweet", alt: "Ignite V400 Sweet", img: "IGNITE_V400_SWEET.png",
     puffs: "40.000 Puffs", color: "cyan", serie: "Sweet Series",
-    label: "Sabores Adocicados", loadingText: "Consultando cardápio…" },
+    label: "Sabores Adocicados", loadingText: "Consultando cardápio…", ativo: true },
 
   { id: "v500", title: "Ignite V500", alt: "Ignite V500", img: "IGNITE_V500.png",
     puffs: "50.000 Puffs", color: "yellow", serie: "Flagship Edition",
-    label: "Sabores Premium", loadingText: "Carregando estoque flagship…" },
+    label: "Sabores Premium", loadingText: "Carregando estoque flagship…", ativo: true },
 
   { id: "shisha", title: "Ignite Shisha 40K", alt: "Ignite Shisha 40K", img: "IGNITE_SHISHA_40K.png",
     puffs: "40.000 Puffs", color: "amber", serie: "Shisha Blend",
-    label: "Sabores de Narguilé", loadingText: "Preparando o narguilé…" },
+    label: "Sabores de Narguilé", loadingText: "Preparando o narguilé…", ativo: true },
 
   { id: "v100refil", title: "Refil Ignite P100", alt: "Refil Ignite P100", img: "REFIL_IGNITE_P100.png",
     puffs: "10.000 Puffs", color: "slate", serie: "Refill System",
-    label: "Sabores de Reposição", loadingText: "Atualizando estoque…" },
+    label: "Sabores de Reposição", loadingText: "Atualizando estoque…", ativo: true },
 
   // ── Life Pod (por puffs crescente) ──────────────────────
   { id: "liferef8k", title: "Refil Life 8K", alt: "Refil Life 8K", img: "REFIL_LIFE_POD.png",
     puffs: "8.000 Puffs", color: "lime", serie: "Life Pod Refill",
-    label: "Sabores Life Pod", loadingText: "Sincronizando sabores…" },
+    label: "Sabores Life Pod", loadingText: "Sincronizando sabores…", ativo: true },
 
   { id: "liferef10k", title: "Refil Life 10K", alt: "Refil Life 10K", img: "REFIL_LIFE_10K.png",
     puffs: "10.000 Puffs", color: "emerald", serie: "Life Pod 10K",
-    label: "Sabores em Estoque", loadingText: "Verificando sabores…" },
+    label: "Sabores em Estoque", loadingText: "Verificando sabores…", ativo: true },
 
   { id: "lifepodfit", title: "Life Pod Fit 30K", alt: "Life Pod Fit 30K", img: "LIFE_POD_FIT_30k.png",
     puffs: "30.000 Puffs", color: "lightblue", serie: "Fit Design",
-    label: "Sabores Fit", loadingText: "Ajustando estoque…" },
+    label: "Sabores Fit", loadingText: "Ajustando estoque…", ativo: true },
 
   { id: "v400life", title: "Life Pod 40K", alt: "Life Pod 40K", img: "LIFE_POD_40.000_DESCARTÁVEL.png",
     puffs: "40.000 Puffs", color: "teal", serie: "Extreme Life",
-    label: "Sabores Disponíveis", loadingText: "Consultando estoque…" },
+    label: "Sabores Disponíveis", loadingText: "Consultando estoque…", ativo: true },
 
   { id: "lifepodsk", title: "Life Pod SK", alt: "Life Pod SK", img: "LIFE_POD_SK.png",
     serie: "Special Edition",
-    label: "Sabores Premium", loadingText: "Carregando estoque elite…" },
+    label: "Sabores Premium", loadingText: "Carregando estoque elite…", ativo: true },
 
   // ── Elfbar (por puffs crescente) ────────────────────────
   { id: "elfbar", title: "Elfbar TE 30K", alt: "Elfbar TE 30K", img: "ELFBAR_TE_30K.png",
     puffs: "30.000 Puffs", serie: "Elfbar Official",
-    label: "Menu de Sabores", loadingText: "Sincronizando sabores…" },
+    label: "Menu de Sabores", loadingText: "Sincronizando sabores…", ativo: true },
 
   { id: "iceking", title: "Elfbar Ice King 40K", alt: "Elfbar Ice King 40K", img: "ELFBAR_ICE_KING_40K.png",
     puffs: "40.000 Puffs", color: "sky", serie: "Ice King",
-    label: "Experiência Ultra-Gelada", loadingText: "Congelando estoque…" },
+    label: "Experiência Ultra-Gelada", loadingText: "Congelando estoque…", ativo: true },
 
   // ── Outras marcas ────────────────────────────────────────
   { id: "blacksheep40k", title: "Black Sheep 40K", alt: "Black Sheep 40K", img: "BLACK_SHEEP_40K.png",
     puffs: "40.000 Puffs", color: "white", serie: "Black Edition", serieColor: "red",
-    label: "Linha de Sabores", loadingText: "Sincronizando Black Sheep…" },
+    label: "Linha de Sabores", loadingText: "Sincronizando Black Sheep…", ativo: true },
 
   { id: "instabar", title: "Insta Bar 15K", alt: "Insta Bar 15K", img: "INSTA_BAR_15K.png",
     puffs: "15.000 Puffs", color: "purple-light", serie: "Trending", trending: true,
-    label: "Sabores do Momento", loadingText: "Carregando feed…" },
+    label: "Sabores do Momento", loadingText: "Carregando feed…", ativo: false },
 
   { id: "flonq20k", title: "Flonq 20K", alt: "Flonq 20K", img: "FLONQ_20K.png",
     puffs: "20.000 Puffs", serie: "Smart Design",
-    label: "Sabores Tecnológicos", loadingText: "Iniciando sistema…" },
+    label: "Sabores Tecnológicos", loadingText: "Iniciando sistema…", ativo: false },
 
   { id: "airmez40k", title: "Airmez 40K", alt: "Airmez 40K", img: "AIRMEZ_40K.png",
     puffs: "40.000 Puffs", color: "cyan", serie: "Aero Flow",
-    label: "Seleção de Sabores", loadingText: "Sincronizando ar…" },
+    label: "Seleção de Sabores", loadingText: "Sincronizando ar…", ativo: true },
 
   { id: "frosty10k", title: "Frosty 10K", alt: "Frosty 10K", img: "Frosty_10k.png",
     puffs: "10.000 Puffs", color: "lightblue", serie: "Sub-Zero",
-    label: "Sabores Gelados", loadingText: "Congelando sabores…" },
+    label: "Sabores Gelados", loadingText: "Congelando sabores…", ativo: true },
 
   { id: "icity12k", title: "Icity 12K", alt: "Icity 12K", img: "ICITY_12K.png",
     puffs: "12.000 Puffs", color: "indigo", serie: "Urban Style",
-    label: "City Flavors Menu", loadingText: "Mapeando estoque…" },
+    label: "City Flavors Menu", loadingText: "Mapeando estoque…", ativo: true },
 
   { id: "adalya50k", title: "Adalya 50K", alt: "Adalya 50K", img: "ADALYA_50K.png",
     puffs: "50.000 Puffs", color: "lightblue", serie: "Sub-Zero",
-    label: "Sabores Gelados", loadingText: "Congelando sabores…" },
+    label: "Sabores Gelados", loadingText: "Congelando sabores…", ativo: true },
 
   { id: "vozol20k", title: "Vozol 20K", alt: "Vozol 20K", img: "VOZOL_20K.png",
     puffs: "20.000 Puffs", color: "yellow", serie: "Top de Linha ⭐",
-    label: "Sabores Premium", loadingText: "Carregando estoque elite…" },
+    label: "Sabores Premium", loadingText: "Carregando estoque elite…", ativo: true },
 
   { id: "lostyvape10k", title: "Losty Vape 10K", alt: "Losty Vape 10K", img: "LOSTY_VAPE_10K.png",
     puffs: "10.000 Puffs", color: "emerald", serie: "Losty Vape",
-    label: "Sabores Premium", loadingText: "Carregando estoque elite…" },
+    label: "Sabores Premium", loadingText: "Carregando estoque elite…", ativo: true },
 
   { id: "extremebar30k", title: "Extreme Bar 30K", alt: "Extreme Bar 30K", img: "EXTREME_BAR_30.png",
     puffs: "30.000 Puffs", color: "red", serie: "Extreme Mode",
-    label: "Sabores Premium", loadingText: "Carregando estoque elite…" },
+    label: "Sabores Premium", loadingText: "Carregando estoque elite…", ativo: true },
 ];
 
 // ─── Utilitários ────────────────────────────────────────────
@@ -266,7 +268,9 @@ function renderizarCatalogo() {
   if (!grid) return;
 
   const frag = document.createDocumentFragment();
-  PRODUTOS.forEach(produto => frag.appendChild(criarCardProduto(produto)));
+  PRODUTOS
+    .filter(produto => produto.ativo !== false)
+    .forEach(produto => frag.appendChild(criarCardProduto(produto)));
   grid.appendChild(frag);
 }
 
@@ -300,7 +304,13 @@ function criarBadgeSabor(produto, sabor) {
 function criarMsgSemEstoque() {
   const el = document.createElement("p");
   el.className = "sem-estoque";
-  el.textContent = "Indisponível no momento";
+  el.innerHTML = `
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="9"/>
+      <path d="M12 7v5l3 3"/>
+    </svg>
+    Indisponível no momento
+  `;
   return el;
 }
 
