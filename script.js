@@ -15,6 +15,11 @@ const CONFIG = {
 // (data-color); omitido = azul padrão.
 // `ativo: false` tira o produto do catálogo sem apagar os dados —
 // pra reativar, é só remover essa propriedade (ou trocar para true).
+// `semSabor: true` é para produto único, sem variação de sabor (ex:
+// a bateria do Life Pod) — mostra um botão único de pedido em vez de
+// uma lista de sabores, e a mensagem do WhatsApp não menciona sabor.
+// Na planilha, o texto da coluna Nome_Sabor não importa nesse caso,
+// só a coluna de disponibilidade.
 
 const PRODUTOS = [
   // ── Ignite (linha V, por número crescente) ──────────────
@@ -76,8 +81,8 @@ const PRODUTOS = [
 
   // ── Life Pod (por puffs crescente) ──────────────────────
   { id: "lifepodbateria", title: "Life Pod Bateria 20K", alt: "Life Pod Bateria 20K", img: "LIFE_POD_BATERIA_20K.png",
-    puffs: "20.000 Puffs", color: "indigo", serie: "Kit Bateria",
-    label: "Sabores Disponíveis", loadingText: "Carregando bateria…", ativo: true },
+    puffs: "20.000 Puffs", color: "indigo", serie: "Kit Bateria", semSabor: true,
+    label: "Disponibilidade", loadingText: "Carregando bateria…", ativo: true },
 
   { id: "liferef20k", title: "Refil Life Pod 20K", alt: "Refil Life Pod 20K", img: "LIFE_POD_REFIL_20K.png",
     puffs: "20.000 Puffs", color: "cyan", serie: "Refil 20K",
@@ -160,7 +165,9 @@ const PRODUTOS = [
  * Monta o link do WhatsApp com produto e sabor.
  */
 function linkWhatsApp(produto, sabor) {
-  const msg = `Olá! Gostaria de ${produto} sabor ${sabor}. Está disponível?`;
+  const msg = sabor
+    ? `Olá! Gostaria de ${produto} sabor ${sabor}. Está disponível?`
+    : `Olá! Gostaria de ${produto}. Está disponível?`;
   return `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(msg)}`;
 }
 
@@ -293,14 +300,14 @@ function criarBadgeSabor(produto, sabor) {
   link.target = "_blank";
   link.rel    = "noopener noreferrer";
   link.className = "sabor-badge";
-  link.setAttribute("aria-label", `Pedir ${produto} sabor ${sabor} via WhatsApp`);
+  link.setAttribute("aria-label", sabor ? `Pedir ${produto} sabor ${sabor} via WhatsApp` : `Pedir ${produto} via WhatsApp`);
 
   const glow = document.createElement("span");
   glow.className = "sabor-badge__glow";
 
   const text = document.createElement("span");
   text.className = "sabor-badge__text";
-  text.textContent = sabor;
+  text.textContent = sabor || "Fazer Pedido";
 
   link.append(glow, text);
   return link;
@@ -340,6 +347,7 @@ function renderizarEstoque(estoque) {
 
   containers.forEach(container => {
     const id = container.id.replace("sabores-", "").toLowerCase();
+    const produtoInfo = PRODUTOS.find(p => p.id === id);
 
     // Pega o nome do produto no <h2> da section pai
     const section    = container.closest("section");
@@ -349,12 +357,15 @@ function renderizarEstoque(estoque) {
     container.innerHTML = "";
 
     const sabores = estoque.get(id);
-    if (sabores?.length) {
+    if (!sabores?.length) {
+      container.appendChild(criarMsgSemEstoque());
+    } else if (produtoInfo?.semSabor) {
+      // Produto único, sem variação de sabor — um só botão de pedido.
+      container.appendChild(criarBadgeSabor(nomeProduto));
+    } else {
       const frag = document.createDocumentFragment();
       sabores.forEach(sabor => frag.appendChild(criarBadgeSabor(nomeProduto, sabor)));
       container.appendChild(frag);
-    } else {
-      container.appendChild(criarMsgSemEstoque());
     }
   });
 }
