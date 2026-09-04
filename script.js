@@ -75,6 +75,14 @@ const PRODUTOS = [
     label: "Sabores de Reposição", loadingText: "Atualizando estoque…", ativo: true },
 
   // ── Life Pod (por puffs crescente) ──────────────────────
+  { id: "lifepodbateria", title: "Life Pod Bateria 20K", alt: "Life Pod Bateria 20K", img: "LIFE_POD_BATERIA_20K.png",
+    puffs: "20.000 Puffs", color: "indigo", serie: "Kit Bateria",
+    label: "Sabores Disponíveis", loadingText: "Carregando bateria…", ativo: true },
+
+  { id: "liferef20k", title: "Refil Life Pod 20K", alt: "Refil Life Pod 20K", img: "LIFE_POD_REFIL_20K.png",
+    puffs: "20.000 Puffs", color: "cyan", serie: "Refil 20K",
+    label: "Sabores do Refil", loadingText: "Reabastecendo estoque…", ativo: true },
+
   { id: "liferef8k", title: "Refil Life 8K", alt: "Refil Life 8K", img: "REFIL_LIFE_POD.png",
     puffs: "8.000 Puffs", color: "lime", serie: "Life Pod Refill",
     label: "Sabores Life Pod", loadingText: "Sincronizando sabores…", ativo: true },
