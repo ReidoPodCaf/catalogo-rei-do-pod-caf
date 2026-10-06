@@ -11,13 +11,17 @@ body {
   min-height: 100vh;
 }
 
+/* Nada pode empurrar a página para o lado no celular
+   ("clip" em vez de "hidden" para não quebrar a barra fixa de busca). */
+html, body { overflow-x: clip; }
+
 /* Brilho dourado discreto no topo da página */
 body::before {
   content: '';
   position: absolute;
   top: -12rem;
   left: 50%;
-  width: 60rem;
+  width: min(60rem, 100%); /* 60rem fixo vazava 290px para a direita no celular */
   height: 30rem;
   transform: translateX(-50%);
   background: radial-gradient(ellipse at center, rgba(230,199,102,.10), transparent 65%);
