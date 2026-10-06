@@ -1,163 +1,44 @@
 // ============================================================
-//  REI DO POD CAF — script.js  (refatorado)
+//  REI DO POD CAF — script.js  (catálogo de sabores)
+//  Os produtos e sabores vêm do Supabase (cadastrados pelo painel
+//  admin.html). Usa CONFIG e os utilitários de comum.js.
 // ============================================================
 
-const CONFIG = {
-  whatsapp: "5545998078084",
-  csvUrl: "https://docs.google.com/spreadsheets/d/e/2PACX-1vQestH5Bew_6ivl5vs3AxAFmHi23SPcBiPt9nEEi3SKZCK67wsfUrM7qNtQUvCuk7MVbQD_5bXfFYtf/pub?output=csv",
-};
+// ─── Dados ──────────────────────────────────────────────────
 
-// ─── Catálogo de produtos ───────────────────────────────────
-//
-// `id` também é a chave usada para casar com a coluna A da planilha
-// (ver parseCsv) — não altere sem atualizar a planilha também.
-// `color` referencia as variações de badge definidas em style.css
-// (data-color); omitido = azul padrão.
-// `ativo: false` tira o produto do catálogo sem apagar os dados —
-// pra reativar, é só remover essa propriedade (ou trocar para true).
-// `semSabor: true` é para produto único, sem variação de sabor (ex:
-// a bateria do Life Pod) — mostra um botão único de pedido em vez de
-// uma lista de sabores, e a mensagem do WhatsApp não menciona sabor.
-// Na planilha, o texto da coluna Nome_Sabor não importa nesse caso,
-// só a coluna de disponibilidade.
+/**
+ * Busca os produtos ativos com seus sabores, na ordem definida no painel.
+ * A leitura é pública; as regras do banco (RLS) só entregam produtos ativos.
+ */
+async function buscarCatalogo() {
+  // "*" traz também a data de cadastro, usada no selo "Novo"
+  const campos = "*,sabores(nome,disponivel,ordem)";
+  const url = `${CONFIG.supabaseUrl}/rest/v1/produtos?select=${campos}` +
+              "&ativo=eq.true&order=ordem.asc,nome.asc&sabores.order=ordem.asc,nome.asc";
 
-const PRODUTOS = [
-  // ── Ignite (linha V, por número crescente) ──────────────
-  { id: "v55", title: "Ignite V55", alt: "Ignite V55", img: "IGNITE_V55.png",
-    puffs: "5.500 Puffs", serie: "Ignite V55",
-    label: "Disponível em Estoque", loadingText: "Buscando sabores…", ativo: true },
+  const resposta = await fetch(url, { headers: { apikey: CONFIG.supabaseKey } });
+  if (!resposta.ok) throw new Error(`HTTP ${resposta.status}`);
+  return resposta.json();
+}
 
-  { id: "v80", title: "Ignite V80", alt: "Ignite V80 Black", img: "IGNITE_V80_BLACK.png",
-    puffs: "8.000 Puffs", serie: "Black Series",
-    label: "Menu de Sabores", loadingText: "Sincronizando…", ativo: true },
+/** Sabores que podem ser pedidos agora. */
+function saboresDisponiveis(produto) {
+  return produto.sabores.filter(s => s.disponivel).map(s => s.nome);
+}
 
-  { id: "v150", title: "Ignite V150 Pro", alt: "Ignite V150 Pro", img: "IGNITE_V150_PRO.png",
-    puffs: "15.000 Puffs", color: "amber", serie: "Pro Edition",
-    label: "Menu de Sabores", loadingText: "Sincronizando estoque…", ativo: true },
+/** Produto tem alguma coisa para pedir agora? */
+function temEstoque(produto) {
+  return produto.sem_sabor ? produto.em_estoque : saboresDisponiveis(produto).length > 0;
+}
 
-  { id: "v155", title: "Ignite V155", alt: "Ignite V155", img: "IGNITE_V155.png",
-    puffs: "15.500 Puffs", color: "purple", serie: "V155 Series",
-    label: "Disponível em Estoque", loadingText: "Buscando sabores…", ativo: true },
+/** Por quantos dias depois do cadastro o produto leva o selo "Novo". */
+const DIAS_NOVO = 7;
 
-  { id: "v200", title: "Ignite V200", alt: "Ignite V200", img: "IGNITE_200.png",
-    puffs: "12.000 Puffs", color: "emerald", serie: "Airflow Control",
-    label: "Explorar Sabores", loadingText: "Buscando estoque…", ativo: true },
-
-  { id: "v250", title: "Ignite V250", alt: "Ignite V250", img: "IGNITE_V250.png",
-    puffs: "25.000 Puffs", color: "red", serie: "Long Lasting",
-    label: "Sabores em Estoque", loadingText: "Verificando sabores…", ativo: true },
-
-  { id: "v300", title: "Ignite V300", alt: "Ignite V300", img: "IGNITE_V300.png",
-    puffs: "30.000 Puffs", color: "indigo", serie: "Double Tank",
-    label: "Sabores Disponíveis", loadingText: "Consultando estoque…", ativo: true },
-
-  { id: "v400", title: "Ignite V400", alt: "Ignite V400", img: "IGNITE_V400_ICE.png",
-    puffs: "40.000 Puffs", color: "pink", serie: "Turbo Mode",
-    label: "Menu de Sabores", loadingText: "Sincronizando estoque…", ativo: true },
-
-  { id: "v400slim", title: "Ignite V400 Ice Slim", alt: "Ignite V400 Ice Slim", img: "IGNITE_V400_ICE_SLIM.png",
-    puffs: "40.000 Puffs", color: "indigo", serie: "Slim Design",
-    label: "Sabores Ice Slim", loadingText: "Resfriando estoque…", ativo: true },
-
-  { id: "v400mix", title: "Ignite V400 Mix", alt: "Ignite V400 Mix", img: "IGNITE_V400.png",
-    puffs: "40.000 Puffs", color: "orange", serie: "Mixed Edition",
-    label: "Sabores Mix Disponíveis", loadingText: "Carregando combinações…", ativo: true },
-
-  { id: "v400sweet", title: "Ignite V400 Sweet", alt: "Ignite V400 Sweet", img: "IGNITE_V400_SWEET.png",
-    puffs: "40.000 Puffs", color: "cyan", serie: "Sweet Series",
-    label: "Sabores Adocicados", loadingText: "Consultando cardápio…", ativo: true },
-
-  { id: "v500", title: "Ignite V500", alt: "Ignite V500", img: "IGNITE_V500.png",
-    puffs: "50.000 Puffs", color: "yellow", serie: "Flagship Edition",
-    label: "Sabores Premium", loadingText: "Carregando estoque flagship…", ativo: true },
-
-  { id: "shisha", title: "Ignite Shisha 40K", alt: "Ignite Shisha 40K", img: "IGNITE_SHISHA_40K.png",
-    puffs: "40.000 Puffs", color: "amber", serie: "Shisha Blend",
-    label: "Sabores de Narguilé", loadingText: "Preparando o narguilé…", ativo: true },
-
-  { id: "v100refil", title: "Refil Ignite P100", alt: "Refil Ignite P100", img: "REFIL_IGNITE_P100.png",
-    puffs: "10.000 Puffs", color: "slate", serie: "Refill System",
-    label: "Sabores de Reposição", loadingText: "Atualizando estoque…", ativo: true },
-
-  // ── Life Pod (por puffs crescente) ──────────────────────
-  { id: "lifepodbateria", title: "Life Pod Bateria 20K", alt: "Life Pod Bateria 20K", img: "LIFE_POD_BATERIA_20K.png",
-    puffs: "20.000 Puffs", color: "indigo", serie: "Kit Bateria", semSabor: true,
-    label: "Disponibilidade", loadingText: "Carregando bateria…", ativo: true },
-
-  { id: "liferef20k", title: "Refil Life Pod 20K", alt: "Refil Life Pod 20K", img: "LIFE_POD_REFIL_20K.png",
-    puffs: "20.000 Puffs", color: "cyan", serie: "Refil 20K",
-    label: "Sabores do Refil", loadingText: "Reabastecendo estoque…", ativo: true },
-
-  { id: "liferef8k", title: "Refil Life 8K", alt: "Refil Life 8K", img: "REFIL_LIFE_POD.png",
-    puffs: "8.000 Puffs", color: "lime", serie: "Life Pod Refill",
-    label: "Sabores Life Pod", loadingText: "Sincronizando sabores…", ativo: true },
-
-  { id: "liferef10k", title: "Refil Life 10K", alt: "Refil Life 10K", img: "REFIL_LIFE_10K.png",
-    puffs: "10.000 Puffs", color: "emerald", serie: "Life Pod 10K",
-    label: "Sabores em Estoque", loadingText: "Verificando sabores…", ativo: true },
-
-  { id: "lifepodfit", title: "Life Pod Fit 30K", alt: "Life Pod Fit 30K", img: "LIFE_POD_FIT_30k.png",
-    puffs: "30.000 Puffs", color: "lightblue", serie: "Fit Design",
-    label: "Sabores Fit", loadingText: "Ajustando estoque…", ativo: true },
-
-  { id: "v400life", title: "Life Pod 40K", alt: "Life Pod 40K", img: "LIFE_POD_40.000_DESCARTÁVEL.png",
-    puffs: "40.000 Puffs", color: "teal", serie: "Extreme Life",
-    label: "Sabores Disponíveis", loadingText: "Consultando estoque…", ativo: true },
-
-  { id: "lifepodsk", title: "Life Pod SK", alt: "Life Pod SK", img: "LIFE_POD_SK.png",
-    serie: "Special Edition",
-    label: "Sabores Premium", loadingText: "Carregando estoque elite…", ativo: true },
-
-  // ── Elfbar (por puffs crescente) ────────────────────────
-  { id: "elfbar", title: "Elfbar TE 30K", alt: "Elfbar TE 30K", img: "ELFBAR_TE_30K.png",
-    puffs: "30.000 Puffs", serie: "Elfbar Official",
-    label: "Menu de Sabores", loadingText: "Sincronizando sabores…", ativo: true },
-
-  { id: "iceking", title: "Elfbar Ice King 40K", alt: "Elfbar Ice King 40K", img: "ELFBAR_ICE_KING_40K.png",
-    puffs: "40.000 Puffs", color: "sky", serie: "Ice King",
-    label: "Experiência Ultra-Gelada", loadingText: "Congelando estoque…", ativo: true },
-
-  // ── Outras marcas ────────────────────────────────────────
-  { id: "blacksheep40k", title: "Black Sheep 40K", alt: "Black Sheep 40K", img: "BLACK_SHEEP_40K.png",
-    puffs: "40.000 Puffs", color: "white", serie: "Black Edition", serieColor: "red",
-    label: "Linha de Sabores", loadingText: "Sincronizando Black Sheep…", ativo: true },
-
-  { id: "instabar", title: "Insta Bar 15K", alt: "Insta Bar 15K", img: "INSTA_BAR_15K.png",
-    puffs: "15.000 Puffs", color: "purple-light", serie: "Trending", trending: true,
-    label: "Sabores do Momento", loadingText: "Carregando feed…", ativo: false },
-
-  { id: "flonq20k", title: "Flonq 20K", alt: "Flonq 20K", img: "FLONQ_20K.png",
-    puffs: "20.000 Puffs", serie: "Smart Design",
-    label: "Sabores Tecnológicos", loadingText: "Iniciando sistema…", ativo: false },
-
-  { id: "airmez40k", title: "Airmez 40K", alt: "Airmez 40K", img: "AIRMEZ_40K.png",
-    puffs: "40.000 Puffs", color: "cyan", serie: "Aero Flow",
-    label: "Seleção de Sabores", loadingText: "Sincronizando ar…", ativo: true },
-
-  { id: "frosty10k", title: "Frosty 10K", alt: "Frosty 10K", img: "Frosty_10k.png",
-    puffs: "10.000 Puffs", color: "lightblue", serie: "Sub-Zero",
-    label: "Sabores Gelados", loadingText: "Congelando sabores…", ativo: true },
-
-  { id: "icity12k", title: "Icity 12K", alt: "Icity 12K", img: "ICITY_12K.png",
-    puffs: "12.000 Puffs", color: "indigo", serie: "Urban Style",
-    label: "City Flavors Menu", loadingText: "Mapeando estoque…", ativo: true },
-
-  { id: "adalya50k", title: "Adalya 50K", alt: "Adalya 50K", img: "ADALYA_50K.png",
-    puffs: "50.000 Puffs", color: "lightblue", serie: "Sub-Zero",
-    label: "Sabores Gelados", loadingText: "Congelando sabores…", ativo: true },
-
-  { id: "vozol20k", title: "Vozol 20K", alt: "Vozol 20K", img: "VOZOL_20K.png",
-    puffs: "20.000 Puffs", color: "yellow", serie: "Top de Linha ⭐",
-    label: "Sabores Premium", loadingText: "Carregando estoque elite…", ativo: true },
-
-  { id: "lostyvape10k", title: "Losty Vape 10K", alt: "Losty Vape 10K", img: "LOSTY_VAPE_10K.png",
-    puffs: "10.000 Puffs", color: "emerald", serie: "Losty Vape",
-    label: "Sabores Premium", loadingText: "Carregando estoque elite…", ativo: true },
-
-  { id: "extremebar30k", title: "Extreme Bar 30K", alt: "Extreme Bar 30K", img: "EXTREME_BAR_30.png",
-    puffs: "30.000 Puffs", color: "red", serie: "Extreme Mode",
-    label: "Sabores Premium", loadingText: "Carregando estoque elite…", ativo: true },
-];
+/** Produto cadastrado há pouco tempo? (sem data de cadastro, nunca é novo) */
+function ehNovo(produto) {
+  const cadastro = Date.parse(produto.criado_em ?? produto.created_at);
+  return Date.now() - cadastro < DIAS_NOVO * 24 * 60 * 60 * 1000;
+}
 
 // ─── Utilitários ────────────────────────────────────────────
 
@@ -171,156 +52,85 @@ function linkWhatsApp(produto, sabor) {
   return `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(msg)}`;
 }
 
-/**
- * Faz o parse do CSV (suporta vírgula ou ponto-e-vírgula como separador).
- * Retorna um Map: { id → [sabor, sabor, …] }
- */
-function parseCsv(text) {
-  const SEP = /[,;](?=(?:(?:[^"]*"){2})*[^"]*$)/;
-  const estoque = new Map();
+// ─── Card de produto ────────────────────────────────────────
 
-  text.split(/\r?\n/).forEach((linha, i) => {
-    if (i === 0 || !linha.trim()) return;
-
-    const cols = linha.split(SEP);
-    if (cols.length < 3) return;
-
-    const id     = cols[0].trim().toLowerCase();
-    const sabor  = cols[1].trim();
-    const status = cols[2].trim().toLowerCase();
-
-    const disponivel = status.includes("disponív") || status.includes("disponiv");
-    if (!disponivel || !sabor) return;
-
-    if (!estoque.has(id)) estoque.set(id, []);
-    estoque.get(id).push(sabor);
-  });
-
-  return estoque;
-}
-
-// ─── Renderização do catálogo ───────────────────────────────
-
-/**
- * Cria o <span> de badge (puffs ou série), com a variação de cor
- * aplicada via atributo data-color (ver style.css).
- */
-function criarBadge(classe, texto, cor) {
+function criarBadge(classe, texto) {
   const span = document.createElement("span");
   span.className = classe;
-  if (cor) span.dataset.color = cor;
   span.textContent = texto;
   return span;
 }
 
-/**
- * Cria o badge de série especial "Trending" (com animação de pulso),
- * usado pelo Insta Bar 15K.
- */
-function criarBadgeTrending(texto) {
-  const span = document.createElement("span");
-  span.className = "badge-serie";
-  span.style.display = "flex";
-  span.style.alignItems = "center";
-  span.style.gap = ".3rem";
-  span.innerHTML = `
-    <span class="relative flex h-2 w-2">
-      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
-      <span class="relative inline-flex rounded-full h-2 w-2 bg-purple-500"></span>
-    </span>
-  `;
-  span.append(texto);
-  return span;
-}
+const ICONE_COMPARTILHAR = `
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M10 13a5 5 0 0 0 7.07 0l3-3a5 5 0 0 0-7.07-7.07l-1.5 1.5"/>
+    <path d="M14 11a5 5 0 0 0-7.07 0l-3 3a5 5 0 0 0 7.07 7.07l1.5-1.5"/>
+  </svg>`;
 
 /**
- * Monta o card completo de um produto a partir dos dados em PRODUTOS.
+ * Botão que compartilha o link direto do produto (…/sabores.html#v400).
+ * No celular abre o menu de compartilhar; no computador copia o link.
  */
-function criarCardProduto(produto) {
-  const section = document.createElement("section");
-  section.id = produto.id;
-  section.className = "product-card";
+function criarBotaoCompartilhar(produto) {
+  const btn = document.createElement("button");
+  btn.type = "button";
+  btn.className = "btn-compartilhar";
+  btn.setAttribute("aria-label", `Compartilhar link do ${produto.nome}`);
+  btn.innerHTML = ICONE_COMPARTILHAR;
 
-  const badges = document.createElement("div");
-  badges.className = produto.puffs ? "card-badges" : "card-badges single";
-  if (produto.puffs) badges.appendChild(criarBadge("badge-puffs", produto.puffs, produto.color));
-  badges.appendChild(
-    produto.trending
-      ? criarBadgeTrending(produto.serie)
-      : criarBadge("badge-serie", produto.serie, produto.serieColor ?? produto.color)
-  );
-
-  const imgWrap = document.createElement("div");
-  imgWrap.className = "img-wrap";
-  imgWrap.innerHTML = `<img src="img/${produto.img}" alt="${produto.alt}" loading="lazy">`;
-
-  const h2 = document.createElement("h2");
-  h2.textContent = produto.title;
-
-  const label = document.createElement("p");
-  label.className = "sabores-label";
-  label.textContent = produto.label;
-
-  const container = document.createElement("div");
-  container.id = `sabores-${produto.id}`;
-  container.className = "sabores-container";
-  container.innerHTML = `
-    <div class="loading-wrap">
-      <div class="loading-animation"></div>
-      <span class="loading-txt">${produto.loadingText}</span>
-    </div>
-  `;
-
-  section.append(badges, imgWrap, h2, label, container);
-  return section;
+  btn.addEventListener("click", async () => {
+    const url = `${location.origin}${location.pathname}#${produto.id}`;
+    if (navigator.share) {
+      try { await navigator.share({ title: produto.nome, text: `${produto.nome} — REI DO POD CAF`, url }); }
+      catch { /* cliente cancelou */ }
+      return;
+    }
+    try {
+      await navigator.clipboard.writeText(url);
+      btn.dataset.copiado = "";
+      btn.setAttribute("aria-label", "Link copiado!");
+      setTimeout(() => {
+        delete btn.dataset.copiado;
+        btn.setAttribute("aria-label", `Compartilhar link do ${produto.nome}`);
+      }, 2000);
+    } catch {
+      prompt("Copie o link do produto:", url);
+    }
+  });
+  return btn;
 }
-
-/**
- * Renderiza todos os cards do catálogo dentro de #grid.
- */
-function renderizarCatalogo() {
-  const grid = document.getElementById("grid");
-  if (!grid) return;
-
-  const frag = document.createDocumentFragment();
-  PRODUTOS
-    .filter(produto => produto.ativo !== false)
-    .forEach(produto => frag.appendChild(criarCardProduto(produto)));
-  grid.appendChild(frag);
-}
-
-// ─── Renderização de estoque (sabores) ──────────────────────
 
 /**
  * Cria o elemento <a> de um sabor com link direto para o WhatsApp.
+ * `ordem` escalona a animação de entrada; ao tocar, o sabor fica
+ * dourado com ✓ por alguns segundos (resposta visual do pedido).
  */
-function criarBadgeSabor(produto, sabor) {
+function criarBadgeSabor(nomeProduto, sabor, ordem = 0) {
   const link = document.createElement("a");
-  link.href   = linkWhatsApp(produto, sabor);
+  link.href   = linkWhatsApp(nomeProduto, sabor);
   link.target = "_blank";
   link.rel    = "noopener noreferrer";
   link.className = "sabor-badge";
-  link.setAttribute("aria-label", sabor ? `Pedir ${produto} sabor ${sabor} via WhatsApp` : `Pedir ${produto} via WhatsApp`);
-
-  const glow = document.createElement("span");
-  glow.className = "sabor-badge__glow";
+  link.style.setProperty("--i", ordem);
+  link.setAttribute("aria-label", sabor ? `Pedir ${nomeProduto} sabor ${sabor} via WhatsApp` : `Pedir ${nomeProduto} via WhatsApp`);
 
   const text = document.createElement("span");
   text.className = "sabor-badge__text";
   text.textContent = sabor || "Fazer Pedido";
+  link.append(text);
 
-  link.append(glow, text);
+  link.addEventListener("click", () => {
+    link.classList.add("clicado");
+    setTimeout(() => link.classList.remove("clicado"), 2500);
+  });
   return link;
 }
 
-/**
- * Cria a mensagem de "sem estoque" para um container.
- */
 function criarMsgSemEstoque() {
   const el = document.createElement("p");
   el.className = "sem-estoque";
   el.innerHTML = `
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
       <circle cx="12" cy="12" r="9"/>
       <path d="M12 7v5l3 3"/>
     </svg>
@@ -330,105 +140,297 @@ function criarMsgSemEstoque() {
 }
 
 /**
- * Cria a mensagem de erro genérico.
+ * Monta o card completo de um produto.
  */
-function criarMsgErro() {
-  const el = document.createElement("p");
-  el.className = "sem-estoque sem-estoque--erro";
-  el.textContent = "⚠️ Erro ao carregar — tente recarregar a página.";
-  return el;
+function criarCardProduto(produto) {
+  const section = document.createElement("section");
+  section.id = produto.id;
+  section.dataset.marca = produto.marca;
+  section.className = "product-card";
+  section.style.viewTransitionName = `card-${produto.id}`;
+
+  const badges = document.createElement("div");
+  badges.className = produto.puffs ? "card-badges" : "card-badges single";
+  if (produto.puffs) badges.appendChild(criarBadge("badge-puffs", formatarPuffs(produto.puffs)));
+  if (produto.serie) badges.appendChild(criarBadge("badge-serie", produto.serie));
+
+  const imgWrap = document.createElement("div");
+  imgWrap.className = "img-wrap";
+  const img = document.createElement("img");
+  img.src = urlImagem(produto.imagem);
+  img.alt = produto.nome;
+  img.loading = "lazy";
+  imgWrap.append(img);
+  if (ehNovo(produto)) imgWrap.append(criarBadge("badge-novo", "Novo"));
+
+  const titulo = document.createElement("div");
+  titulo.className = "card-titulo";
+  const h2 = document.createElement("h2");
+  h2.textContent = produto.nome;
+  titulo.append(h2, criarBotaoCompartilhar(produto));
+
+  const label = document.createElement("p");
+  label.className = "sabores-label";
+  label.textContent = produto.sem_sabor ? "Disponibilidade" : "Sabores disponíveis";
+
+  const container = document.createElement("div");
+  container.className = "sabores-container";
+
+  if (!temEstoque(produto)) {
+    container.appendChild(criarMsgSemEstoque());
+  } else if (produto.sem_sabor) {
+    container.appendChild(criarBadgeSabor(produto.nome));
+  } else {
+    saboresDisponiveis(produto).forEach((sabor, i) =>
+      container.appendChild(criarBadgeSabor(produto.nome, sabor, i)));
+  }
+
+  section.append(badges, imgWrap, titulo, label, container);
+  return section;
 }
 
 /**
- * Preenche todos os containers [id^="sabores-"] com os dados do estoque.
+ * Cards "fantasma" pulsando enquanto o catálogo carrega pela primeira vez.
  */
-function renderizarEstoque(estoque) {
-  const containers = document.querySelectorAll("[id^='sabores-']");
+function mostrarEsqueleto() {
+  const grid = document.getElementById("grid");
+  if (!grid) return;
+  grid.setAttribute("aria-busy", "true");
+  grid.innerHTML = Array.from({ length: 6 }, () => `
+    <div class="product-card card-esqueleto" aria-hidden="true">
+      <div class="esqueleto"><span style="width:100%;height:11rem;border-radius:1rem"></span></div>
+      <div class="esqueleto" style="margin:1rem 0"><span style="width:60%;height:1.8rem"></span></div>
+      <div class="esqueleto"><span style="width:5.5rem"></span><span style="width:7rem"></span><span style="width:4.5rem"></span></div>
+    </div>`).join("");
+}
 
-  containers.forEach(container => {
-    const id = container.id.replace("sabores-", "").toLowerCase();
-    const produtoInfo = PRODUTOS.find(p => p.id === id);
+/**
+ * Desenha todos os cards: com estoque primeiro, esgotados no fim
+ * (mantendo a ordem do painel dentro de cada grupo).
+ */
+function renderizarCatalogo(produtos) {
+  const grid = document.getElementById("grid");
+  if (!grid) return;
 
-    // Pega o nome do produto no <h2> da section pai
-    const section    = container.closest("section");
-    const nomeProduto = section?.querySelector("h2")?.textContent.trim() ?? id.toUpperCase();
+  const ordenados = [...produtos.filter(temEstoque), ...produtos.filter(p => !temEstoque(p))];
+  const frag = document.createDocumentFragment();
+  ordenados.forEach(produto => frag.appendChild(criarCardProduto(produto)));
 
-    // Limpa o estado de carregamento
-    container.innerHTML = "";
+  grid.replaceChildren(frag);
+  grid.removeAttribute("aria-busy");
+}
 
-    const sabores = estoque.get(id);
-    if (!sabores?.length) {
-      container.appendChild(criarMsgSemEstoque());
-    } else if (produtoInfo?.semSabor) {
-      // Produto único, sem variação de sabor — um só botão de pedido.
-      container.appendChild(criarBadgeSabor(nomeProduto));
-    } else {
-      const frag = document.createDocumentFragment();
-      sabores.forEach(sabor => frag.appendChild(criarBadgeSabor(nomeProduto, sabor)));
-      container.appendChild(frag);
-    }
+function mostrarErro() {
+  const grid = document.getElementById("grid");
+  if (!grid) return;
+  grid.removeAttribute("aria-busy");
+  grid.innerHTML = `
+    <p class="sem-estoque sem-estoque--erro" style="grid-column:1/-1">
+      Não foi possível carregar o catálogo agora — tente recarregar a página.
+    </p>`;
+}
+
+// ─── Movimento ──────────────────────────────────────────────
+
+const REDUZIR_MOVIMENTO = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/**
+ * Cards entram (sobem e aparecem) conforme chegam na tela ao rolar.
+ * Cards lado a lado entram um pouco depois do outro (--ordem).
+ * Sem suporte ou com "reduzir movimento" ligado, aparecem direto.
+ */
+function animarEntradaDosCards() {
+  if (REDUZIR_MOVIMENTO || !("IntersectionObserver" in window)) return;
+
+  const observer = new IntersectionObserver(entradas => {
+    let ordem = 0;
+    entradas.forEach(({ isIntersecting, target }) => {
+      if (!isIntersecting) return;
+      observer.unobserve(target);
+      target.style.setProperty("--ordem", ordem++);
+      target.classList.add("visivel");
+      // depois de entrar, volta ao normal (libera o efeito de hover)
+      target.addEventListener("transitionend", () => {
+        target.classList.remove("revelar", "visivel");
+        target.style.removeProperty("--ordem");
+      }, { once: true });
+    });
+  }, { rootMargin: "0px 0px -8% 0px" });
+
+  document.querySelectorAll(".product-card").forEach(card => {
+    card.classList.add("revelar");
+    observer.observe(card);
   });
+}
+
+/**
+ * Marca a barra de busca como "grudada" quando ela chega no topo,
+ * para ganhar borda e sombra.
+ */
+function observarBarraFixa() {
+  const barra = document.getElementById("ferramentas");
+  if (!barra || !("IntersectionObserver" in window)) return;
+
+  const marcador = document.createElement("div");
+  marcador.setAttribute("aria-hidden", "true");
+  barra.before(marcador);
+  new IntersectionObserver(([e]) => barra.classList.toggle("grudado", !e.isIntersecting))
+    .observe(marcador);
+}
+
+/**
+ * Depois de filtrar, se a pessoa já tinha rolado a página, volta pro
+ * começo da lista (logo abaixo da barra) para ver os resultados.
+ */
+function voltarAoInicioDaLista() {
+  const grid  = document.getElementById("grid");
+  const barra = document.getElementById("ferramentas");
+  if (!grid || !barra) return;
+
+  const topoDaLista = grid.getBoundingClientRect().top + scrollY - barra.offsetHeight - 12;
+  if (scrollY > topoDaLista) scrollTo({ top: topoDaLista, behavior: REDUZIR_MOVIMENTO ? "auto" : "smooth" });
+}
+
+/**
+ * Se a página foi aberta com #id de um produto (link compartilhado),
+ * rola até ele e destaca o card. Roda uma vez, na primeira vez que os
+ * cards aparecem.
+ */
+let linkDiretoTratado = false;
+function focarProdutoDoLink() {
+  if (linkDiretoTratado) return;
+  linkDiretoTratado = true;
+
+  const id = decodeURIComponent(location.hash.slice(1));
+  if (!id) return;
+  const card = document.getElementById(id);
+  if (!card?.classList.contains("product-card")) return;
+
+  card.scrollIntoView({ block: "center" });
+  card.classList.add("destaque");
+  setTimeout(() => card.classList.remove("destaque"), 2500);
 }
 
 // ─── Busca / Filtro ─────────────────────────────────────────
 
+let marcaSelecionada = null; // null = todas
+
 /**
- * Inicializa a barra de busca global (se existir no HTML).
- * Filtra as sections pelo nome do produto ou pelos sabores visíveis.
+ * Mostra só os cards da marca escolhida cujo nome ou algum sabor contém
+ * o texto da busca, sem diferenciar acento ("maca" encontra "MAÇÃ").
+ * Roda ao digitar, ao trocar de marca e depois de cada atualização do
+ * catálogo, para o filtro continuar valendo quando os dados mudam.
  */
-function inicializarBusca() {
+function aplicarFiltros() {
   const input = document.getElementById("busca-sabor");
-  if (!input) return;
+  const termo = normalizar(input?.value ?? "");
+  let visiveis = 0;
 
-  input.addEventListener("input", () => {
-    const termo = input.value.trim().toLowerCase();
-    const sections = document.querySelectorAll("section.product-card");
+  document.querySelectorAll("section.product-card").forEach(section => {
+    const marcaOk = !marcaSelecionada || section.dataset.marca === marcaSelecionada;
+    const textos  = [section.querySelector("h2"), ...section.querySelectorAll(".sabor-badge__text")];
+    const buscaOk = !termo || textos.some(el => normalizar(el?.textContent ?? "").includes(termo));
 
-    sections.forEach(section => {
-      if (!termo) {
-        section.hidden = false;
-        return;
-      }
-
-      const nomeOk = section.querySelector("h2")
-        ?.textContent.toLowerCase().includes(termo);
-
-      const saborOk = [...section.querySelectorAll(".sabor-badge__text")]
-        .some(el => el.textContent.toLowerCase().includes(termo));
-
-      section.hidden = !(nomeOk || saborOk);
-    });
+    section.hidden = !(marcaOk && buscaOk);
+    if (!section.hidden) visiveis++;
   });
+
+  const aviso = document.getElementById("sem-resultados");
+  if (aviso) {
+    aviso.hidden = visiveis > 0;
+    aviso.querySelector("span").textContent =
+      [input?.value.trim(), marcaSelecionada].filter(Boolean).join(" em ");
+  }
+}
+
+function inicializarBusca() {
+  document.getElementById("busca-sabor")?.addEventListener("input", () => {
+    aplicarFiltros();
+    voltarAoInicioDaLista();
+  });
+}
+
+/**
+ * Um botão por marca (na ordem em que aparecem no catálogo) + "Todas".
+ * É refeito quando o catálogo atualiza; se a marca escolhida deixar de
+ * existir, volta para "Todas".
+ */
+function renderizarFiltroMarcas(produtos) {
+  const wrap = document.getElementById("filtro-marcas");
+  if (!wrap) return;
+
+  const marcas = [...new Set(produtos.map(p => p.marca))];
+  if (!marcas.includes(marcaSelecionada)) marcaSelecionada = null;
+
+  const botoes = [null, ...marcas].map(marca => {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "filtro-marca";
+    btn.textContent = marca ?? "Todas";
+    btn.setAttribute("aria-pressed", String(marca === marcaSelecionada));
+    btn.addEventListener("click", () => {
+      const trocar = () => {
+        marcaSelecionada = marca;
+        botoes.forEach(b => b.setAttribute("aria-pressed", String(b === btn)));
+        aplicarFiltros();
+      };
+      // Cards deslizam para a nova posição (Chrome/Safari recentes);
+      // nos outros navegadores a troca é direta.
+      if (document.startViewTransition && !REDUZIR_MOVIMENTO) document.startViewTransition(trocar);
+      else trocar();
+      voltarAoInicioDaLista();
+    });
+    return btn;
+  });
+  wrap.replaceChildren(...botoes);
 }
 
 // ─── Entrada principal ───────────────────────────────────────
 
-async function carregarEstoque() {
+// Último catálogo recebido, guardado no navegador do cliente: na próxima
+// visita os produtos aparecem na hora, e a versão nova atualiza a tela
+// assim que chegar. Se o navegador bloquear o armazenamento, só não usa.
+const CACHE_KEY = "reidopod:catalogo";
+
+function lerCache() {
+  try { return JSON.parse(localStorage.getItem(CACHE_KEY)); } catch { return null; }
+}
+
+function salvarCache(produtos) {
+  try { localStorage.setItem(CACHE_KEY, JSON.stringify(produtos)); } catch { /* sem cache */ }
+}
+
+let primeiraExibicao = true;
+function mostrarCatalogo(produtos) {
+  renderizarCatalogo(produtos);
+  renderizarFiltroMarcas(produtos);
+  aplicarFiltros();
+  // anima a entrada só na primeira vez; na atualização silenciosa, não
+  if (primeiraExibicao) animarEntradaDosCards();
+  focarProdutoDoLink();
+  primeiraExibicao = false;
+}
+
+async function carregarCatalogo() {
+  const cache = lerCache();
+  if (Array.isArray(cache) && cache.length) mostrarCatalogo(cache);
+  else mostrarEsqueleto();
+
   try {
-    const url      = `${CONFIG.csvUrl}&t=${Date.now()}`;
-    const response = await fetch(url);
-
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-
-    const csv     = await response.text();
-    const estoque = parseCsv(csv);
-
-    renderizarEstoque(estoque);
+    const produtos = await buscarCatalogo();
+    if (JSON.stringify(produtos) !== JSON.stringify(cache)) {
+      mostrarCatalogo(produtos);
+      salvarCache(produtos);
+    }
   } catch (err) {
-    console.error("[REI DO POD] Falha ao sincronizar catálogo:", err);
-
-    // Mostra erro em todos os containers que ainda estão carregando
-    document.querySelectorAll("[id^='sabores-']").forEach(container => {
-      if (container.querySelector(".loading-animation")) {
-        container.innerHTML = "";
-        container.appendChild(criarMsgErro());
-      }
-    });
+    console.error("[REI DO POD] Falha ao carregar o catálogo:", err);
+    if (!primeiraExibicao) return; // segue mostrando a última versão conhecida
+    mostrarErro();
   }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  renderizarCatalogo();
-  carregarEstoque();
+  carregarCatalogo();
   inicializarBusca();
+  observarBarraFixa();
 });

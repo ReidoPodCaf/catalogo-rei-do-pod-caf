@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel — REI DO POD CAF</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#0a0a0b">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+  <link rel="stylesheet" href="tailwind.css">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body data-pagina="admin" class="bg-fundo text-stone-100 font-sans antialiased min-h-screen">
+
+  <!-- ── Login ─────────────────────────────────────────────── -->
+  <main id="tela-login" class="min-h-screen flex items-center justify-center px-5" hidden>
+    <form id="form-login" class="entrada w-full max-w-sm rounded-3xl border border-white/10 bg-superficie p-7 space-y-5" novalidate>
+      <div class="text-center">
+        <img src="img/leao.webp" alt="" width="64" height="64" class="w-16 h-16 mx-auto rounded-full ring-1 ring-ouro/40 mb-4">
+        <h1 class="font-display text-3xl font-extrabold uppercase">Painel do <span class="texto-ouro">Rei</span></h1>
+        <p class="text-stone-400 text-sm mt-1">Entre para cadastrar e editar produtos.</p>
+      </div>
+      <label class="campo">
+        <span>E-mail</span>
+        <input id="login-email" type="email" autocomplete="username" required>
+      </label>
+      <label class="campo">
+        <span>Senha</span>
+        <input id="login-senha" type="password" autocomplete="current-password" required>
+      </label>
+      <p id="login-erro" class="text-sm text-red-300" role="alert" hidden></p>
+      <button type="submit" class="botao-ouro w-full min-h-[3rem] rounded-2xl font-bold uppercase tracking-widest text-sm">Entrar</button>
+    </form>
+  </main>
+
+  <!-- ── Sem permissão ─────────────────────────────────────── -->
+  <main id="tela-sem-acesso" class="min-h-screen flex items-center justify-center px-5" hidden>
+    <div class="max-w-sm text-center space-y-4">
+      <h1 class="font-display text-3xl font-extrabold uppercase">Sem acesso</h1>
+      <p class="text-stone-400 text-sm">Esta conta não tem permissão para editar o catálogo.</p>
+      <button type="button" class="btn-sair botao-secundario">Sair</button>
+    </div>
+  </main>
+
+  <!-- ── Painel ────────────────────────────────────────────── -->
+  <div id="tela-painel" hidden>
+    <header class="sticky top-0 z-40 border-b border-white/5 bg-fundo/85 backdrop-blur-md">
+      <div class="max-w-3xl mx-auto px-4 h-16 flex items-center justify-between gap-3">
+        <div class="flex items-center gap-3 min-w-0">
+          <img src="img/leao.webp" alt="" width="36" height="36" class="w-9 h-9 rounded-full ring-1 ring-ouro/40">
+          <div class="min-w-0">
+            <p class="font-display text-xl font-extrabold uppercase leading-none">Painel</p>
+            <p id="usuario-email" class="text-xs text-stone-400 truncate"></p>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <a href="sabores.html" target="_blank" rel="noopener" class="botao-secundario">Ver site</a>
+          <button type="button" class="btn-sair botao-secundario">Sair</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="max-w-3xl mx-auto px-4 py-6 pb-28">
+      <div class="flex flex-col sm:flex-row gap-3 sm:items-center justify-between mb-5">
+        <h1 class="font-display text-4xl font-extrabold uppercase">Produtos <span id="contador" class="text-stone-400 text-2xl"></span></h1>
+        <button type="button" id="btn-novo" class="botao-ouro min-h-[3rem] px-5 rounded-2xl font-bold uppercase tracking-wider text-sm inline-flex items-center justify-center gap-2">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" d="M12 5v14M5 12h14"/></svg>
+          Novo produto
+        </button>
+      </div>
+
+      <label class="campo mb-5">
+        <span class="sr-only">Buscar produto</span>
+        <input id="busca-admin" type="search" placeholder="Buscar produto ou marca…" autocomplete="off">
+      </label>
+
+      <p id="lista-carregando" class="text-stone-400 text-sm">Carregando produtos…</p>
+      <ul id="lista-produtos" class="space-y-3"></ul>
+    </main>
+  </div>
+
+  <!-- ── Formulário de produto ─────────────────────────────── -->
+  <dialog id="dialogo-produto" class="dialogo" aria-labelledby="form-titulo">
+    <form id="form-produto" method="dialog" novalidate>
+      <header class="dialogo__topo">
+        <h2 id="form-titulo" class="font-display text-2xl font-extrabold uppercase">Novo produto</h2>
+        <button type="button" class="btn-fechar" aria-label="Fechar">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" d="M6 6l12 12M18 6 6 18"/></svg>
+        </button>
+      </header>
+
+      <div class="dialogo__corpo space-y-5">
+        <!-- Foto -->
+        <div class="flex items-center gap-4">
+          <div id="caixa-foto" class="foto-previa">
+            <img id="foto-previa" alt="" hidden>
+            <span id="foto-vazia">Sem foto</span>
+          </div>
+          <div class="space-y-2">
+            <label class="botao-secundario cursor-pointer">
+              <input id="campo-foto" type="file" accept="image/*" class="sr-only">
+              Escolher foto *
+            </label>
+            <p class="text-xs text-stone-400">Foto do produto, de preferência com fundo transparente ou escuro. A foto é reduzida automaticamente.</p>
+          </div>
+        </div>
+
+        <label class="campo">
+          <span>Nome do produto *</span>
+          <input id="campo-nome" type="text" maxlength="80" placeholder="Ex: Ignite V500" required>
+        </label>
+
+        <div class="grid grid-cols-2 gap-3">
+          <label class="campo">
+            <span>Marca *</span>
+            <input id="campo-marca" type="text" maxlength="40" list="marcas-existentes" placeholder="Ex: Ignite" required>
+            <datalist id="marcas-existentes"></datalist>
+          </label>
+          <label class="campo">
+            <span>Puffs</span>
+            <input id="campo-puffs" type="number" inputmode="numeric" min="1" max="1000000" step="1" placeholder="Ex: 40000">
+          </label>
+        </div>
+
+        <label class="campo">
+          <span>Etiqueta (opcional)</span>
+          <input id="campo-serie" type="text" maxlength="40" placeholder="Ex: Flagship Edition">
+        </label>
+
+        <div class="space-y-3 rounded-2xl border border-white/10 p-4">
+          <label class="linha-switch">
+            <span>
+              <strong>Mostrar no site</strong>
+              <small>Desligado = produto escondido, mas não apagado.</small>
+            </span>
+            <input id="campo-ativo" type="checkbox" class="switch" checked>
+          </label>
+          <label class="linha-switch">
+            <span>
+              <strong>Produto sem sabor</strong>
+              <small>Ex: bateria. Mostra só um botão “Fazer pedido”.</small>
+            </span>
+            <input id="campo-sem-sabor" type="checkbox" class="switch">
+          </label>
+          <label id="linha-em-estoque" class="linha-switch" hidden>
+            <span>
+              <strong>Em estoque</strong>
+              <small>Desligado = aparece como “Indisponível no momento”.</small>
+            </span>
+            <input id="campo-em-estoque" type="checkbox" class="switch" checked>
+          </label>
+        </div>
+
+        <!-- Sabores -->
+        <fieldset id="bloco-sabores" class="space-y-3">
+          <legend class="text-sm font-semibold mb-2">Sabores * <span id="resumo-sabores" class="text-stone-400 font-normal"></span></legend>
+          <div class="flex gap-2">
+            <label class="campo flex-1">
+              <span class="sr-only">Novo sabor</span>
+              <textarea id="campo-novo-sabor" rows="1" placeholder="Digite um sabor"></textarea>
+            </label>
+            <button type="button" id="btn-add-sabor" class="botao-ouro w-12 rounded-2xl text-xl font-bold" aria-label="Adicionar sabor">+</button>
+          </div>
+          <p class="text-xs text-stone-400">Dica: dá pra colar vários de uma vez, um por linha ou separados por ponto e vírgula.</p>
+          <ul id="lista-sabores" class="space-y-2"></ul>
+        </fieldset>
+      </div>
+
+      <!-- fora da área que rola: o erro fica sempre à vista -->
+      <p id="form-erro" class="dialogo__erro text-sm text-red-300" role="alert" hidden></p>
+
+      <footer class="dialogo__rodape">
+        <button type="button" class="btn-fechar botao-secundario">Cancelar</button>
+        <button type="submit" id="btn-salvar" class="botao-ouro min-h-[3rem] px-6 rounded-2xl font-bold uppercase tracking-wider text-sm">Salvar</button>
+      </footer>
+    </form>
+  </dialog>
+
+  <!-- ── Sair do formulário sem salvar ─────────────────────── -->
+  <dialog id="dialogo-descartar" class="dialogo dialogo--pequeno" aria-labelledby="descartar-titulo">
+    <div class="dialogo__corpo space-y-3 text-center">
+      <h2 id="descartar-titulo" class="font-display text-2xl font-extrabold uppercase">Sair sem salvar?</h2>
+      <p class="text-sm text-stone-300">O que você preencheu neste produto será perdido.</p>
+    </div>
+    <footer class="dialogo__rodape">
+      <button type="button" id="btn-continuar-editando" class="botao-secundario">Continuar</button>
+      <button type="button" id="btn-descartar" class="botao-perigo">Sair sem salvar</button>
+    </footer>
+  </dialog>
+
+  <!-- ── Confirmação de remoção ────────────────────────────── -->
+  <dialog id="dialogo-remover" class="dialogo dialogo--pequeno" aria-labelledby="remover-titulo">
+    <div class="dialogo__corpo space-y-3 text-center">
+      <h2 id="remover-titulo" class="font-display text-2xl font-extrabold uppercase">Remover produto?</h2>
+      <p class="text-sm text-stone-300"><strong id="remover-nome"></strong> e todos os sabores dele serão apagados de vez.</p>
+      <p class="text-xs text-stone-400">Se quiser só esconder do site, use o botão “No site” em vez de remover.</p>
+    </div>
+    <footer class="dialogo__rodape">
+      <button type="button" id="btn-cancelar-remover" class="botao-secundario">Cancelar</button>
+      <button type="button" id="btn-confirmar-remover" class="botao-perigo">Remover</button>
+    </footer>
+  </dialog>
+
+  <!-- ── Avisos ────────────────────────────────────────────── -->
+  <div id="avisos" class="avisos" role="status" aria-live="polite"></div>
+
+  <script src="vendor/supabase.js"></script>
+  <script src="comum.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>

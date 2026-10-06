@@ -1,0 +1,226 @@
+/* ============================================================
+   REI DO POD CAF — admin.css  (só o painel do dono)
+   Cores e fontes vêm de tailwind.input.css (--ouro, --superficie…).
+   ============================================================ */
+
+[hidden] { display: none !important; }
+
+/* ── Campos ─────────────────────────────────────────── */
+.campo { display: flex; flex-direction: column; gap: .4rem; }
+.campo > span { font-size: .8rem; font-weight: 600; color: var(--texto-2); }
+.campo input, .campo textarea {
+  width: 100%;
+  min-height: 3rem;
+  padding: .7rem 1rem;
+  border-radius: 1rem;
+  border: 1px solid var(--borda);
+  background: var(--fundo);
+  color: var(--texto);
+  font-size: 1rem; /* 16px: evita o zoom automático do iPhone */
+  resize: none;
+  outline: none;
+  transition: border-color .2s, box-shadow .2s;
+}
+.campo input::placeholder, .campo textarea::placeholder { color: var(--texto-3); }
+.campo input:focus, .campo textarea:focus {
+  border-color: rgba(230,199,102,.6);
+  box-shadow: 0 0 0 4px rgba(230,199,102,.12);
+}
+
+.campo [aria-invalid="true"], .campo [aria-invalid="true"]:focus, .foto-previa.foto-previa--erro {
+  border-color: rgba(248,113,113,.8);
+  box-shadow: 0 0 0 4px rgba(248,113,113,.12);
+}
+
+/* ── Botões ─────────────────────────────────────────── */
+.botao-secundario, .botao-perigo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.5rem;
+  padding: .5rem 1rem;
+  border-radius: .9rem;
+  font-size: .85rem;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: border-color .2s, background .2s, color .2s;
+}
+.botao-secundario { border: 1px solid var(--borda); color: var(--texto); }
+.botao-secundario:hover { border-color: rgba(230,199,102,.4); color: var(--ouro-claro); }
+.botao-perigo { background: #dc2626; color: #fff; min-height: 3rem; padding: .5rem 1.5rem; }
+.botao-perigo:hover { background: #ef4444; }
+.botao-secundario:focus-visible, .botao-perigo:focus-visible, .btn-icone:focus-visible { outline: 2px solid var(--ouro); outline-offset: 2px; }
+button:disabled { opacity: .45; cursor: not-allowed; }
+
+.btn-icone {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: .9rem;
+  border: 1px solid var(--borda);
+  color: var(--texto-2);
+  font-size: 1.1rem;
+  transition: border-color .2s, color .2s, background .2s;
+}
+.btn-icone:hover:not(:disabled) { color: var(--ouro); border-color: rgba(230,199,102,.4); }
+.btn-icone--perigo:hover:not(:disabled) { color: #fca5a5; border-color: rgba(239,68,68,.5); background: rgba(239,68,68,.08); }
+
+/* ── Interruptor (liga/desliga) ─────────────────────── */
+.switch {
+  appearance: none;
+  flex-shrink: 0;
+  position: relative;
+  width: 2.9rem;
+  height: 1.7rem;
+  border-radius: 999px;
+  background: #3f3f46;
+  cursor: pointer;
+  transition: background .25s;
+}
+.switch::after {
+  content: '';
+  position: absolute;
+  top: .2rem;
+  left: .2rem;
+  width: 1.3rem;
+  height: 1.3rem;
+  border-radius: 999px;
+  background: #fff;
+  transition: transform .25s var(--curva);
+}
+.switch:checked { background: var(--ouro); }
+.switch:checked::after { transform: translateX(1.2rem); background: #1a1406; }
+.switch:focus-visible { outline: 2px solid var(--ouro-claro); outline-offset: 3px; }
+
+.linha-switch { display: flex; align-items: center; justify-content: space-between; gap: 1rem; cursor: pointer; }
+.linha-switch strong { display: block; font-size: .9rem; }
+.linha-switch small { display: block; font-size: .75rem; color: var(--texto-3); }
+.rotulo-switch { display: inline-flex; align-items: center; gap: .5rem; font-size: .75rem; color: var(--texto-2); cursor: pointer; }
+
+/* ── Lista de produtos ──────────────────────────────── */
+.item-produto {
+  display: grid;
+  grid-template-columns: 4rem 1fr;
+  gap: .9rem;
+  padding: .9rem;
+  border-radius: 1.25rem;
+  border: 1px solid var(--borda);
+  background: var(--superficie);
+  animation: subir .4s var(--curva) backwards;
+}
+.item-produto img {
+  width: 4rem;
+  height: 4rem;
+  object-fit: contain;
+  border-radius: .8rem;
+  background: rgba(255,255,255,.03);
+}
+.item-produto__nome { font-family: "Barlow Condensed", Inter, sans-serif; font-size: 1.3rem; font-weight: 800; text-transform: uppercase; line-height: 1.1; }
+.item-produto__meta { font-size: .8rem; color: var(--texto-2); margin-top: .15rem; }
+.item-produto__estoque { font-size: .75rem; color: var(--ouro); margin-top: .25rem; }
+.item-produto__acoes {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: .6rem;
+  padding-top: .75rem;
+  border-top: 1px solid var(--borda);
+}
+@media (min-width: 640px) {
+  .item-produto { grid-template-columns: 4rem 1fr auto; align-items: center; }
+  .item-produto__acoes { grid-column: auto; border-top: 0; padding-top: 0; justify-content: flex-end; }
+}
+.item-produto--escondido { opacity: .6; }
+.item-produto--escondido .item-produto__estoque { color: var(--texto-3); }
+
+/* ── Janela do formulário ───────────────────────────── */
+.dialogo {
+  width: min(100% - 1rem, 36rem);
+  max-height: calc(100dvh - 1rem);
+  padding: 0;
+  border: 1px solid rgba(230,199,102,.2);
+  border-radius: 1.5rem;
+  background: var(--superficie);
+  color: var(--texto);
+  font-family: Inter, system-ui, sans-serif;
+}
+.dialogo[open] { animation: subir .35s var(--curva) backwards; }
+.dialogo::backdrop { background: rgba(0,0,0,.75); backdrop-filter: blur(4px); }
+.dialogo form { display: flex; flex-direction: column; max-height: calc(100dvh - 1rem); }
+.dialogo--pequeno { width: min(100% - 2rem, 24rem); }
+.dialogo__topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--borda);
+}
+.dialogo__corpo { padding: 1.25rem; overflow-y: auto; }
+.dialogo__erro { padding: .75rem 1.25rem 0; }
+.dialogo__rodape {
+  display: flex;
+  justify-content: flex-end;
+  gap: .6rem;
+  padding: 1rem 1.25rem;
+  border-top: 1px solid var(--borda);
+}
+.btn-fechar:not(.botao-secundario) { padding: .5rem; border-radius: .75rem; color: var(--texto-2); }
+.btn-fechar:not(.botao-secundario):hover { color: var(--texto); background: rgba(255,255,255,.06); }
+
+.foto-previa {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 6.5rem;
+  height: 6.5rem;
+  border-radius: 1.1rem;
+  border: 1px dashed rgba(230,199,102,.35);
+  background: rgba(255,255,255,.03);
+  font-size: .75rem;
+  color: var(--texto-3);
+  overflow: hidden;
+}
+.foto-previa img { width: 100%; height: 100%; object-fit: contain; }
+
+/* ── Sabores no formulário ──────────────────────────── */
+.item-sabor {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  padding: .5rem .5rem .5rem .9rem;
+  border-radius: .9rem;
+  border: 1px solid var(--borda);
+  background: var(--fundo);
+}
+.item-sabor__nome { flex: 1; font-size: .85rem; font-weight: 600; letter-spacing: .03em; }
+.item-sabor .rotulo-switch span { width: 5.2rem; }
+.item-sabor--esgotado .item-sabor__nome { color: var(--texto-3); text-decoration: line-through; }
+
+/* ── Avisos (canto da tela) ─────────────────────────── */
+.avisos {
+  position: fixed;
+  left: 50%;
+  bottom: 1.25rem;
+  transform: translateX(-50%);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  width: min(100% - 2rem, 26rem);
+  pointer-events: none;
+}
+.aviso {
+  padding: .8rem 1rem;
+  border-radius: 1rem;
+  font-size: .875rem;
+  font-weight: 600;
+  box-shadow: 0 12px 30px -10px rgba(0,0,0,.8);
+  animation: subir .35s var(--curva) backwards;
+}
+.aviso--ok { background: var(--gradiente-ouro); color: #1a1406; }
+.aviso--erro { background: #7f1d1d; color: #fee2e2; border: 1px solid rgba(248,113,113,.4); }

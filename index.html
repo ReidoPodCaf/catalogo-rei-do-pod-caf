@@ -3,102 +3,106 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>REI DO POD CAF - Premium</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  
+  <title>REI DO POD CAF — Pods originais em Cafelândia e região</title>
+  <meta name="description" content="Catálogo online do REI DO POD CAF: pods originais com entrega rápida em Cafelândia e região. Veja os sabores disponíveis e peça pelo WhatsApp.">
+  <meta name="theme-color" content="#0a0a0b">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+  <link rel="apple-touch-icon" href="img/icone-180.png">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="REI DO POD CAF">
+  <meta property="og:title" content="REI DO POD CAF — Pods originais em Cafelândia e região">
+  <meta property="og:description" content="Catálogo online do REI DO POD CAF: pods originais com entrega rápida em Cafelândia e região. Veja os sabores disponíveis e peça pelo WhatsApp.">
+  <meta property="og:url" content="https://reidopodcaf.com.br/">
+  <meta property="og:image" content="https://reidopodcaf.com.br/img/compartilhar.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preload" href="fonts/barlow-condensed-800.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="tailwind.css">
 </head>
-<body class="bg-[#0a0a0a] text-white font-sans antialiased">
- 
+<body class="bg-fundo text-stone-100 font-sans antialiased">
+
 <!-- HEADER -->
-<header class="sticky top-0 z-50 backdrop-blur-md bg-black/80 border-b border-white/5 px-6 py-2">
-  <div class="max-w-4xl mx-auto flex items-center justify-between">
- 
-    <div class="flex items-center gap-5 group cursor-pointer">
-      <div class="relative">
-        <div class="absolute inset-0 bg-cyan-500/15 rounded-full blur-2xl group-hover:bg-cyan-500/25 transition duration-700"></div>
-        <img src="img/ReiDoPod.Melhorada.png" alt="Logo Rei do Pod"
-             class="relative w-20 h-20 object-contain brightness-110 drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)] transition-transform duration-500 group-hover:scale-110">
-      </div>
-      <div class="flex flex-col">
-        <h1 class="text-xl font-black tracking-tight text-white leading-tight">
-          REI DO POD <span class="text-cyan-500 uppercase">Caf</span>
-        </h1>
-        <div class="flex items-center gap-2">
-          <span class="relative flex h-2 w-2">
-            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-            <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-          </span>
-          <p class="text-[10px] uppercase tracking-[0.2em] text-gray-500 font-bold">Catálogo Online</p>
-        </div>
-      </div>
-    </div>
- 
-    <div class="hidden md:flex flex-col items-end animate-bounce" style="animation-duration: 3s;">
-      <div class="flex items-center gap-2 mb-1">
-        <i class="fas fa-crown text-cyan-500"></i>
-        <span class="text-xs font-black text-white uppercase tracking-tighter italic">O Melhor do PR</span>
-      </div>
-      <div class="h-[1px] w-24 bg-gradient-to-r from-transparent via-cyan-500 to-transparent"></div>
-    </div>
- 
+<header class="sticky top-0 z-50 backdrop-blur-md bg-fundo/80 border-b border-white/5">
+  <div class="max-w-5xl mx-auto px-5 h-16 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-3" aria-label="REI DO POD CAF — início">
+      <img src="img/leao.webp" alt="" width="40" height="40" class="w-10 h-10 rounded-full ring-1 ring-ouro/40">
+      <span class="font-display text-2xl font-extrabold tracking-wide uppercase leading-none">
+        Rei do Pod <span class="texto-ouro">Caf</span>
+      </span>
+    </a>
+    <a href="sabores.html" class="hidden sm:inline-flex items-center gap-2 text-sm font-semibold text-ouro hover:text-ouro-claro transition-colors">
+      Ver sabores
+      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg>
+    </a>
   </div>
 </header>
- 
-<!-- MAIN -->
-<main class="max-w-4xl mx-auto px-6 py-16">
- 
-  <!-- HEADLINE -->
-  <div class="text-center mb-16">
-    <h2 class="text-5xl md:text-6xl font-black text-white mb-6 tracking-tighter leading-[1.1]">
-      O MELHOR POD <br> DO <span class="text-cyan-500 glow-text">PARANÁ</span>
-    </h2>
-    <p class="text-gray-400 text-lg max-w-lg mx-auto leading-relaxed">
-      Produtos <span class="text-white font-medium">100% originais</span> com a entrega mais rápida de Cafelândia e região. Sabor intenso até o último puff.
-    </p>
-  </div>
- 
-  <!-- CARD CTA -->
-  <div class="relative group max-w-2xl mx-auto mb-20 card-glow transition duration-500">
-    <div class="absolute -inset-1 bg-gradient-to-r from-cyan-600 to-blue-600 rounded-[2rem] blur-xl opacity-20 group-hover:opacity-40 transition duration-700"></div>
- 
-    <div class="relative bg-zinc-900/40 backdrop-blur-sm border border-white/10 rounded-[2rem] overflow-hidden shadow-2xl">
-      <div class="overflow-hidden">
-        <img src="img/pod.ia.jpg" alt="Destaque Pods"
-             class="w-full h-80 object-cover opacity-90 group-hover:scale-105 transition duration-700"
-             loading="lazy">
+
+<main class="relative overflow-hidden">
+  <!-- brilho dourado de fundo -->
+  <div class="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[48rem] h-[32rem] rounded-full bg-ouro/10 blur-3xl" aria-hidden="true"></div>
+
+  <div class="relative max-w-5xl mx-auto px-5 pt-14 pb-16 md:pt-20">
+
+    <!-- HEADLINE -->
+    <div class="text-center mb-12">
+      <p class="entrada inline-flex items-center gap-2 mb-6 px-3 py-1.5 rounded-full border border-ouro/30 bg-ouro/5 text-ouro text-xs font-semibold uppercase tracking-[.2em]">
+        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2 7l5 4 5-7 5 7 5-4-2 12H4L2 7zm2 14h16v2H4z"/></svg>
+        O melhor do PR
+      </p>
+      <h1 class="entrada font-display font-extrabold uppercase text-6xl md:text-8xl leading-[.9] tracking-tight mb-6" style="--atraso: 1">
+        O melhor pod<br>do <span class="texto-ouro">Paraná</span>
+      </h1>
+      <p class="entrada text-stone-400 text-lg max-w-md mx-auto leading-relaxed" style="--atraso: 2">
+        Produtos <span class="text-stone-100 font-medium">100% originais</span> com a entrega mais rápida de Cafelândia e região. Sabor intenso até o último puff.
+      </p>
+    </div>
+
+    <!-- CARD CTA -->
+    <a href="sabores.html" class="entrada group block max-w-2xl mx-auto mb-16 rounded-[2rem] p-px bg-gradient-to-b from-ouro/40 via-white/10 to-transparent" style="--atraso: 3">
+      <div class="rounded-[calc(2rem-1px)] bg-superficie overflow-hidden">
+        <div class="relative overflow-hidden">
+          <img src="img/destaque.webp" alt="Pods Elfbar, Black Sheep e Ignite lado a lado" width="1344" height="896"
+               class="w-full h-64 md:h-80 object-cover transition-transform duration-700 ease-out group-hover:scale-105">
+          <div class="absolute inset-0 bg-gradient-to-t from-superficie via-transparent to-transparent" aria-hidden="true"></div>
+        </div>
+        <div class="p-6 md:p-8 -mt-10 relative">
+          <span class="botao-ouro flex items-center justify-center gap-3 w-full py-5 rounded-2xl font-bold uppercase text-center tracking-[.1em] text-[15px] md:tracking-[.15em] md:text-lg">
+            Explorar todos os sabores
+            <svg class="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg>
+          </span>
+        </div>
       </div>
- 
-      <div class="p-8">
-        <a href="sabores.html"
-           class="flex items-center justify-center gap-3 w-full py-5 bg-cyan-600 hover:bg-cyan-500 text-black font-black rounded-2xl shadow-xl shadow-cyan-500/20 transform transition active:scale-[0.98] uppercase tracking-widest text-lg">
-          <span>💨</span> EXPLORAR TODOS OS SABORES
-        </a>
+    </a>
+
+    <!-- STATS -->
+    <dl class="entrada grid grid-cols-2 md:grid-cols-4 gap-px rounded-2xl overflow-hidden border border-white/5 bg-white/5 max-w-3xl mx-auto" style="--atraso: 4">
+      <div class="bg-fundo py-6 flex flex-col items-center">
+        <dt class="order-2 text-stone-400 text-[11px] font-semibold uppercase tracking-widest mt-1">Original</dt>
+        <dd class="order-1 font-display text-3xl font-extrabold uppercase texto-ouro">100%</dd>
       </div>
-    </div>
+      <div class="bg-fundo py-6 flex flex-col items-center">
+        <dt class="order-2 text-stone-400 text-[11px] font-semibold uppercase tracking-widest mt-1">Entrega em mãos</dt>
+        <dd class="order-1 font-display text-3xl font-extrabold uppercase texto-ouro">Rapidex</dd>
+      </div>
+      <div class="bg-fundo py-6 flex flex-col items-center">
+        <dt class="order-2 text-stone-400 text-[11px] font-semibold uppercase tracking-widest mt-1">Clientes</dt>
+        <dd class="order-1 font-display text-3xl font-extrabold uppercase texto-ouro">+500</dd>
+      </div>
+      <div class="bg-fundo py-6 flex flex-col items-center">
+        <dt class="order-2 text-stone-400 text-[11px] font-semibold uppercase tracking-widest mt-1">Cafelândia</dt>
+        <dd class="order-1 font-display text-3xl font-extrabold uppercase texto-ouro">Top 1</dd>
+      </div>
+    </dl>
+
   </div>
- 
-  <!-- STATS -->
-  <div class="grid grid-cols-2 md:grid-cols-4 gap-8 py-10 border-t border-white/5">
-    <div class="flex flex-col items-center">
-      <span class="text-cyan-500 font-black text-2xl tracking-tighter">100%</span>
-      <span class="text-gray-500 text-[10px] font-bold uppercase tracking-widest mt-1">Original</span>
-    </div>
-    <div class="flex flex-col items-center border-l border-white/5">
-      <span class="text-cyan-500 font-black text-2xl tracking-tighter">RAPIDEX</span>
-      <span class="text-gray-500 text-[10px] font-bold uppercase tracking-widest mt-1">Entrega em mãos</span>
-    </div>
-    <div class="flex flex-col items-center border-l border-white/5">
-      <span class="text-cyan-500 font-black text-2xl tracking-tighter">+500</span>
-      <span class="text-gray-500 text-[10px] font-bold uppercase tracking-widest mt-1">Clientes</span>
-    </div>
-    <div class="flex flex-col items-center border-l border-white/5">
-      <span class="text-cyan-500 font-black text-2xl tracking-tighter">TOP 1</span>
-      <span class="text-gray-500 text-[10px] font-bold uppercase tracking-widest mt-1">Cafelândia</span>
-    </div>
-  </div>
- 
 </main>
- 
+
+<footer class="text-center text-stone-400 text-xs pb-8 px-6">
+  &copy; 2026 REI DO POD CAF — Proibida a venda para menores de 18 anos.
+</footer>
+
+<script src="comum.js"></script>
 </body>
 </html>

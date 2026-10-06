@@ -4,56 +4,72 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sabores Disponíveis — REI DO POD CAF</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <meta name="description" content="Sabores em estoque agora no REI DO POD CAF. Escolha o sabor e faça o pedido direto pelo WhatsApp.">
+  <meta name="theme-color" content="#0a0a0b">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+  <link rel="apple-touch-icon" href="img/icone-180.png">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="REI DO POD CAF">
+  <meta property="og:title" content="Sabores Disponíveis — REI DO POD CAF">
+  <meta property="og:description" content="Sabores em estoque agora no REI DO POD CAF. Escolha o sabor e faça o pedido direto pelo WhatsApp.">
+  <meta property="og:url" content="https://reidopodcaf.com.br/sabores.html">
+  <meta property="og:image" content="https://reidopodcaf.com.br/img/compartilhar.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preload" href="fonts/barlow-condensed-800.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="tailwind.css">
   <link rel="stylesheet" href="style.css">
 
 </head>
-<body class="relative">
+<body class="relative antialiased">
 
-  <!-- ── Header ─────────────────────────────────────────── -->
-  <a href="index.html"
-     class="inline-flex items-center gap-2 m-6 text-blue-400 hover:text-blue-300 transition-colors text-sm font-medium">
-    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
-    </svg>
-    Voltar
-  </a>
+  <!-- ── Topo ────────────────────────────────────────────── -->
+  <div class="relative z-10 max-w-7xl mx-auto px-4 pt-5 flex items-center justify-between">
+    <a href="index.html" class="marca" aria-label="REI DO POD CAF — voltar ao início">
+      <img src="img/leao.webp" alt="" width="40" height="40">
+      <span>Rei do Pod <span class="texto-ouro">Caf</span></span>
+    </a>
+  </div>
 
-  <header class="text-center px-4 mb-10 relative z-10">
-    <p class="text-xs font-bold tracking-[.25em] uppercase text-blue-400 mb-3">Catálogo Atualizado</p>
-    <h1 class="text-4xl md:text-5xl font-black tracking-tight mb-3"
-        style="font-family:'Barlow Condensed',sans-serif;">
-      ESCOLHA SEU <span style="color:var(--accent)">SABOR</span>
+  <header class="relative z-10 text-center px-4 pt-10 pb-6">
+    <p class="entrada text-xs font-semibold tracking-[.25em] uppercase text-ouro mb-3">Catálogo atualizado</p>
+    <h1 class="entrada font-display font-extrabold uppercase text-5xl md:text-7xl leading-[.95] tracking-tight mb-3" style="--atraso: 1">
+      Escolha seu <span class="texto-ouro">sabor</span>
     </h1>
-    <p class="text-slate-400 text-sm max-w-md mx-auto">
-      Clique no sabor e seu pedido vai direto pro WhatsApp 💬
+    <p class="entrada text-stone-400 text-sm md:text-base max-w-md mx-auto" style="--atraso: 2">
+      Toque no sabor e o pedido vai direto pro WhatsApp.
     </p>
   </header>
 
-  <!-- ── Busca ───────────────────────────────────────────── -->
-  <div class="relative z-10 px-4 max-w-7xl mx-auto">
+  <!-- ── Busca + filtros (gruda no topo ao rolar) ────────── -->
+  <div id="ferramentas" class="ferramentas entrada" style="--atraso: 3">
     <div class="search-wrap">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0"/>
       </svg>
       <label for="busca-sabor" class="sr-only">Buscar produto ou sabor</label>
       <input id="busca-sabor" type="search" placeholder="Buscar produto ou sabor…" autocomplete="off">
     </div>
+    <div id="filtro-marcas" class="filtro-marcas" role="group" aria-label="Filtrar por marca"></div>
   </div>
 
   <!-- ── Grid de produtos ────────────────────────────────── -->
   <!-- Os cards são renderizados dinamicamente por script.js a partir de PRODUTOS -->
-  <main id="grid" class="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 px-4 max-w-7xl mx-auto pb-20"></main>
+  <main id="grid" class="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 px-4 max-w-7xl mx-auto pb-24"></main>
 
-  <footer class="text-center text-slate-600 text-xs pb-8">
-    &copy; 2026 REI DO POD CAF — Todos os direitos reservados.
+  <p id="sem-resultados" class="relative z-10 text-center text-stone-400 text-sm px-4 pb-24" hidden>
+    Nada encontrado para “<span class="text-stone-100"></span>”. Tente outro nome de produto ou sabor.
+  </p>
+
+  <footer class="text-center text-stone-400 text-xs pb-8 px-4">
+    &copy; 2026 REI DO POD CAF — Todos os direitos reservados.<br>
+    Proibida a venda para menores de 18 anos.
   </footer>
 
+  <script src="comum.js"></script>
   <script src="script.js"></script>
 </body>
 
 </html>
-
-
